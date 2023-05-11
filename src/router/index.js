@@ -141,6 +141,17 @@ export default new Router({
       ]
     },
     {
+      path: '/patients',
+      component: layout,
+      children: [
+        {
+          path: 'list',
+          name: 'list',
+          component: () => import('@/pages/patients/index')
+        }
+      ]
+    },
+    {
       path: '/',
       component: layout2,
       children: [
@@ -148,6 +159,72 @@ export default new Router({
           path: '',
           name: 'home',
           component: () => import('@/pages/dashboard/home')
+        }
+      ]
+    },
+    {
+      path: '/payement',
+      component: layout,
+      children: [
+        {
+          path: 'create',
+          name: 'create-payement',
+          component: () => import('@/pages/paiement/create')
+        }
+      ]
+    },
+    {
+      path: '/payement',
+      component: layout,
+      children: [
+        {
+          path: 'list',
+          name: 'list-payement',
+          component: () => import('@/pages/paiement/index')
+        }
+      ]
+    },
+    {
+      path: '/eph',
+      component: layout,
+      children: [
+        {
+          path: 'create',
+          name: 'create',
+          component: () => import('@/pages/centre-sante/create')
+        }
+      ]
+    },
+    {
+      path: '/eph',
+      component: layout,
+      children: [
+        {
+          path: 'list',
+          name: 'list',
+          component: () => import('@/pages/centre-sante/index')
+        }
+      ]
+    },
+    {
+      path: '/actes-medicaux',
+      component: layout,
+      children: [
+        {
+          path: 'create',
+          name: 'create',
+          component: () => import('@/pages/actes-medicaux/create')
+        }
+      ]
+    },
+    {
+      path: '/actes-medicaux',
+      component: layout,
+      children: [
+        {
+          path: 'list',
+          name: 'list',
+          component: () => import('@/pages/actes-medicaux/index')
         }
       ]
     },

@@ -118,10 +118,10 @@
       <div class="col-lg-4 grid-margin stretch-card">
         <div class="card">
           <!-- <date-picker  :locale="fr" v-model="time1" valueType="format" inline></date-picker> -->
-          <date-picker class=" vue-datepicker-body vue-datepicker-current" v-model="time1" valueType="format" inline
+          <date-picker id="inline-datepicker" class="datepicker datepicker-custom vue-datepicker-body vue-datepicker-current" v-model="time1" valueType="format" inline
             style="border-radius: 50% !important; background-color: #007aff;"></date-picker>
           <!-- <datePicker :lang="lang"/> -->
-
+          <div id="inline-datepicker" class="datepicker datepicker-custom"></div>
         </div>
       </div>
       <div class="col-lg-8 grid-margin">

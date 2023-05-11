@@ -13,12 +13,12 @@
                   </div>
                   <center>
                     <div class="brand-logo">
-                      <img src="../../../assets/images/logo.png" />
+                      <img src="../../../assets/images/logo.png" class="w-50"/>
                     </div>
                   </center>
 
                   <marquee behavior="alternate">
-                    <h4 class="p-3">Bienvenue sur la plateforme E-MEDICO</h4>
+                    <h4 class="p-3">Bienvenue sur E-MEDICO</h4>
                   </marquee>
 
                   <form class="pt-3">
@@ -28,7 +28,7 @@
                   </div> -->
 
                     <div class="input-group mb-1 form-group p-2">
-                      <div class="input-group-prepend">
+                      <div class="input-group-prepend" >
                         <span class="input-group-text" id="basic-addon1"><i
                             class="mdi mdi-email icon-sm text-dark align-middle"></i></span>
                       </div>
@@ -50,7 +50,7 @@
                       > </div>
                     </div>
                     <div class="mt-n5 p-4">
-                      <router-link to="/dashboard" class="underline-none">
+                      <router-link to="/" class="underline-none">
 
                         <button type="button" class="connect text-center  btn btn-block legend-dots bg-gradient-success"
                          >

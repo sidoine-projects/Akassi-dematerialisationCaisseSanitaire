@@ -1,5 +1,5 @@
 <template>
-  <section class="app-sidebar">
+  <section class="app-sidebar sideside">
     <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background: #0b5d3f">
       <ul class="nav">
         <div class="surcote">
@@ -15,7 +15,7 @@
             <div>
               <div
                 class="text-center navbar-brand-wrapper align-items-top justify-content-center">
-                <h3 style="margin-top: 10rem; margin-bottom: 10rem; color: #fff;">Plateforme de dématérialisation des caises   
+                <h3 style="margin-top: 10rem; margin-bottom: 10rem; color: #fff;">Plateforme de dématérialisation des caisses sanitaires  
                 <hr style="background-color: #fff; width: 75%; height: 0.1rem; border-radius: 1rem;"></h3>
             
          
@@ -100,4 +100,10 @@
   .hola:hover{ 
     text-decoration: none;
   }
+
+
+
+
+
+
   </style>

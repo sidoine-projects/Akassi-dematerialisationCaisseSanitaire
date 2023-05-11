@@ -31,6 +31,11 @@ export default {
 @import "../node_modules/chartist/dist/chartist.min.css";
 @import "./assets/scss/style";
 
+// @import "../node_modules/bootstrap/dist/css/bootstrap.css";
+// @import "../node_modules/bootstrap-vue/dist/bootstrap-vue.css";
+
+
+
 //@import "../node_modules/@flaticon/flaticon-uicons/css/all/all";
 
 </style>

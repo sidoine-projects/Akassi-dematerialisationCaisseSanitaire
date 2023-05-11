@@ -42,18 +42,18 @@
             <ul class="nav flex-column sub-menu">
               
               <li class="nav-item">
-                <router-link class="nav-link" to="/basic-ui/buttons/">Gestion des utilisateurs</router-link>
+                <router-link class="nav-link" to="">Gestion des utilisateurs</router-link>
               </li>
 
               <li class="nav-item">
-                <router-link class="nav-link" to="/basic-ui/dropdowns/">Droits utilisateurs</router-link>
+                <router-link class="nav-link" to="">Droits utilisateurs</router-link>
               </li>
 
               <!-- <li class="nav-item">
                 <router-link class="nav-link" to="/basic-ui/dropdowns/"> Gestion des Actes medicaux</router-link>
               </li> -->
               <li class="nav-item">
-                <router-link class="nav-link" to="/basic-ui/typography/">Carte Sanitaire</router-link>
+                <router-link class="nav-link" to="/eph/create">Carte Sanitaire</router-link>
               </li>
             </ul>
           </b-collapse>
@@ -74,7 +74,7 @@
               </li>
 
               <li class="nav-item">
-                <router-link class="nav-link" to="/patients/index">Liste</router-link>
+                <router-link class="nav-link" to="/patients/list">Liste</router-link>
               </li>
 
 
@@ -93,10 +93,10 @@
           <b-collapse accordion="sidebar-accordion" id="actes">
             <ul class="nav flex-column sub-menu">
               <li class="nav-item">
-                <router-link class="nav-link" to="/charts/chartjs/">Ajouter</router-link>
+                <router-link class="nav-link" to="/actes-medicaux/create">Ajouter</router-link>
               </li>
               <li class="nav-item">
-                <router-link class="nav-link" to="/charts/chartjs/">Liste</router-link>
+                <router-link class="nav-link" to="/actes-medicaux/list">Liste</router-link>
               </li>
             </ul>
           </b-collapse>
@@ -113,10 +113,10 @@
           <b-collapse accordion="sidebar-accordion" id="paiement">
             <ul class="nav flex-column sub-menu">
               <li class="nav-item">
-                <router-link class="nav-link" to="/charts/chartjs/">Paiement</router-link>
+                <router-link class="nav-link" to="/payement/create">Paiement</router-link>
               </li>
               <li class="nav-item">
-                <router-link class="nav-link" to="/charts/chartjs/">Factures</router-link>
+                <router-link class="nav-link" to="/payement/list">Factures</router-link>
               </li>
             </ul>
           </b-collapse>

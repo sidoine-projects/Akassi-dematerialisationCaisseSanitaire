@@ -66,7 +66,7 @@
                     <img src="@/assets/images/paiements.png" style="width: 25%;" class="mt-4 ml-auto mr-auto">
                     <div class="card-body">
                         <center>
-                            <h2 class="mb-5">Paiements et factures</h2>
+                            <h2 class="mb-5">Paiements et facturation</h2>
                         </center>
                         <center>
                             <button class="btn" style="background: #0b5d3f; border-radius: 3rem;">

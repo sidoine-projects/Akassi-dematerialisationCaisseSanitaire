@@ -91,20 +91,20 @@
       <div class="col-md-4 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Evolutions des patients au cours des 03 dernieres années</h4>
+            <h4 class="card-title">Evolutions hebdomadaire des patients </h4>
             <trafficSourceChart :height='200'></trafficSourceChart>
             <div id="traffic-chart-legend" class="rounded-legend legend-vertical legend-bottom-left pt-0">
               <ul>
                 <li>
-                  <span class="legend-dots bg-gradient-info"></span>2021
+                  <span class="legend-dots bg-gradient-info"></span>Lun
                   <span class="float-right">50%</span>
                 </li>
                 <li>
-                  <span class="legend-dots bg-gradient-success"></span>2022
+                  <span class="legend-dots bg-gradient-success"></span>Mar
                   <span class="float-right">60%</span>
                 </li>
                 <li>
-                  <span class="legend-dots bg-gradient-danger"></span>2023
+                  <span class="legend-dots bg-gradient-danger"></span>Mer
                   <span class="float-right">40%</span>
                 </li>
               </ul>

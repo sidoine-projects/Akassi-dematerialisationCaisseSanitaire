@@ -27,10 +27,10 @@
           <div class="card-body">
             <h4 class="card-title">Ajouter un paiement</h4>
             <p class="card-description"> Ajouter </p>
-            <form class="forms-sample ">
+            <form class="forms-sample">
 
               <fieldset class="scheduler-border row col-md-12">
-                <legend class="scheduler-border" style="font-size: medium !important;">Infos Patient</legend>
+                <legend class="scheduler-border" style="font-size: medium !important;">Informations Patient</legend>
 
                 <div class="control-group p-2 col-md-6">
 
@@ -80,32 +80,16 @@
                 </div>
               </fieldset>
 
-              <fieldset class="scheduler-border  row col-md-12">
-                <legend class="scheduler-border" style="font-size: medium !important;">Infos Paiement</legend>
-
-                <div class="control-group p-2 col-md-12 ">
-
-                  <div class="form-group mx-auto">
-                    <label for="exampleFormControlSelect1">Mode de Paiement</label>
-                    <select class="form-control  mb-3 " id="exampleFormControlSelect1">
-                      <option value="AL">Espèce</option>
-                      <option value="WY">Mobile Money</option>
-                      <option value="AM">Moov Money</option>
-                      <option value="CA">Carte bancaire</option>
-                      <option value="AM">Chèque</option>
+              <fieldset class="scheduler-border  container-fluid">
+                <legend class="scheduler-border" style="font-size: medium !important;">Informations Paiement</legend>
 
 
-                    </select>
-                  </div>
+                <div class="control-group col-md-12  mt-2 " id="app">
+                  <div class="row" v-for="(form, index) in forms" :key="index">
 
-                </div>
-
-                <div class="control-group col-md-12">
-                  <div class="row ">
-
-                    <div class="form-group col-md-4">
-                      <label for="exampleFormControlSelect1">Mode de Paiement</label>
-                      <select class="form-control   mb-3 " id="exampleFormControlSelect1">
+                    <div class="form-group col-md-3">
+                      <label for="exampleFormControlSelect1">Actes médicaux</label>
+                      <select class="form-control  " id="exampleFormControlSelect1" v-model="form.mode">
                         <option value="AL">Consultation</option>
                         <option value="WY">Hospitalisations</option>
                         <option value="AM">Examens médicaux</option>
@@ -114,45 +98,7 @@
                       </select>
                     </div>
 
-                    <div class="form-group col-md-2">
-                      <label for="exampleInputEmail1">Code</label>
-                      <input readonly type="email" value="FD01003" class="form-control" id="exampleInputEmail1"
-                        placeholder="Code">
-                    </div>
-                    <div class="form-group col-md-2">
-                      <label for="exampleInputUsername1">prix</label>
-                      <input readonly type="text" value="2000" class="form-control" id="exampleInputUsername1"
-                        placeholder="prix">
-                    </div>
-                    <div class="form-group col-md-2">
-                      <label for="exampleInputUsername1">Quantité</label>
-                      <input type="number" value="1" class="form-control" id="exampleInputUsername1"
-                        placeholder="Quantité">
-                    </div>
-                    <div class="form-group col-md-2">
-                      <label for="exampleInputUsername1">Montant</label>
-                      <input readonly type="text" value="2000" class="form-control" id="exampleInputUsername1"
-                        placeholder="Montant">
-                    </div>
-                  </div>
-
-                </div>
-
-                <div class="control-group col-md-12" id="app">
-                  <div class="row " v-for="(form, index) in forms" :key="index">
-
-                    <div class="form-group col-md-4">
-                      <label for="exampleFormControlSelect1">Mode de Paiement</label>
-                      <select class="form-control   mb-3 " id="exampleFormControlSelect1" v-model="form.mode">
-                        <option value="AL">Consultation</option>
-                        <option value="WY">Hospitalisations</option>
-                        <option value="AM">Examens médicaux</option>
-                        <option value="CA">Transport en ambulance</option>
-                        <option value="AM">ventes de produits pharmaceutiques</option>
-                      </select>
-                    </div>
-
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-2 ">
                       <label for="exampleInputEmail1">Code</label>
                       <input readonly type="email" value="FD01003" class="form-control" id="exampleInputEmail1"
                         placeholder="Code" v-model="form.code">
@@ -162,122 +108,218 @@
                       <input readonly type="text" value="2000" class="form-control" id="exampleInputUsername1"
                         placeholder="prix" v-model="form.prix">
                     </div>
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-2 ">
                       <label for="exampleInputUsername1">Quantité</label>
                       <input type="number" value="1" class="form-control" id="exampleInputUsername1"
                         placeholder="Quantité" v-model="form.quantite">
                     </div>
-                    <div class="form-group col-md-2">
+                    <div class="form-group  col-md-1 p-0">
                       <label for="exampleInputUsername1">Montant</label>
-                      <input readonly type="text" value="2 000" class="form-control" id="exampleInputUsername1"
+                      <input type="text" value="2000" class="form-control" id="exampleInputUsername1"
                         placeholder="Montant" v-model="form.montant">
+
                     </div>
+                    <div class="form-group col-md-1 mt-4 ">
+                      <b-button size="sm" v-b-tooltip.hover title="Supprimer" variant="danger"
+                        @click.prevent="deleteForm(index)">
+                        <i class="mdi  mdi mdi-close-box text-white menu-icon"></i>
+                      </b-button>
+
+
+                    </div>
+
                   </div>
 
                 </div>
-
                 <div class="control-group col-md-12 row">
-                  <div class="form-group col-md-4">
+                  <div class="form-group col-md-4 ">
                     <b-button size="sm" v-b-tooltip.hover title="Ajouter un acte" variant="success" @click="addForm">
                       <i class="mdi  mdi mdi-plus-box text-white menu-icon"></i>
                     </b-button>
-                    <b-button size="sm" v-b-tooltip.hover title="Supprimer" variant="danger"
+                    <!-- <b-button size="sm" v-b-tooltip.hover title="Supprimer" variant="danger"
                       @click.prevent="deleteForm()">
                       <i class="mdi  mdi mdi-close-box text-white menu-icon"></i>
-                    </b-button>
+                    </b-button> -->
                   </div>
                 </div>
-              </fieldset>
 
 
-              <div>
-    <transition name="modal">
-      <div v-if="isOpen">
-        <div class="overlay" @click.self="isOpen = false;">
-          <div class="modal">
-            <h1>Modal heading</h1>
-            <p>This my first modal using vue.js</p>
-          </div>
-        </div>
-      </div>
-    </transition>
-    <button @click="isOpen = !isOpen;" type="button">
-      {{ isOpen ? "Close" : "Open" }} modal
-    </button>
-  </div>
-              <!-- <button type="button" @click="addForm">Ajouter un champ de saisie</button>
-              <button @click.prevent="deleteForm(index)">Supprimer ce formulaire</button> -->
+                <div class="control-group p-2 col-md-12 ">
 
-
-
-              <!-- 
-              <fieldset class="scheduler-border col-md-6">
-                <legend class="scheduler-border" style="font-size: medium !important;">Infos Paiement</legend>
-                <div class="control-group p-2">
-
-
-                  <div class="form-group">
-                    <label for="exampleFormControlSelect1">Mode de payement</label>
-                    <select class="form-control   mb-3 " id="exampleFormControlSelect1">
+                  <div class="form-group mx-auto">
+                    <label for="exampleFormControlSelect1">Mode de Paiement</label>
+                    <select class="form-control  mb-3 " id="exampleFormControlSelect1" v-model="selectedOption">
+                      <option v-for="option in optionsMode" :key="option.id" :value="option.value">{{ option.label }}
+                      </option>
+                      <!-- 
                       <option value="AL">Espèce</option>
                       <option value="WY">Mobile Money</option>
                       <option value="AM">Moov Money</option>
                       <option value="CA">Carte bancaire</option>
-                      <option value="AM">Chèque</option>
-
-
+                      <option value="AM">Chèque</option> -->
                     </select>
-                  </div>
-
-                  <div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                  </div>
-
-
-                  <div class="form-group form-check">
-                    <label for="radio" class="">Choisir un élément </label>
-
-                    <div class="p-3">
-                      <input type="checkbox" class="demo2" id="demo2">
-                      <label for="demo2" class="mx-3" style="font-size: 1rem;">element 1</label>
-
-
-                      <input type="checkbox" class="demo2 mx-5" id="demo3">
-                      <label for="demo3" style="font-size: 1rem;">element 2</label>
-
-                    </div>
-
-                  </div>
-
-
-                  <div class="form-group form-check">
-                    <label for="radio" class="">Sexe </label>
-
-                    <div class="p-2">
-                      <input type="radio" name="demo6" class="demo6 mx-auto form-check-input " id="demo6-a" checked>
-                      <label for="demo6-a" class="mx-auto" style="font-size: 1rem;"> Féminin </label>
-
-                      <input type="radio" name="demo6" class="demo6 mx-auto form-check-input " id="demo6-b">
-                      <label for="demo6-b" class="mx-3" style="font-size: 1rem;"> Masculin </label>
-
+                    <div v-if="selectedOption === 'option2'">
+                      Vous avez sélectionné : {{ selectedOption }}
                     </div>
                   </div>
-
 
                 </div>
-              </fieldset> -->
+
+
+              </fieldset>
+
+
 
               <div class="mx-auto text-center ">
-                <button type="submit" class="btn btn-gradient-success mr-2">Enregistrer</button>
-                <button class="btn btn-gradient-info ">Imprimer</button>
-
+                <button type="button" class="btn btn-success mr-2" data-toggle="modal"
+                  data-target="#exampleModal">Valider</button>
+                <!-- <button class="btn btn-info ">Imprimer</button> -->
               </div>
 
             </form>
+            <!-- <button type="button" class="btn btn-success " data-toggle="modal" data-target="#exampleModal">Enregistrer</button> -->
+
+
+
+            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              Afficher le modal
+            </button> -->
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+
+              <!-- <div class="modal-dialog modal-dialog-centered modal-dialog modal-xl" role="document"> -->
+              <div class="modal-dialog modal-dialog-centered modal-dialog modal-xl " role="document">
+                <div class="modal-content bg-white">
+                  <div class="modal-header">
+                    <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body" id="print-section" ref="modalContent">
+
+                    <div class="container-fluid">
+                      <div class="row mb-2 mr-0 ml-0 col-sm-12">
+                        <div class="col-sm-4">
+                          <div class="mx-auto text-center">
+                            <img src="@/assets/images/logo-ministere.png" alt="logo"
+                              style="margin-left: -70px; width: 65%;">
+                            <img src="@/assets/images/oms.svg" alt="logo" class="w-50">
+
+                          </div>
+                        </div>
+                        <div class="col-sm-4 text-center mt-auto mb-auto">
+                          <img src="@/assets/images/logo.png" alt="logo" class="w-50">
+                        </div>
+                        <div class="col-sm-4 mr-0" style="display: flex;">
+                          <div class="col-sm-12" style="display: flex; margin-left: 5rem;">
+                            <div>
+                              <h3
+                                style="margin-top: 5px; text-transform: uppercase; font-size: 0.7rem; font-weight: bold; text-align: right;">
+                                Direction gérérale du tresor et de la comptabilité publique</h3>
+
+                              <h4 style="font-size: 0.7em; font-weight: bold; text-align: right;">
+                                Tél: 21 30 19 37 - Fax: 21 30 07 58</h4>
+                              <h3
+                                style="text-transform: uppercase; font-size: 0.6rem; font-weight: bold; text-align: right;">
+                                BP : 40 cotonou - route de l'aéroport</h3>
+                            </div>
+                            <img src="@/assets/images/tresor.png" class="w-25  mt-n1">
+                          </div>
+
+                        </div>
+                      </div>
+
+                      <hr style="background-color: rgb(156, 151, 151);" class="mt-n2 ">
+
+
+                      <div class="row mb-1">
+                        <div class="col-sm-6">
+                          <h4>Partie versante</h4>
+                          <p><strong>{{ client.name }}</strong></p>
+                          <p>{{ client.address }}</p>
+                          <p>Tél. 67 87 87 90 </p>
+
+                        </div>
+                        <div class="col-sm-6 text-right">
+                          <h4>Facture N° {{ invoice.number }}</h4>
+                          <p> <strong>Date : {{ invoice.date | formatDate }} </strong></p>
+                          <p>Hôpital de Zone de KETOU</p>
+                          <p>Tél. 68 90 65 45</p>
+                        </div>
+                      </div>
+
+                      <div class="table-responsive">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th>Mode</th>
+                              <th>code</th>
+                              <th>Description</th>
+                              <th>Quantité</th>
+                              <th>Prix unitaire</th>
+                              <th>Total</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr v-for="item in invoice.items" :key="item.id">
+                              <td>{{ item.mode }}</td>
+                              <td>{{ item.code }}</td>
+                              <td>{{ item.description }}</td>
+                              <td>{{ item.quantity }}</td>
+                              <td>{{ item.price }} FCFA</td>
+                              <td>{{ item.total }} FCFA</td>
+                            </tr>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td colspan="5" class="text-right"><strong>Montant Versé</strong></td>
+                              <td><strong>{{ invoice.total }} FCFA</strong></td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+
+                      <div class="row mt-1">
+                        <div class="col-sm-6">
+                          <p>Arrête la présente facture à la somme de : <strong> Cinq mille (5 000) FCFA </strong></p>
+                          <img src="@/assets/images/codeQR.png" alt="logo" class="w-50">
+
+                        </div>
+                        <div class="col-sm-6 text-right">
+                          <p><strong> Le Chef Caissier </strong></p>
+                          <img src="@/assets/images/signature.png" alt="logo" class="w-25">
+                          <p><strong> Félicien DAGBOGBO </strong></p>
+
+
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+
+
+                    <button type="button" class="btn btn-info" @click="printModal">Imprimer</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -335,12 +377,17 @@
   </section>
 </template>
 
+
+
+
+
+
 <script>
-//import '../../assets/vendors/select2/select2.min.css'
-//import '../../assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css'
 
+import { format } from 'date-fns';
 
-
+import "../../../node_modules/bootstrap/dist/js/bootstrap.js"; // tres important pour le modal
+import "../../../node_modules/bootstrap/dist/js/bootstrap.min.js"; // tres important pour le modal
 
 
 //import '../../assets/vendors/js/vendor.bundle.base.js'
@@ -353,11 +400,18 @@
 
 export default {
 
+
   name: 'create-payement',
 
   data() {
     return {
       //selected: 'A',
+      selectedOption: '',
+      optionsMode: [
+        { id: 1, value: 'option1', label: 'Option 1' },
+        { id: 2, value: 'option2', label: 'Option 2' },
+        { id: 3, value: 'option3', label: 'Option 3' },
+      ],
       selected: '',
       options: [
         { item: 'F', name: ' Feminin' },
@@ -371,41 +425,102 @@ export default {
         {
           mode: 'AL',
           quantite: 1,
+          code: 'FA56718',
+          prix: 1000,
+          montant: 1000,
 
         }
       ],
 
-      isOpen: false,
+      showModal: false,
+
+      client: {
+        name: 'John Doe',
+        address: '123 captown, Stade de l\'amitié ',
+        city: 'Cotonou',
+        zipCode: '12345',
+      },
+      invoice: {
+        number: '230510406-CS006',
+        date: new Date(),
+        items: [
+          {
+            id: 1,
+            mode: 'Mobile Money',
+            code: 'FA45766',
+            description: 'Item 1',
+            quantity: 2,
+            price: '2 000',
+            total: '2 000',
+          },
+          {
+            id: 2,
+            mode: 'Mobile Money',
+            code: 'FA45761',
+            description: 'Item 2',
+            quantity: 1,
+            price: ' 3 000',
+            total: '3 000',
+          },
+        ],
+        total: '5 000',
+      },
+
+
+
+
     }
   },
 
   methods: {
+
     addForm() {
       this.forms.push({ mode: '', code: '', prix: '', quantite: '', montant: '' });
     },
-    deleteForm() {
-      // this.forms.splice(index, 1);
-      this.forms.splice(this.forms.length - 1, 1);
+
+    deleteForm(index) {
+      this.forms.splice(index, 1);
+      //this.forms.splice(this.forms.length - 1, 1);
     },
 
 
+    printModal() {
+      const modalContent = this.$refs.modalContent;
+      const originalContents = document.body.innerHTML;
 
+      // Temporairement remplacer le contenu de la page par le contenu du modal
+      document.body.innerHTML = modalContent.innerHTML;
+
+      // Imprimer le contenu
+      window.print();
+
+      // Restaurer le contenu original de la page
+      document.body.innerHTML = originalContents;
+    }
 
   },
 
-
+  filters: {
+    formatDate(value) {
+      return format(value, 'dd/MM/yyyy')
+    },
+  },
 
 
 }
 
 
-
 </script>
 
-<style>
-@import '../../../node_modules/bootstrap/dist/css/bootstrap.css';
-@import '../../../node_modules/bootstrap-vue/dist/bootstrap-vue.css';
+<style scoped>
+/* @import "../../assets/vendors/select2/select2.min.css";
+@import "../../assets/select2-bootstrap.min.css"; 
+/* @import "../../../node_modules/bootstrap/dist/css/bootstrap.css"; */
+@import "../../../node_modules/bootstrap-vue/dist/bootstrap-vue.css";
 
+.modal--fullscreen {
+  max-width: 90vw;
+}
 
 select {
   cursor: pointer;
@@ -486,75 +601,83 @@ legend.scheduler-border {
 }
 
 
-.modal {
- 
-  top: 0;
-  left: 0;
+th,
+td {
+  text-align: center;
+}
+
+th {
+  background-color: #d6dbd6;
+  border: 1px solid #dee2e6;
+}
+
+.container-fluid {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+h2,
+h4 {
+  font-weight: bold;
+  margin: 0;
+}
+
+.mb-4 {
+  margin-bottom: 2rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+table {
+  margin-bottom: 1rem;
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  position: relative;
+  max-width: 100%;
+  border-collapse: collapse;
 }
 
-.modal-content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
+table td,
+table th {
+  padding: .75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
 }
 
-.modal {
-  width: 500px;
-  margin: 0px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 2px;
-  box-shadow: 0 2px 8px 3px;
-  transition: all 0.2s ease-in;
-  font-family: Helvetica, Arial, sans-serif;
-}
-.fadeIn-enter {
-  opacity: 0;
+table th {
+  font-weight: bold;
 }
 
-.fadeIn-leave-active {
-  opacity: 0;
-  transition: all 0.2s step-end;
+table tbody+tbody {
+  border-top: 2px solid #ffffff;
 }
 
-.fadeIn-enter .modal,
-.fadeIn-leave-active.modal {
-  transform: scale(1.1);
-}
-button {
-  padding: 7px;
-  margin-top: 10px;
-  background-color: green;
-  color: white;
-  font-size: 1.1rem;
+.table-bordered {
+  border: 1px solid #dee2e6;
 }
 
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #dee2e6;
+}
+
+.table-responsive {
+  display: block;
   width: 100%;
-  height: 100%;
-  background: #00000094;
-  z-index: 999;
-  transition: opacity 0.2s ease;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
+.text-right {
+  text-align: right;
+}
+
+.mt-5 {
+  margin-top: 3rem;
+}
+
+.text-danger {
+  color: #dc3545;
+}
 </style>
-
-
-
-
-

@@ -1,6 +1,6 @@
 <template>
   <section class="app-sidebar">
-    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <nav class="sidebar sidebar-offcanvas " id="sidebar">
       <ul class="nav">
         <li class="nav-item nav-profile">
           <a href="javascript:void(0);" class="nav-link">
@@ -23,50 +23,77 @@
           <router-link class="nav-link" to="/dashboard">
             <span class="menu-title">Tableau de board</span>
             <i class="mdi  menu-icon special-style-icon"><img src="@/assets/images/dashboard.png" alt="patient"
-                style="width: 1rem; height: 1rem; ">
+                style="width: 1rem; height: 1rem;">
             </i>
 
           </router-link>
         </li>
         <li class="nav-item">
+
           <span class="nav-link" v-b-toggle="'ui-basic'">
             <span class="menu-title">Paramètrage</span>
-
             <i class="menu-arrow"></i>
             <!-- <i class="mdi mdi-settings menu-icon" style="width: 1rem; height: 1rem;"></i> -->
-
             <img src="@/assets/images/setting.png" alt="patient" style="width: 1rem; height: 1rem; ">
-
           </span>
           <b-collapse accordion="sidebar-accordion" id="ui-basic">
             <ul class="nav flex-column sub-menu">
-              
+      
               <li class="nav-item">
-                <router-link class="nav-link" to="">Gestion des utilisateurs</router-link>
+                <router-link class="nav-link" to="/eph/create">Gestion des utilisateurs</router-link>
               </li>
-
               <li class="nav-item">
-                <router-link class="nav-link" to="">Droits utilisateurs</router-link>
+                <router-link class="nav-link" to="/eph/create">Droits utilisateurs</router-link>
               </li>
-
-              <!-- <li class="nav-item">
-                <router-link class="nav-link" to="/basic-ui/dropdowns/"> Gestion des Actes medicaux</router-link>
-              </li> -->
+  
               <li class="nav-item">
-                <router-link class="nav-link" to="/eph/create">Carte Sanitaire</router-link>
+                <span class="nav-link" v-b-toggle="'carte'">
+                  <span class="menu-title">Carte Sanitaire</span>
+                  <i class="menu-arrow"></i>
+                </span>
+                <b-collapse id="carte">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                      <router-link class="nav-sous-link" to="/eph/create">Ajouter </router-link>
+                    </li>
+                    <li class="nav-item">
+                      <router-link class="nav-sous-link" to="/">Liste</router-link>
+                    </li>
+                  </ul>
+                </b-collapse>
+              </li>
+              <li class="nav-item">
+                <span class="nav-link" v-b-toggle="'actes'">
+                  <span class="menu-title">Actes medicaux</span>
+                  <i class="menu-arrow"></i>
+                </span>
+                <b-collapse id="actes">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                      <router-link class="nav-sous-link" to="/actes-medicaux/create">Ajouter</router-link>
+                    </li>
+                    <li class="nav-item">
+                      <router-link class="nav-sous-link" to="/actes-medicaux/list">Liste</router-link>
+                    </li>
+                  </ul>
+                </b-collapse>
               </li>
             </ul>
           </b-collapse>
         </li>
+
+
+
         <li class="nav-item">
+
           <span class="nav-link" v-b-toggle="'patients'">
             <span class="menu-title">Gestion des patients</span>
             <i class="menu-arrow"></i>
             <!-- <i class="mdi  mdi-account-multiple-plus menu-icon"></i> -->
             <img src="@/assets/images/patient.png" alt="patient" style="width: 1rem; height: 1rem; ">
-
-
           </span>
+
+
           <b-collapse accordion="sidebar-accordion" id="patients">
             <ul class="nav flex-column sub-menu">
               <li class="nav-item">
@@ -81,12 +108,11 @@
             </ul>
           </b-collapse>
         </li>
-                
-        <li class="nav-item">
+
+        <!-- <li class="nav-item">
           <span class="nav-link" v-b-toggle="'actes'">
             <span class="menu-title">Actes medicaux</span>
             <i class="menu-arrow"></i>
-            <!-- <i class="mdi mdi-chart-bar menu-icon"></i> -->
             <i class="mdi  menu-icon special-style-icon"><img src="@/assets/images/public-service.png" alt="sid"
                 style="width: 1rem; height: 1rem; "></i>
           </span>
@@ -100,11 +126,11 @@
               </li>
             </ul>
           </b-collapse>
-        </li>
+        </li> -->
 
         <li class="nav-item">
           <span class="nav-link" v-b-toggle="'paiement'">
-            <span class="menu-title">Paiement et Facturation</span>
+            <span class="menu-title ">Paiement et <br>Facturation</span>
             <i class="menu-arrow"></i>
             <!-- <i class="mdi mdi-chart-bar menu-icon"></i> -->
             <i class="mdi  menu-icon special-style-icon"><img src="@/assets/images/pay.png" alt="sid"
@@ -121,8 +147,8 @@
             </ul>
           </b-collapse>
         </li>
-        
-        
+
+
         <li class="nav-item">
           <span class="nav-link" v-b-toggle="'charts-dropdown'">
             <span class="menu-title">Trésorerie</span>
@@ -138,7 +164,7 @@
               <li class="nav-item">
                 <router-link class="nav-link" to="/charts/chartjs/">Décaissement</router-link>
               </li>
-       
+
             </ul>
           </b-collapse>
         </li>
@@ -167,7 +193,7 @@
 
           </router-link>
         </li>
-     
+
         <!-- <li class="nav-item">
           <span class="nav-link" v-b-toggle="'table-dropdown'">
             <span class="menu-title">Tables</span>
@@ -243,7 +269,8 @@
             <!-- <div class="border-bottom">
               <h6 class="font-weight-normal mb-3">Déconnexion</h6>
             </div> -->
-            <button class="btn btn-block btn-gradient-danger mt-4  text-center"><i class="mdi mdi-power text-white "></i> Déconnexion</button>
+            <button class="btn btn-block btn-gradient-danger p-2  text-center"><i class="mdi mdi-power text-white "></i>
+              Déconnexion</button>
 
             <!-- <div class="mt-4">
               <div class="border-bottom">

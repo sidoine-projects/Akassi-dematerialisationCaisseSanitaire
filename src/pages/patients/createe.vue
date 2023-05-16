@@ -26,7 +26,6 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Ajouter un patient</h4>
-            <p class="card-description"> Ajouter </p>
             <form class="forms-sample row">
               <div class="col-md-6">
 

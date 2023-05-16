@@ -40,7 +40,9 @@
       .nav-link {
         @include display-flex;
         @include align-items(center);
-        white-space: nowrap;
+        // white-space: nowrap;
+        white-space: pre;
+        // padding: $sidebar-menu-padding-y 0 $sidebar-menu-padding-y 0;
         padding: $sidebar-menu-padding-y 0 $sidebar-menu-padding-y 0;
         color: $sidebar-light-menu-color;
         @include transition-duration(0.45s);
@@ -138,6 +140,110 @@
         }
       }
 
+
+      .nav-sous-link {
+        @include display-flex;
+        @include align-items(center);
+        // white-space: nowrap;
+        white-space: pre;
+        // padding: $sidebar-menu-padding-y 0 $sidebar-menu-padding-y 0;
+        padding: $sidebar-menu-padding-y 0 $sidebar-menu-padding-y 0;
+        color: $sidebar-light-menu-color;
+        @include transition-duration(0.45s);
+        transition-property: color;
+        -webkit-transition-property: color;
+        cursor: pointer;
+
+        i {
+          color: inherit;
+
+          &.menu-icon {
+            font-size: $sidebar-icon-font-size;
+            line-height: 1;
+            margin-left: auto;
+
+            .rtl & {
+              margin-left: 0;
+              margin-right: auto;
+            }
+
+            color: $sidebar-light-menu-icon-color;
+
+            &:before {
+              vertical-align: middle;
+            }
+          }
+
+          &.menu-arrow {
+            font: normal normal normal 24px/1 "Material Design Icons";
+            line-height: 1;
+            font-size: $sidebar-icon-font-size;
+            margin-left: auto;
+
+            .rtl & {
+              margin-left: 0;
+              margin-right: auto;
+            }
+
+            color: $sidebar-light-menu-arrow-color;
+
+            &:before {
+              content: "\f141";
+              font-size: inherit;
+              color: inherit;
+            }
+
+            +.menu-icon {
+              margin-left: .25rem;
+
+              .rtl & {
+                margin-left: 0;
+                margin-right: .25rem;
+              }
+            }
+          }
+        }
+
+        .menu-title {
+          color: inherit;
+          display: inline-block;
+          font-size: $sidebar-menu-font-size;
+          line-height: 1;
+          vertical-align: middle;
+        }
+
+        .badge {
+          margin-right: auto;
+          margin-left: 1rem;
+        }
+
+        &.active {
+          .menu-title {
+            color: $sidebar-light-menu-active-color;
+            font-family: $type1-medium;
+          }
+
+          i {
+            color: theme-color(primary);
+          }
+        }
+
+        &[aria-expanded="true"] {
+          .menu-arrow {
+            &:before {
+              content: "\f140";
+            }
+          }
+        }
+        &:hover,
+        &:focus {
+          background: $sidebar-light-menu-hover-bg;
+          outline: 0;
+          box-shadow: none;
+          border: none;
+        }
+      }
+      
       &.nav-profile {
         .nav-link {
           height: auto;
@@ -208,8 +314,20 @@
       }
     }
 
+    &:not(.sub-menu) {
+      >.nav-item {
+        &:hover {
+          &:not(.nav-category):not(.nav-profile) {
+            >.nav-sous-link {
+              color: $sidebar-light-menu-hover-color;
+            }
+          }
+        }
+      }
+    }
+
     &.sub-menu {
-      margin-bottom: 5px;
+      margin-bottom: 0px;
       margin-top: 0;
       list-style: none;
 
@@ -217,7 +335,10 @@
         padding: 0;
 
         .nav-link {
-          color: $sidebar-light-submenu-color;
+          // color: $sidebar-light-submenu-color;
+          color: darkslategray;
+          // padding: $sidebar-submenu-item-padding ;  $sidebar-submenu-item-padding: .75rem 2rem .75rem 2rem;
+          // padding: .5rem 1rem .5rem 1rem;
           padding: $sidebar-submenu-item-padding;
           position: relative;
           font-size: $sidebar-submenu-font-size;
@@ -253,10 +374,61 @@
           }
         }
 
+       
         &:hover {
           background: transparent;
         }
       }
+
+
+
+      .nav-sous-link {
+        color: $sidebar-light-submenu-color;
+        // padding: $sidebar-submenu-item-padding ;  $sidebar-submenu-item-padding: .75rem 2rem .75rem 2rem;
+        // padding: .5rem 1rem .5rem 1rem;
+        padding: .6rem 2rem .6rem 2rem;
+        position: relative;
+        font-size: $sidebar-submenu-font-size;
+        line-height: 1;
+        height: auto;
+        border-top: 0;
+
+        &:before {
+          // content: "\F054";
+          font-family: "Material Design Icons";
+          display: block;
+          position: absolute;
+          left: 0px;
+
+          .rtl & {
+            left: auto;
+            right: 0;
+          }
+
+          top:50%;
+          @include transform(translateY(-50%));
+          color: lighten($sidebar-light-submenu-color, 10%);
+          font-size: .75rem;
+        }
+
+        &.active {
+          color: $sidebar-light-menu-active-color;
+          background: transparent;
+        }
+
+        &:hover {
+          color: $sidebar-light-submenu-hover-color;
+          text-decoration: none;
+        }
+
+        &:hover {
+          background: transparent;
+         
+        }
+      }
+
+
+
     }
   }
 }

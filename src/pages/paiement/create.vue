@@ -16,8 +16,7 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Ajouter un paiement</h4>
-            <p class="card-description"> Ajouter </p>
-            <form class="forms-sample">
+            <form class="forms-sample p-2">
 
               <fieldset class="scheduler-border row col-md-12">
                 <legend class="scheduler-border" style="font-size: medium !important;">Informations Patient</legend>
@@ -97,7 +96,7 @@
                         :readonly="form.readonly" placeholder="Code" v-model="form.code">
                     </div>
                     <div class="form-group col-md-2">
-                      <label for="exampleInputUsername1">prix</label>
+                      <label for="exampleInputUsername1">Prix</label>
                       <input :readonly="form.readonly" type="text" value="2000" class="form-control"
                         id="exampleInputUsername1" placeholder="prix" v-model="form.prix">
                     </div>
@@ -156,6 +155,7 @@
                 </div>
 
                 <div class="p-2 container-fluid">
+
                   <div v-if="selectedOption === 'option2'" class="control-group">
 
                     <img src="@/assets/images/mtn.jpg" alt="patient" class="row col-md-12 mx-auto h-25"
@@ -163,13 +163,13 @@
 
                     <div class="p-2 mt-4 row">
 
-                      <div class="form-group col-md-3">
-                        <label for="exampleInputEmail1">Nom MOMO</label>
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Nom </label>
                         <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nom">
                       </div>
-                      <div class="form-group col-md-3">
-                        <label for="exampleInputEmail1">Prénom MOMO</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Prénom">
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Prénom(s) </label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Prénom(s)">
                       </div>
                       <div class="form-group col-md-2">
                         <label for="exampleInputEmail1">Téléphone</label>
@@ -182,9 +182,9 @@
                           placeholder="Montant total">
                       </div>
 
-                      <div class="form-group col-md-2 p-4 mt-n1 ">
+                      <div class="form-group p-2 mx-auto">
                         <button @click="validateData" type="button"
-                          class="btn btn-success d-flex mx-auto btn btn-block text-center btn-block  text-center"><i
+                          class="btn btn-success d-flex mx-auto btn btn-block btn-block  text-center"><i
                             class="mdi mdi-check-circle-outline menu-icon "></i> <span
                             class="text-center ml-1">Valider</span>
                         </button>
@@ -194,6 +194,7 @@
 
 
                   </div>
+
 
                   <div v-if="selectedOption === 'option3'" class="control-group">
 
@@ -202,13 +203,13 @@
 
                     <div class="p-2 mt-4 row">
 
-                      <div class="form-group col-md-3">
-                        <label for="exampleInputEmail1">Nom MOMO</label>
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Nom </label>
                         <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nom">
                       </div>
-                      <div class="form-group col-md-3">
-                        <label for="exampleInputEmail1">Prénom MOMO</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Prénom">
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Prénom(s) </label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Prénom(s)">
                       </div>
                       <div class="form-group col-md-2">
                         <label for="exampleInputEmail1">Téléphone</label>
@@ -221,18 +222,18 @@
                           placeholder="Montant total">
                       </div>
 
-                      <div class="form-group col-md-2 p-4 mt-n1 ">
+                      <div class="form-group mx-auto p-2 " >
                         <button @click="validateData" type="button"
-                          class="btn btn-success d-flex mx-auto btn btn-block text-center btn-block  text-center"><i
-                            class="mdi mdi-check-circle-outline menu-icon "></i> <span
-                            class="text-center ml-1">Valider</span>
+                          class="btn btn-success d-flex mx-auto btn btn-block text-center btn-block  text-center"
+                        ><i class="mdi mdi-check-circle-outline menu-icon "></i>
+                          <span class="text-center ml-1" >Valider</span>
                         </button>
                       </div>
 
                     </div>
-
-
                   </div>
+
+
 
                   <div v-if="selectedOption === 'option1'" class="control-group">
 
@@ -240,15 +241,15 @@
                       style="width:180px;">
 
                     <div class="p-1 mt-1 row">
-                      <div class="form-group col-md-10">
-                        <label for="exampleInputUsername1"> Montant Totalg</label>
+                      <div class="form-group col-md-12 ">
+                        <label for="exampleInputUsername1"> Montant Total</label>
                         <input readonly type="text" class="form-control" id="exampleInputUsername1"
                           placeholder="Montant total">
                       </div>
 
-                      <div class="form-group col-md-2 p-4 mt-n1 ">
+                      <div class="form-group  p-4  mx-auto ">
                         <button @click="showConfirmationModal" type="button"
-                          class="btn btn-success d-flex mx-auto btn btn-block text-center btn-block  text-center"><i
+                          class="btn btn-success d-flex btn btn-block  btn-block  text-center "><i
                             class="mdi mdi-check-circle-outline menu-icon "></i> <span
                             class="text-center ml-1">Valider</span>
                         </button>
@@ -262,6 +263,55 @@
                     <img src="@/assets/images/mode-cheque.png" alt="patient" class="row col-md-12 mx-auto h-25"
                       style="width:180px;">
 
+
+                    <div class="p-2 row">
+
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Numéro Chèque</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Numéro Chèque">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Numéro Compte </label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Numéro Compte ">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Bénéficiaire </label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Bénéficiaire">
+                      </div>
+
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Date Emission</label>
+                        <input type="month" class="form-control" id="exampleInputEmail1" placeholder="Date Emission">
+                      </div>
+
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Date Paiement</label>
+                        <input type="month" class="form-control" id="exampleInputEmail1" placeholder="Date Paiement">
+                      </div>
+
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Banque Emettrice</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="UBA">
+                      </div>
+
+
+
+                    </div>
+
+                    <div class="row ">
+
+                      <div class="form-group p-1 text-center mx-auto">
+                        <button @click="showConfirmationModal" type="button"
+                          class="btn btn-success d-flex  btn btn-block btn-block  text-center"><i
+                            class="mdi mdi-check-circle-outline menu-icon "></i> <span class="text-center ">
+                            Valider</span>
+                        </button>
+                      </div>
+                    </div>
+
+
+
+
                   </div>
 
                   <div v-if="selectedOption === 'option4'" class="control-group">
@@ -269,14 +319,64 @@
                     <img src="@/assets/images/mode-carte.png" alt="patient" class="row col-md-12 mx-auto h-25"
                       style="width:180px;">
 
+
+                    <div class="p-2 mt-4 row">
+
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Nom et Prénom(s)</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nom et Prénom(s)">
+                      </div>
+                      <div class="form-group col-md-2">
+                        <label for="exampleInputEmail1">Téléphone </label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Téléphone">
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                      </div>
+
+                      <div class="form-group col-md-3">
+                        <label for="exampleInputEmail1">Type Carte</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="UBA">
+                      </div>
+
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Numéro Carte</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Numéro Carte">
+                      </div>
+
+                      <div class="form-group col-md-2">
+                        <label for="exampleInputEmail1">Code CVC</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Code CVC">
+                      </div>
+
+                      <div class="form-group col-md-3">
+                        <label for="exampleInputEmail1">Nom carte </label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="VISA">
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="exampleInputEmail1">Date Expiration</label>
+                        <input type="month" class="form-control" id="exampleInputEmail1" placeholder="MM/AA">
+                      </div>
+
+                    </div>
+
+                    <div class="row ">
+
+                      <div class="form-group p-1 text-center mx-auto">
+                        <button @click="showConfirmationModal" type="button"
+                          class="btn btn-success d-flex  btn btn-block btn-block  text-center"><i
+                            class="mdi mdi-check-circle-outline menu-icon "></i> <span class="text-center ">
+                            Valider</span>
+                        </button>
+                      </div>
+                    </div>
+
+
                   </div>
 
                 </div>
 
-                <!-- <div class="form-group col-md-1 ">
-                      <button type="button" class="btn btn-success" data-toggle="modal"
-                        data-target="#exampleModal">Valider</button>
-                    </div> -->
               </fieldset>
             </form>
 

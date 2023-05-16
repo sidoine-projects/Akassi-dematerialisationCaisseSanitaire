@@ -26,7 +26,6 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Ajouter un paiement</h4>
-            <p class="card-description"> Ajouter </p>
             <form class="forms-sample ">
 
               <fieldset class="scheduler-border row col-md-12">

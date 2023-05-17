@@ -229,6 +229,62 @@ export default new Router({
       ]
     },
     {
+      path: '/auth',
+      component: layout,
+      children: [
+        {
+          path: 'user-create',
+          name: 'user-create',
+          component: () => import('@/pages/auth/create')
+        }
+      ]
+    },
+    {
+      path: '/auth',
+      component: layout,
+      children: [
+        {
+          path: 'user-list',
+          name: 'user-list',
+          component: () => import('@/pages/auth/index')
+        }
+      ]
+    },
+
+    {
+      path: '/tresorerie',
+      component: layout,
+      children: [
+        {
+          path: 'encaissement',
+          name: 'encaissement',
+          component: () => import('@/pages/tresorerie/encaissement/create')
+        }
+      ]
+    },
+    {
+      path: '/tresorerie',
+      component: layout,
+      children: [
+        {
+          path: 'decaissement',
+          name: 'decaissement',
+          component: () => import('@/pages/tresorerie/decaissement/create')
+        }
+      ]
+    },
+    // {
+    //   path: '/tresorerie',
+    //   component: layout,
+    //   children: [
+    //     {
+    //       path: 'list-encaissement',
+    //       name: 'list-encaissement',
+    //       component: () => import('@/pages/tresorerie/index')
+    //     }
+    //   ]
+    // },
+    {
       path: '*',
       redirect: '/error-404',
       component: {

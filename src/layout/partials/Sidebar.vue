@@ -36,14 +36,14 @@
             <!-- <i class="mdi mdi-settings menu-icon" style="width: 1rem; height: 1rem;"></i> -->
             <img src="@/assets/images/setting.png" alt="patient" style="width: 1rem; height: 1rem; ">
           </span>
-          <b-collapse accordion="sidebar-accordion" id="ui-basic">
+          <b-collapse accordion="sidebar-accordion"  id="ui-basic">
             <ul class="nav flex-column sub-menu">
       
               <li class="nav-item">
-                <router-link class="nav-link" to="/eph/create">Gestion des utilisateurs</router-link>
+                <router-link class="nav-link" to="/auth/user-create">Gestion des utilisateurs</router-link>
               </li>
               <li class="nav-item">
-                <router-link class="nav-link" to="/eph/create">Droits utilisateurs</router-link>
+                <router-link class="nav-link" to="/">Droits utilisateurs</router-link>
               </li>
   
               <li class="nav-item">
@@ -51,13 +51,14 @@
                   <span class="menu-title">Carte Sanitaire</span>
                   <i class="menu-arrow"></i>
                 </span>
-                <b-collapse id="carte">
+                <!-- <b-collapse id="carte" accordion="accordion" aria-controls="collapse-1" data-bs-toggle="collapse" > -->
+                <b-collapse id="carte"  accordion="accordion" >
                   <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
+                    <li class="nav-item" >
                       <router-link class="nav-sous-link" to="/eph/create">Ajouter </router-link>
                     </li>
                     <li class="nav-item">
-                      <router-link class="nav-sous-link" to="/">Liste</router-link>
+                      <router-link class="nav-sous-link" to="/eph/list">Liste</router-link>
                     </li>
                   </ul>
                 </b-collapse>
@@ -67,7 +68,7 @@
                   <span class="menu-title">Actes medicaux</span>
                   <i class="menu-arrow"></i>
                 </span>
-                <b-collapse id="actes">
+                <b-collapse accordion="accordion" id="actes">
                   <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
                       <router-link class="nav-sous-link" to="/actes-medicaux/create">Ajouter</router-link>
@@ -159,10 +160,10 @@
           <b-collapse accordion="sidebar-accordion" id="charts-dropdown">
             <ul class="nav flex-column sub-menu">
               <li class="nav-item">
-                <router-link class="nav-link" to="/charts/chartjs/">Encaissement</router-link>
+                <router-link class="nav-link" to="/tresorerie/encaissement">Encaissement</router-link>
               </li>
               <li class="nav-item">
-                <router-link class="nav-link" to="/charts/chartjs/">Décaissement</router-link>
+                <router-link class="nav-link" to="/tresorerie/decaissement">Décaissement</router-link>
               </li>
 
             </ul>

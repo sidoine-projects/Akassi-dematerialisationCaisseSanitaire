@@ -4,14 +4,15 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item ">
-                        <a href="javascript:void(0);" class="text-success font-weight-bold"
-                            >Tableau de board
+                        <a href="javascript:void(0);" class="text-dark font-weight-bold"
+                            >Paramétrage
                         </a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
                         Gestion des Actes médicaux
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Ajouter</li>
+                    <li class="breadcrumb-item active text-success font-weight-bold" aria-current="page">Ajouter</li>
+
                 </ol>
             </nav>
         </div>

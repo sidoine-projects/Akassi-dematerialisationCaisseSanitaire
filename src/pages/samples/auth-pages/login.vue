@@ -49,7 +49,7 @@
                       <div class="g-recaptcha p-3 mx-auto " data-sitekey="6Ldy5-8lAAAAAOr9QMmIu6Awz7kKv52jQoBcRs13"
                       > </div>
                     </div>
-                    <div class="mt-n5 p-4">
+                    <div class="mt-n2 p-2 ">
                       <router-link to="/" class="underline-none">
 
                         <button type="button" class="connect text-center  btn btn-block legend-dots bg-gradient-success"

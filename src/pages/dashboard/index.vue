@@ -68,7 +68,7 @@
         <div class="card">
           <div class="card-body">
             <div class="clearfix">
-              <h4 class="card-title float-left">Evolution des encaissements et decaissements annuelle <i
+              <h4 class="card-title float-left">Evolution annuelle des encaissements et decaissements  <i
                   class="mdi mdi-arrow-up  text-success  "></i><i class="mdi mdi-arrow-down text-danger"></i></h4>
               <div id="visit-sale-chart-legend" class="rounded-legend legend-horizontal legend-top-right float-right">
                 <ul>
@@ -91,7 +91,7 @@
       <div class="col-md-4 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Evolutions hebdomadaire des patients </h4>
+            <h4 class="card-title">Evolution hebdomadaire des patients </h4>
             <trafficSourceChart :height='200'></trafficSourceChart>
             <div id="traffic-chart-legend" class="rounded-legend legend-vertical legend-bottom-left pt-0">
               <ul>
@@ -234,7 +234,6 @@
 
                     </td>
                   </tr>
-
 
                 </tbody>
               </table>
@@ -406,8 +405,6 @@ import DatePicker from 'vue2-datepicker'
 import 'vue2-datepicker/locale/fr';
 
 //Bootstrap and jQuery libraries
-
-
 
 
 

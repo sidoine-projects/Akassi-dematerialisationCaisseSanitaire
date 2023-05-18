@@ -4,7 +4,7 @@
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="javascript:void(0);" class="text-dark font-weight-bold">Trésorerie</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Décaissement</li>
+          <li class="breadcrumb-item active" aria-current="page">Encaissement</li>
           <li class="breadcrumb-item active text-success font-weight-bold" aria-current="page">Liste</li>
         </ol>
       </nav>
@@ -17,28 +17,30 @@
       <div class="col-lg-12 grid-margin">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Liste des Décaissements</h4>
+            <h4 class="card-title">Liste des Encaissements</h4>
             <div class="table-responsive">
               <table id="order-listing" class="table">
                 <thead>
                   <tr>
-                    <th>#</th>
+                    <th> #</th>
+                    <th> Mode</th>
+                    <th>Nom</th>
+                    <th>Téléphone</th>
+                    <th>Email</th>
                     <th>Motif</th>
                     <th>Montant</th>
-                    <th>Responsable</th>
-                    <th>Facture</th>
-                   
                     <th class="text-center">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>1</td>
-                    <td>Achat d'immobilier</td>
-                    <td>500 000</td>
-                    <td>KODJO Theophile</td>
-                    <td>Visualiser Facture</td>
-                  
+                    <td>Chèque</td>
+                    <td>Fadec Affecté</td>
+                    <td>21345678</td>
+                    <td>xyz@gmail.com</td>
+                    <td>Dons public</td>
+                    <td>1 000 000</td>
                     <!-- <td>
                 <label class="badge badge-info">Espèce</label>
               </td> -->
@@ -50,15 +52,21 @@
                         </b-button>
                       </router-link>
 
-                      <!-- <router-link class="" to="/">
+                      <router-link class="" to="/">
                         <b-button size="sm" v-b-tooltip.hover title="Modifier" variant="warning">
                           <i class="mdi mdi mdi-table-edit text-white menu-icon"></i>
                         </b-button>
+                      </router-link>
+                      <!-- <router-link class="" to="/">
+                        <b-button size="sm" v-b-tooltip.hover title="Supprimer" variant="danger">
+                          <i class="mdi mdi mdi-delete-forever text-white menu-icon"></i>
+                        </b-button>
                       </router-link> -->
-                    
                     </td>
                   </tr>
  
+
+
                 </tbody>
               </table>
             </div>

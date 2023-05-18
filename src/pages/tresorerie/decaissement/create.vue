@@ -3,8 +3,9 @@
     <div class="page-header">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-       
-          <li class="breadcrumb-item "><a href="javascript:void(0);" class="text-dark font-weight-bold">Trésorerie</a></li>
+
+          <li class="breadcrumb-item "><a href="javascript:void(0);" class="text-dark font-weight-bold">Trésorerie</a>
+          </li>
           <li class="breadcrumb-item active" aria-current="page">
             Décaissement
           </li>
@@ -13,345 +14,84 @@
       </nav>
     </div>
 
-  
     <div class="row">
       <div class=" col-md-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Enregistrer un décaissement</h4>
             <form class="forms-sample row">
-              <!--<div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="exampleInputUsername1">Nom</label>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="exampleInputUsername1"
-                                        placeholder="Nom"
-                                        />
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputUsername1">Prénom(s)</label>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="exampleInputUsername1"
-                                        placeholder="Prénom"
-                                    />
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Email</label>
-                                    <input
-                                        type="email"
-                                        class="form-control"
-                                        id="exampleInputPassword1"
-                                        placeholder="xyz@example.com"
-                                    />
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Téléphone</label>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="exampleInputPassword1"
-                                        placeholder="98909087"
-                                    />
-                                </div>
-                            </div>-->
 
-              <!--<div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="exampleInputConfirmPassword1">Adresse</label>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="exampleInputConfirmPassword1"
-                                        placeholder="Cotonou Sainte Rita C/574 M/DeGaules"
-                                    />
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Rôle ou poste</label>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="exampleInputEmail1"
-                                        placeholder="Caissier"
-                                    />
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputConfirmPassword1">Mot de passe</label>
-                                    <input
-                                        type="password"
-                                        class="form-control"
-                                        id="exampleInputConfirmPassword1"
-                                        placeholder="........."
-                                    />
-                                </div>
-                                <div class="form-group form-check">
-                                    <label for="radio" class="">Sexe </label>
-                                    <div class="p-2">
-                                        <input
-                                            type="radio"
-                                            name="demo6"
-                                            class="demo6 mx-auto form-check-input "
-                                            id="demo6-a"
-                                            checked
-                                        />
-                                        <label
-                                            for="demo6-a"
-                                            class="mx-auto"
-                                            style="font-size: 1rem;"
-                                            >Féminin</label>
-                                            <input
-                                            type="radio"
-                                            name="demo6"
-                                            class="demo6 mx-auto form-check-input "
-                                            id="demo6-b"
-                                            />
-                                        <label for="demo6-b" class="mx-3" style="font-size: 1rem;"
-                                            >Masculin</label>
-                                    </div>
-                                </div>
-                            </div>-->
               <fieldset class="scheduler-border container-fluid col-md-12">
-                <legend
-                  class="scheduler-border mt-5"
-                  style="font-size: medium !important;"
-                >
+                <legend class="scheduler-border mt-5" style="font-size: medium !important;">
                   Informations Décaissement
                 </legend>
 
                 <div class="control-group mt-2 p-2" id="app">
                   <div class="row" v-for="(form, index) in forms" :key="index">
-                    <div class="form-group col-md-4">
-                      <label for="exampleInputEmail1">Libellé</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="exampleInputEmail1"
-                        placeholder="Achat de matériels"
-                      />
+                    <div class="form-group col-md-9">
+                      <label for="exampleInputEmail1">Motif</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Achat de matériels" />
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-3">
                       <label for="exampleInputUsername1">Montant</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="exampleInputUsername1"
-                        placeholder="100 000"
-                      />
+                      <input type="text" class="form-control" id="exampleInputUsername1" placeholder="100 000" />
                     </div>
-                    <div class="form-group">
-                      <label>Pièce Justificatif</label>
-                      <input type="file" name="img[]" class="file-upload-default">
-                        <div class="input-group col-xs-12">
-                          <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                          <span class="input-group-append">
-                            <button class="file-upload-browse btn btn-gradient-info" type="button">Télécharger</button>
-                          </span>
-                        </div>
-                      </div>
+              
                   </div>
                 </div>
+
+                <div class="form-group">
+                  <label>Facture/Référence</label>
+                  <input type="file" name="img[]" class="file-upload-default">
+                  <div class="input-group col-xs-12">
+                    <input type="text" class="form-control file-upload-info" disabled placeholder="Preuve du décaissement">
+                    <span class="input-group-append">
+                      <button class="file-upload-browse btn btn-gradient-info" type="button">Télécharger</button>
+                    </span>
+                  </div>
+                </div>
+
                 <div class="form-group p-2">
-                        <label for="exampleTextarea1">Description</label>
-                        <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                  <label for="exampleTextarea1">Description</label>
+                  <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
                 </div>
-                <div class="control-group p-2 col-md-12 ">
-                  <div class="form-group mx-auto">
-                    <label for="exampleFormControlSelect1"
-                      >Mode de Décaissement</label
-                    >
+          
 
-                    <select
-                      class="form-control  mb-3 "
-                      id="exampleFormControlSelect1"
-                      v-model="selectedOption"
-                    >
-                      <option
-                        v-for="option in optionsMode"
-                        :key="option.id"
-                        :value="option.value"
-                        >{{ option.label }}
-                      </option>
-                    </select>
+                <div class="row ">
+                  <div class="form-group p-1 text-center mx-auto">
+                    <button @click="showConfirmationModal" type="button"
+                      class="btn btn-success d-flex  btn btn-block btn-block  text-center"><i
+                        class="mdi mdi-check-circle-outline menu-icon "></i> <span class="text-center ">
+                        Valider</span>
+                    </button>
                   </div>
                 </div>
 
-                <div class="p-2 container-fluid">
-                  <div
-                    v-if="selectedOption === 'option2'"
-                    class="control-group"
-                  >
 
-                    <div class="p-2 mt-4 row">
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputEmail1">Nom</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="exampleInputEmail1"
-                          placeholder="Nom"
-                        />
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputEmail1">Prénom(s)</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="exampleInputEmail1"
-                          placeholder="Prénom"
-                        />
-                      </div>
-                      <div class="form-group col-md-2">
-                        <label for="exampleInputEmail1">Téléphone</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="exampleInputEmail1"
-                          placeholder="Téléphone"
-                        />
-                      </div>
-
-                      <div class="form-group col-md-2 p-4 mt-n1 mx-auto">
-                        <button
-                          @click="validateData"
-                          type="button"
-                          class="btn btn-success d-flex mx-auto btn btn-block text-center btn-block  text-center"
-                        >
-                          <i
-                            class="mdi mdi-check-circle-outline menu-icon "
-                          ></i>
-                          <span class="text-center ml-1">Valider</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div
-                    v-if="selectedOption === 'option3'"
-                    class="control-group"
-                  >
-                    <div class="p-2 mt-4 row">
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputEmail1">Nom</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="exampleInputEmail1"
-                          placeholder="Nom"
-                        />
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputEmail1">Prénom(s)</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="exampleInputEmail1"
-                          placeholder="Prénom"
-                        />
-                      </div>
-                      <div class="form-group col-md-2">
-                        <label for="exampleInputEmail1">Téléphone</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="exampleInputEmail1"
-                          placeholder="Téléphone"
-                        />
-                      </div>
-
-
-                      <div class="form-group col-md-2 p-4 mt-n1 ">
-                        <button
-                          @click="validateData"
-                          type="button"
-                          class="btn btn-success d-flex mx-auto btn btn-block text-center btn-block  text-center"
-                        >
-                          <i
-                            class="mdi mdi-check-circle-outline menu-icon "
-                          ></i>
-                          <span class="text-center ml-1">Valider</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div
-                    v-if="selectedOption === 'option1'"
-                    class="control-group"
-                  >
-                    <div class="p-1 mt-1 row">
-                      <div class="form-group col-md-2 p-4 mt-n1 mx-auto">
-                        <button
-                          @click="showConfirmationModal"
-                          type="button"
-                          class="btn btn-success d-flex mx-auto btn btn-block text-center btn-block  text-center"
-                        >
-                          <i
-                            class="mdi mdi-check-circle-outline menu-icon "
-                          ></i>
-                          <span class="text-center ml-1">Valider</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div
-                    v-if="selectedOption === 'option5'"
-                    class="control-group"
-                  >
-                  </div>
-
-                  <div
-                    v-if="selectedOption === 'option4'"
-                    class="control-group"
-                  >
-                  </div>
-                </div>
               </fieldset>
             </form>
 
             <div>
-              <div
-                class="modal fade"
-                id="confirmationModal"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="confirmationModalLabel1"
-                aria-hidden="true"
-              >
+              <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
+                aria-labelledby="confirmationModalLabel1" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="confirmationModalLabel">
                         Confirmation
                       </h5>
-                      <button
-                        type="button"
-                        class="close"
-                        data-dismiss="modal"
-                        aria-label="Close"
-                      >
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
                     <div class="modal-body">
-                      Êtes-vous sûr de vouloir valider le paiement ?
+                      Êtes-vous sûr de vouloir valider le décaissement ?
                     </div>
                     <div class="modal-footer">
-                      <button
-                        type="button"
-                        class="btn btn-outline-danger text-dark"
-                        data-dismiss="modal"
-                      >
+                      <button type="button" class="btn btn-outline-danger text-dark" data-dismiss="modal">
                         Non
                       </button>
-                      <button
-                        type="button"
-                        class="btn btn-outline-success text-dark"
-                        @click="validateData"
-                      >
+                      <button type="button" class="btn btn-outline-success text-dark" @click="validateData">
                         Oui
                       </button>
                     </div>
@@ -363,36 +103,21 @@
             <div>
               <!-- <button class="btn btn-primary" @click="showConfirmationModal">Valider les données</button> -->
 
-              <div
-                class="modal fade"
-                id="confirmationModalpay"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="confirmationModalPayLabel"
-                aria-hidden="true"
-              >
+              <div class="modal fade" id="confirmationModalpay" tabindex="-1" role="dialog"
+                aria-labelledby="confirmationModalPayLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="confirmationModalPayLabel">
                         Décaissement validé avec succès
                       </h5>
-                      <button
-                        type="button"
-                        class="close"
-                        data-dismiss="modal"
-                        aria-label="Close"
-                      >
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
 
                     <div class="modal-body text-center">
-                      <img
-                        src="@/assets/images/img-valider.png"
-                        alt="logo"
-                        class="w-50"
-                      />
+                      <img src="@/assets/images/img-valider.png" alt="logo" class="w-50" />
                       <p>Vous venez d'effectuer un décaissement</p>
                     </div>
                   </div>
@@ -400,128 +125,6 @@
               </div>
             </div>
 
-            <div
-              class="modal fade"
-              id="exampleModal"
-              tabindex="-1"
-              role="dialog"
-              aria-labelledby="exampleModalLabel"
-              aria-hidden="true"
-            >
-              <div
-                class="modal-dialog modal-dialog-centered modal-dialog modal-xl "
-                role="document"
-              >
-                <div class="modal-content bg-white">
-                  <div class="modal-header">
-                    <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-
-                  <hr
-                    style="background-color: rgb(156, 151, 151);"
-                    class="mt-n2 "
-                  />
-
-                  <div class="row mb-1">
-                    <div class="col-sm-6">
-                      <h4>Partie versante</h4>
-                      <p>
-                        <strong>{{ client.name }}</strong>
-                      </p>
-                      <p>{{ client.address }}</p>
-                      <p>Tél. 67 87 87 90</p>
-                    </div>
-                    <div class="col-sm-6 text-right">
-                      <h4>Facture N° {{ invoice.number }}</h4>
-                      <p>
-                        <strong>Date : {{ invoice.date | formatDate }} </strong>
-                      </p>
-                      <p>Hôpital de Zone de KETOU</p>
-                      <p>Tél. 68 90 65 45</p>
-                    </div>
-                  </div>
-
-                  <div class="table-responsive">
-                    <table class="table table-bordered">
-                      <thead>
-                        <tr>
-                          <th>Mode</th>
-                          <th>code</th>
-                          <th>Description</th>
-                          <th>Quantité</th>
-                          <th>Prix unitaire</th>
-                          <th>Total</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr v-for="item in invoice.items" :key="item.id">
-                          <td>Mode paiement</td>
-                          <td>{{ item.code }}</td>
-                          <td>{{ item.description }}</td>
-                          <td>{{ item.quantity }}</td>
-                          <td>{{ item.price }} FCFA</td>
-                          <td>{{ item.total }} FCFA</td>
-                        </tr>
-                      </tbody>
-                      <tfoot>
-                        <tr>
-                          <td colspan="5" class="text-right">
-                            <strong>Montant Versé</strong>
-                          </td>
-                          <td>
-                            <strong>{{ invoice.total }} FCFA</strong>
-                          </td>
-                        </tr>
-                      </tfoot>
-                    </table>
-                  </div>
-
-                  <div class="row mt-1">
-                    <div class="col-sm-6">
-                      <p>
-                        Arrête la présente facture à la somme de :
-                        <strong> Cinq mille (5 000) FCFA </strong>
-                      </p>
-                      <img
-                        src="@/assets/images/codeQR.png"
-                        alt="logo"
-                        class="w-50"
-                      />
-                    </div>
-                    <div class="col-sm-6 text-right">
-                      <p><strong> Le Chef Caissier </strong></p>
-                      <img
-                        src="@/assets/images/signature.png"
-                        alt="logo"
-                        class="w-25"
-                      />
-                      <p><strong> Félicien DAGBOGBO </strong></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-dismiss="modal"
-                >
-                  Fermer
-                </button>
-
-                <button type="button" class="btn btn-info" @click="printModal">
-                  Imprimer
-                </button>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -530,11 +133,13 @@
 </template>
 
 <script>
+
 import $ from "jquery";
 import { format } from "date-fns";
 
 import "../../../../node_modules/bootstrap/dist/js/bootstrap.js"; // tres important pour le modal
 import "../../../../node_modules/bootstrap/dist/js/bootstrap.min.js"; // tres important pour le modal
+import "../../../assets/js/file-upload.js"; // tres important pour le modal
 
 export default {
   name: "create-payement",

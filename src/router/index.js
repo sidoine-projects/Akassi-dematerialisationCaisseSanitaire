@@ -228,28 +228,58 @@ export default new Router({
         }
       ]
     },
+
+
     {
-      path: '/auth',
+      path: '/user',
       component: layout,
       children: [
         {
-          path: 'user-create',
-          name: 'user-create',
-          component: () => import('@/pages/auth/create')
+          path: 'create',
+          name: 'create',
+          component: () => import('@/pages/user/create')
         }
       ]
     },
+
+
     {
-      path: '/auth',
+      path: '/user',
       component: layout,
       children: [
         {
-          path: 'user-list',
-          name: 'user-list',
-          component: () => import('@/pages/auth/index')
+          path: 'list',
+          name: 'list',
+          component: () => import('@/pages/user/index')
         }
       ]
     },
+
+    {
+      path: '/user',
+      component: layout,
+      children: [
+        {
+          path: 'role/create',
+          name: 'role-create',
+          component: () => import('@/pages/user/role/create')
+        }
+      ]
+    },
+
+    
+    {
+      path: '/user',
+      component: layout,
+      children: [
+        {
+          path: 'role/permissions',
+          name: 'role-permissions',
+          component: () => import('@/pages/user/permissions/index')
+        }
+      ]
+    },
+
 
     {
       path: '/tresorerie',
@@ -273,17 +303,40 @@ export default new Router({
         }
       ]
     },
-    // {
-    //   path: '/tresorerie',
-    //   component: layout,
-    //   children: [
-    //     {
-    //       path: 'list-encaissement',
-    //       name: 'list-encaissement',
-    //       component: () => import('@/pages/tresorerie/index')
-    //     }
-    //   ]
-    // },
+    {
+      path: '/tresorerie',
+      component: layout,
+      children: [
+        {
+          path: 'list-encaissement',
+          name: 'list-encaissement',
+          component: () => import('@/pages/tresorerie/encaissement/index')
+        }
+      ]
+    },
+    {
+      path: '/tresorerie',
+      component: layout,
+      children: [
+        {
+          path: 'list-decaissement',
+          name: 'list-decaissement',
+          component: () => import('@/pages/tresorerie/decaissement/index')
+        }
+      ]
+    },
+    {
+      path: '/rapport',
+      component: layout,
+      children: [
+        {
+          path: '/rapport',
+          name: 'rapport',
+          component: () => import('@/pages/rapport/index')
+        }
+      ]
+    },
+
     {
       path: '*',
       redirect: '/error-404',

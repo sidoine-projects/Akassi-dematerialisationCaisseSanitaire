@@ -1,32 +1,22 @@
 <template>
   <section class="container-scroller">
     <div class="page-header">
-      <!-- <h3 class="page-title">
-        Bootstrap Table
-      </h3> -->
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item "><a href="javascript:void(0);" class="text-success font-weight-bold">Tableau de
+          <li class="breadcrumb-item "><a href="javascript:void(0);" class="text-dark font-weight-bold">Tableau de
               board</a></li>
           <li class="breadcrumb-item active" aria-current="page">Paiement et Facturation</li>
-          <li class="breadcrumb-item active" aria-current="page">Ajouter</li>
+          <li class="breadcrumb-item active text-success font-weight-bold" aria-current="page">Ajouter</li>
         </ol>
       </nav>
     </div>
 
-
-
     <div class="row">
-      <!-- <p class="card-description">
-              For displaying tabular data. <code>&lt;b-table&gt;</code> supports pagination, filtering, sorting, custom rendering, events, and asynchronous data.
-            </p> -->
-
-
       <div class=" col-md-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Ajouter un paiement</h4>
-            <form class="forms-sample">
+            <form class="forms-sample p-2">
 
               <fieldset class="scheduler-border row col-md-12">
                 <legend class="scheduler-border" style="font-size: medium !important;">Informations Patient</legend>
@@ -79,66 +69,74 @@
                 </div>
               </fieldset>
 
-              <fieldset class="scheduler-border  container-fluid">
+              <fieldset class="scheduler-border container-fluid col-md-12">
                 <legend class="scheduler-border" style="font-size: medium !important;">Informations Paiement</legend>
 
 
-                <div class="control-group col-md-12  mt-2 " id="app">
+                <div class="control-group mt-2 p-2" id="app">
                   <div class="row" v-for="(form, index) in forms" :key="index">
 
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-4">
                       <label for="exampleFormControlSelect1">Actes médicaux</label>
-                      <select class="form-control  " id="exampleFormControlSelect1" v-model="form.mode">
+                      <select class="form-control" id="exampleFormControlSelect1" v-model="form.acte"
+                        @change="checkreadonly(form)">
+                        <option value="SA">Sélectionner un acte</option>
                         <option value="AL">Consultation</option>
                         <option value="WY">Hospitalisations</option>
                         <option value="AM">Examens médicaux</option>
                         <option value="CA">Transport en ambulance</option>
-                        <option value="AM">ventes de produits pharmaceutiques</option>
+                        <option value="AV">ventes de produits pharmaceutiques</option>
+                        <option value="autre">Autres</option>
                       </select>
                     </div>
 
-                    <div class="form-group col-md-2 ">
+                    <div class="form-group col-md-2">
                       <label for="exampleInputEmail1">Code</label>
-                      <input readonly type="email" value="FD01003" class="form-control" id="exampleInputEmail1"
-                        placeholder="Code" v-model="form.code">
+                      <input type="email" value="FD01003" class="form-control" id="exampleInputEmail1"
+                        :readonly="form.readonly" placeholder="Code" v-model="form.code">
                     </div>
                     <div class="form-group col-md-2">
-                      <label for="exampleInputUsername1">prix</label>
-                      <input readonly type="text" value="2000" class="form-control" id="exampleInputUsername1"
-                        placeholder="prix" v-model="form.prix">
+                      <label for="exampleInputUsername1">Prix</label>
+                      <input :readonly="form.readonly" type="text" value="2000" class="form-control"
+                        id="exampleInputUsername1" placeholder="prix" v-model="form.prix">
                     </div>
-                    <div class="form-group col-md-2 ">
+                    <div class="form-group col-md-2">
                       <label for="exampleInputUsername1">Quantité</label>
                       <input type="number" value="1" class="form-control" id="exampleInputUsername1"
                         placeholder="Quantité" v-model="form.quantite">
                     </div>
-                    <div class="form-group  col-md-1 p-0">
+                    <div class="form-group col-md-2">
                       <label for="exampleInputUsername1">Montant</label>
-                      <input type="text" value="2000" class="form-control" id="exampleInputUsername1"
+                      <input readonly type="text" value="2000" class="form-control" id="exampleInputUsername1"
                         placeholder="Montant" v-model="form.montant">
+                    </div>
+
+                    <div v-if="form.acte === 'autre'" class="col-md-12 mb-2 ">
+                      <label for="exampleInputUsername1">Autre</label>
+
+                      <input type="text" value="" class="form-control" id="" placeholder="Autre" v-model="form.autre">
 
                     </div>
-                    <div class="form-group col-md-1 mt-4 ">
+                    <!-- <div class="form-group col-md-1" style="margin-top: 1.7rem;"> -->
+                    <div class="form-group col-md-1">
                       <b-button size="sm" v-b-tooltip.hover title="Supprimer" variant="danger"
-                        @click.prevent="deleteForm(index)">
+                        @click.prevent="deleteForm(index)" v-if="forms.length >= 2">
                         <i class="mdi  mdi mdi-close-box text-white menu-icon"></i>
                       </b-button>
-
-
                     </div>
 
                   </div>
 
+
                 </div>
-                <div class="control-group col-md-12 row">
-                  <div class="form-group col-md-4 ">
+
+
+
+                <div class="control-group col-md-12 p-1 mt-n3 row">
+                  <div class="form-group ml-4">
                     <b-button size="sm" v-b-tooltip.hover title="Ajouter un acte" variant="success" @click="addForm">
                       <i class="mdi  mdi mdi-plus-box text-white menu-icon"></i>
                     </b-button>
-                    <!-- <b-button size="sm" v-b-tooltip.hover title="Supprimer" variant="danger"
-                      @click.prevent="deleteForm()">
-                      <i class="mdi  mdi mdi-close-box text-white menu-icon"></i>
-                    </b-button> -->
                   </div>
                 </div>
 
@@ -147,51 +145,306 @@
 
                   <div class="form-group mx-auto">
                     <label for="exampleFormControlSelect1">Mode de Paiement</label>
+
                     <select class="form-control  mb-3 " id="exampleFormControlSelect1" v-model="selectedOption">
                       <option v-for="option in optionsMode" :key="option.id" :value="option.value">{{ option.label }}
                       </option>
-                      <!-- 
-                      <option value="AL">Espèce</option>
-                      <option value="WY">Mobile Money</option>
-                      <option value="AM">Moov Money</option>
-                      <option value="CA">Carte bancaire</option>
-                      <option value="AM">Chèque</option> -->
                     </select>
-                    <div v-if="selectedOption === 'option2'">
-                      Vous avez sélectionné : {{ selectedOption }}
-                    </div>
                   </div>
 
                 </div>
 
+                <div class="p-2 container-fluid">
+
+                  <div v-if="selectedOption === 'option2'" class="control-group">
+
+                    <img src="@/assets/images/mtn.jpg" alt="patient" class="row col-md-12 mx-auto h-25"
+                      style="width:170px;">
+
+                    <div class="p-2 mt-4 row">
+
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Nom </label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nom">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Prénom(s) </label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Prénom(s)">
+                      </div>
+                      <div class="form-group col-md-2">
+                        <label for="exampleInputEmail1">Téléphone</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Téléphone">
+                      </div>
+
+                      <div class="form-group col-md-2">
+                        <label for="exampleInputUsername1"> Montant Total</label>
+                        <input readonly type="text" class="form-control" id="exampleInputUsername1"
+                          placeholder="Montant total">
+                      </div>
+
+                      <div class="form-group p-2 mx-auto">
+                        <button @click="validateData" type="button"
+                          class="btn btn-success d-flex mx-auto btn btn-block btn-block  text-center"><i
+                            class="mdi mdi-check-circle-outline menu-icon "></i> <span
+                            class="text-center ml-1">Valider</span>
+                        </button>
+                      </div>
+
+                    </div>
+
+
+                  </div>
+
+
+                  <div v-if="selectedOption === 'option3'" class="control-group">
+
+                    <img src="@/assets/images/moov.png" alt="patient" class="row col-md-12 mx-auto h-25"
+                      style="width:180px;">
+
+                    <div class="p-2 mt-4 row">
+
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Nom </label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nom">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Prénom(s) </label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Prénom(s)">
+                      </div>
+                      <div class="form-group col-md-2">
+                        <label for="exampleInputEmail1">Téléphone</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Téléphone">
+                      </div>
+
+                      <div class="form-group col-md-2">
+                        <label for="exampleInputUsername1"> Montant Total</label>
+                        <input readonly type="text" class="form-control" id="exampleInputUsername1"
+                          placeholder="Montant total">
+                      </div>
+
+                      <div class="form-group mx-auto p-2 " >
+                        <button @click="validateData" type="button"
+                          class="btn btn-success d-flex mx-auto btn btn-block text-center btn-block  text-center"
+                        ><i class="mdi mdi-check-circle-outline menu-icon "></i>
+                          <span class="text-center ml-1" >Valider</span>
+                        </button>
+                      </div>
+
+                    </div>
+                  </div>
+
+
+
+                  <div v-if="selectedOption === 'option1'" class="control-group">
+
+                    <img src="@/assets/images/mode-espece.png" alt="patient" class="row col-md-12 mx-auto h-25"
+                      style="width:180px;">
+
+                    <div class="p-1 mt-1 row">
+                      <div class="form-group col-md-12 ">
+                        <label for="exampleInputUsername1"> Montant Total</label>
+                        <input readonly type="text" class="form-control" id="exampleInputUsername1"
+                          placeholder="Montant total">
+                      </div>
+
+                      <div class="form-group  p-4  mx-auto ">
+                        <button @click="showConfirmationModal" type="button"
+                          class="btn btn-success d-flex btn btn-block  btn-block  text-center "><i
+                            class="mdi mdi-check-circle-outline menu-icon "></i> <span
+                            class="text-center ml-1">Valider</span>
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div v-if="selectedOption === 'option5'" class="control-group">
+
+                    <img src="@/assets/images/mode-cheque.png" alt="patient" class="row col-md-12 mx-auto h-25"
+                      style="width:180px;">
+
+
+                    <div class="p-2 row">
+
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Numéro Chèque</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Numéro Chèque">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Numéro Compte </label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Numéro Compte ">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Bénéficiaire </label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Bénéficiaire">
+                      </div>
+
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Date Emission</label>
+                        <input type="month" class="form-control" id="exampleInputEmail1" pattern="\d{4}-\d{2}" placeholder="MM/AAAA">
+                      </div>
+
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Date Paiement</label>
+                        <input type="date" class="form-control" id="exampleInputEmail1" >
+                      </div>
+
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Banque Emettrice</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="UBA">
+                      </div>
+
+
+
+                    </div>
+
+                    <div class="row ">
+
+                      <div class="form-group p-1 text-center mx-auto">
+                        <button @click="showConfirmationModal" type="button"
+                          class="btn btn-success d-flex  btn btn-block btn-block  text-center"><i
+                            class="mdi mdi-check-circle-outline menu-icon "></i> <span class="text-center ">
+                            Valider</span>
+                        </button>
+                      </div>
+                    </div>
+
+
+
+
+                  </div>
+
+                  <div v-if="selectedOption === 'option4'" class="control-group">
+
+                    <img src="@/assets/images/mode-carte.png" alt="patient" class="row col-md-12 mx-auto h-25"
+                      style="width:180px;">
+
+
+                    <div class="p-2 mt-4 row">
+
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Nom et Prénom(s)</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nom et Prénom(s)">
+                      </div>
+                      <div class="form-group col-md-2">
+                        <label for="exampleInputEmail1">Téléphone </label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Téléphone">
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                      </div>
+
+                      <div class="form-group col-md-3">
+                        <label for="exampleInputEmail1">Type Carte</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="UBA">
+                      </div>
+
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Numéro Carte</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Numéro Carte">
+                      </div>
+
+                      <div class="form-group col-md-2">
+                        <label for="exampleInputEmail1">Code CVC</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Code CVC">
+                      </div>
+
+                      <div class="form-group col-md-3">
+                        <label for="exampleInputEmail1">Nom carte </label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="VISA">
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="exampleInputEmail1">Date Expiration</label>
+                        <input type="month" class="form-control" id="exampleInputEmail1" placeholder="MM/AA">
+                      </div>
+
+                    </div>
+
+                    <div class="row ">
+
+                      <div class="form-group p-1 text-center mx-auto">
+                        <button @click="showConfirmationModal" type="button"
+                          class="btn btn-success d-flex  btn btn-block btn-block  text-center"><i
+                            class="mdi mdi-check-circle-outline menu-icon "></i> <span class="text-center">
+                            Valider</span>
+                        </button>
+                      </div>
+                    </div>
+
+
+                  </div>
+
+                </div>
 
               </fieldset>
-
-
-
-              <div class="mx-auto text-center ">
-                <button type="button" class="btn btn-success mr-2" data-toggle="modal"
-                  data-target="#exampleModal">Valider</button>
-                <!-- <button class="btn btn-info ">Imprimer</button> -->
-              </div>
-
             </form>
-            <!-- <button type="button" class="btn btn-success " data-toggle="modal" data-target="#exampleModal">Enregistrer</button> -->
+
+            <div>
+              <!-- <button class="btn btn-primary" @click="showConfirmationModal">Valider les données</button> -->
+
+              <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
+                aria-labelledby="confirmationModalLabel1" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="confirmationModalLabel">Confirmation</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+
+                      Êtes-vous sûr de vouloir valider le paiement ?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-outline-danger text-dark" data-dismiss="modal">Non</button>
+                      <button type="button" class="btn btn-outline-success text-dark" @click="validateData">Oui</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <!-- <button class="btn btn-primary" @click="showConfirmationModal">Valider les données</button> -->
+
+              <div class="modal fade" id="confirmationModalpay" tabindex="-1" role="dialog"
+                aria-labelledby="confirmationModalPayLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="confirmationModalPayLabel">Paiement validé avec succès</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+
+                    <div class="modal-body text-center">
+                      <img src="@/assets/images/img-valider.png" alt="logo" class="w-50">
+                      <p>Vous avez reçu un paiement de Lalo Dossou !</p>
+                    </div>
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-outline-success text-dark mx-auto mt-n2" @click="ShowFacture">
+                        <i class="mdi  mdi mdi-cloud-download"></i> Cliquer ici pour
+                        imprimer la facture</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
 
 
-            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-              Afficher le modal
-            </button> -->
 
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
               aria-hidden="true">
 
-              <!-- <div class="modal-dialog modal-dialog-centered modal-dialog modal-xl" role="document"> -->
+
               <div class="modal-dialog modal-dialog-centered modal-dialog modal-xl " role="document">
                 <div class="modal-content bg-white">
                   <div class="modal-header">
-                    <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -263,7 +516,8 @@
                           </thead>
                           <tbody>
                             <tr v-for="item in invoice.items" :key="item.id">
-                              <td>{{ item.mode }}</td>
+                              <!-- <td>{{ item.mode }}</td> -->
+                              <td>Mode paiement</td>
                               <td>{{ item.code }}</td>
                               <td>{{ item.description }}</td>
                               <td>{{ item.quantity }}</td>
@@ -307,71 +561,10 @@
                 </div>
               </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           </div>
 
         </div>
       </div>
-      <!-- <div class="col-md-6 grid-margin stretch-card">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title">Horizontal Form</h4>
-            <p class="card-description"> Horizontal form layout </p>
-            <form class="forms-sample">
-              <div class="form-group row">
-                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Email</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="exampleInputUsername2" placeholder="Username">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Email</label>
-                <div class="col-sm-9">
-                  <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="exampleInputMobile" class="col-sm-3 col-form-label">Mobile</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="exampleInputMobile" placeholder="Mobile number">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Password</label>
-                <div class="col-sm-9">
-                  <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Re Password</label>
-                <div class="col-sm-9">
-                  <input type="password" class="form-control" id="exampleInputConfirmPassword2" placeholder="Password">
-                </div>
-              </div>
-              <div class="form-check form-check-flat form-check-primary">
-                <label class="form-check-label">
-                  <input type="checkbox" class="form-check-input"> Remember me </label>
-              </div>
-              <button type="submit" class="btn btn-gradient-primary mr-2">Ajouter</button>
-              <button class="btn btn-gradient-danger ">Cancel</button>
-            </form>
-          </div>
-        </div>
-      </div> -->
-
     </div>
   </section>
 </template>
@@ -380,36 +573,39 @@
 
 
 
-
 <script>
 
+import $ from 'jquery';
 import { format } from 'date-fns';
 
 import "../../../node_modules/bootstrap/dist/js/bootstrap.js"; // tres important pour le modal
 import "../../../node_modules/bootstrap/dist/js/bootstrap.min.js"; // tres important pour le modal
 
 
-//import '../../assets/vendors/js/vendor.bundle.base.js'
-//import '../../assets/vendors/select2/select2.min.js';
-//import '../../assets/js/file-upload.js'
-//import '../../assets/js/settings.js'
-//import '../../assets/js/select2.js'
-
-
 
 export default {
-
 
   name: 'create-payement',
 
   data() {
+
     return {
+      form: {
+        acte: ''
+      },
+      //  readonlyoption: 'autre',
+      //  isreadonly: true,
+
+      afficherModal: false,
       //selected: 'A',
-      selectedOption: '',
+
+      selectedOption: 'option1',
       optionsMode: [
-        { id: 1, value: 'option1', label: 'Option 1' },
-        { id: 2, value: 'option2', label: 'Option 2' },
-        { id: 3, value: 'option3', label: 'Option 3' },
+        { id: 1, value: 'option1', label: 'Espèce' },
+        { id: 2, value: 'option2', label: 'MTN Mobile Money' },
+        { id: 3, value: 'option3', label: 'Moov Money' },
+        { id: 4, value: 'option4', label: 'Carte bancaire' },
+        { id: 5, value: 'option5', label: 'Chèque' },
       ],
       selected: '',
       options: [
@@ -422,11 +618,12 @@ export default {
 
       forms: [
         {
-          mode: 'AL',
+          acte: 'AL',
           quantite: 1,
           code: 'FA56718',
           prix: 1000,
           montant: 1000,
+          readonly: true,
 
         }
       ],
@@ -465,16 +662,57 @@ export default {
         total: '5 000',
       },
 
-
-
-
     }
   },
 
   methods: {
 
+    checkreadonly(form) {
+      // console.log(form.acte);
+      if (form.acte === 'autre') {
+        // if (this.forms.some((form) => form.acte === "autre")) {
+        form.readonly = false;
+      } else {
+        form.readonly = true;
+      }
+    },
+
+    showConfirmationModal() {
+      $('#confirmationModal').modal('show');
+    },
+
+
+    validateData() {
+      // Code pour valider les données dans la base de données
+
+      $('#confirmationModal').modal('hide');
+      $('#confirmationModalpay').modal('show');
+
+    },
+
+    ShowFacture() {
+      // Code pour valider les données dans la base de données
+
+      $('#confirmationModal').modal('hide');
+      $('#exampleModal').modal('show');
+    },
+
+
+    // confirmationModalpay() {
+    //   $('#confirmationModalpay').modal('show');
+    // },
+
+
+    // validateData() {
+    //   // Code pour valider les données dans la base de données
+
+    //   $('#confirmationModal').modal('hide');
+    // },
+
     addForm() {
-      this.forms.push({ mode: '', code: '', prix: '', quantite: '', montant: '' });
+      this.forms.push({ acte: 'SA', code: '', prix: '', quantite: '', montant: '' });
+
+
     },
 
     deleteForm(index) {
@@ -495,6 +733,8 @@ export default {
 
       // Restaurer le contenu original de la page
       document.body.innerHTML = originalContents;
+
+      $('#exampleModal').modal('hide');
     }
 
   },
@@ -509,12 +749,10 @@ export default {
 }
 
 
+
 </script>
 
 <style scoped>
-/* @import "../../assets/vendors/select2/select2.min.css";
-@import "../../assets/select2-bootstrap.min.css"; 
-/* @import "../../../node_modules/bootstrap/dist/css/bootstrap.css"; */
 @import "../../../node_modules/bootstrap-vue/dist/bootstrap-vue.css";
 
 .modal--fullscreen {

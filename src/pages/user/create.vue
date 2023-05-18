@@ -8,7 +8,7 @@
                         </a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                        Gestion des patients
+                        Utilisateurs
                     </li>
                     <li class="breadcrumb-item active text-success font-weight-bold" aria-current="page">Ajouter</li>
                 </ol>
@@ -31,15 +31,7 @@
                                     <input type="text" class="form-control" id="exampleInputUsername1"
                                         placeholder="Prénom" />
                                 </div>
-                                <!-- <div class="form-group">
-                                                            <label for="exampleInputEmail1">Date de naissance</label>
-                                                            <input
-                                                                type="date"
-                                                                class="form-control"
-                                                                id="exampleInputEmail1"
-                                                                placeholder="01/07/1990"
-                                                            />
-                                                        </div> -->
+
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Email</label>
                                     <input type="email" class="form-control" id="exampleInputPassword1"
@@ -79,16 +71,13 @@
                                         placeholder="Caissier" />
                                 </div> -->
                                 <div class="form-group">
-                                        <label for="exampleFormControlSelect1">Rôle ou Poste</label>
-                                        <select
-                                            class="form-control   mb-3 "
-                                            id="exampleFormControlSelect1"
-                                        >
-                                            <option value="AL">CAISSIER</option>
-                                            <option value="WY">ADMIN</option>
-                                
-                                        </select>
-                                    </div>
+                                    <label for="exampleFormControlSelect1">Rôle ou Poste</label>
+                                    <select class="form-control   mb-3 " id="exampleFormControlSelect1">
+                                        <option value="AL">CAISSIER</option>
+                                        <option value="WY">ADMIN</option>
+
+                                    </select>
+                                </div>
                                 <div class="form-group">
                                     <label for="exampleInputConfirmPassword1">Mot de passe</label>
                                     <input type="password" class="form-control" id="exampleInputConfirmPassword1"

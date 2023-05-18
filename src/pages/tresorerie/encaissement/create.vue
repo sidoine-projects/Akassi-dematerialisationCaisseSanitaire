@@ -224,7 +224,6 @@
                     </div>
 
                     <div class="row ">
-
                       <div class="form-group p-1 text-center mx-auto">
                         <button @click="showConfirmationModal" type="button"
                           class="btn btn-success d-flex  btn btn-block btn-block  text-center"><i

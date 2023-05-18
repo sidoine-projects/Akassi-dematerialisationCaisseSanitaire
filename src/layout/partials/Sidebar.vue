@@ -4,19 +4,12 @@
       <ul class="nav">
         <li class="nav-item nav-profile">
           <a href="javascript:void(0);" class="nav-link">
-            <!-- <div class="nav-profile-image navbar-brand brand-logo">
-              <img src="@/assets/images/logo-ministere.PNG" alt="profile">
-              <span class="login-status online"></span>
-            </div> -->
+
             <div
               class=" navbar-brand brand-logo text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
               <img src="@/assets/images/logo.png" alt="profile" style="width: 100%; height:100%;">
             </div>
-            <!-- <div class="nav-profile-text d-flex flex-column">
-              <span class="font-weight-bold mb-2">David Grey. H</span>
-              <span class="text-secondary text-small">Project Manager</span>
-            </div>
-            <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i> -->
+
           </a>
         </li>
         <li class="nav-item" v-on:click="collapseAll">
@@ -33,17 +26,49 @@
           <span class="nav-link" v-b-toggle="'ui-basic'">
             <span class="menu-title">Paramètrage</span>
             <i class="menu-arrow"></i>
-            <!-- <i class="mdi mdi-settings menu-icon" style="width: 1rem; height: 1rem;"></i> -->
+
             <img src="@/assets/images/setting.png" alt="patient" style="width: 1rem; height: 1rem; ">
           </span>
           <b-collapse accordion="sidebar-accordion"  id="ui-basic">
             <ul class="nav flex-column sub-menu">
       
+
               <li class="nav-item">
-                <router-link class="nav-link" to="/auth/user-create">Gestion des utilisateurs</router-link>
+                <span class="nav-link" v-b-toggle="'users'">
+                  <span class="menu-title">Utlisateurs</span>
+                  <i class="menu-arrow"></i>
+                </span>
+                <b-collapse accordion="accordion" id="users">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                      <router-link class="nav-sous-link" to="/user/create">Ajouter</router-link>
+                    </li>
+                    <li class="nav-item">
+                      <router-link class="nav-sous-link" to="/user/list">Liste</router-link>
+                    </li>
+                  </ul>
+                </b-collapse>
               </li>
+              
               <li class="nav-item">
-                <router-link class="nav-link" to="/">Droits utilisateurs</router-link>
+                <span class="nav-link" v-b-toggle="'users-role'">
+                  <span class="menu-title"> Rôle Utlisateur</span>
+                  <i class="menu-arrow"></i>
+                </span>
+                <b-collapse accordion="accordion" id="users-role">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                      <router-link class="nav-sous-link" to="/user/role/create">Ajouter</router-link>
+                    </li>
+                    <li class="nav-item">
+                      <router-link class="nav-sous-link" to="/user/role/list">Liste</router-link>
+                    </li>
+                  </ul>
+                </b-collapse>
+              </li>
+
+              <li class="nav-item">
+                <router-link class="nav-link" to="/user/role/permissions">Droits utilisateurs</router-link>
               </li>
   
               <li class="nav-item">
@@ -110,25 +135,6 @@
           </b-collapse>
         </li>
 
-        <!-- <li class="nav-item">
-          <span class="nav-link" v-b-toggle="'actes'">
-            <span class="menu-title">Actes medicaux</span>
-            <i class="menu-arrow"></i>
-            <i class="mdi  menu-icon special-style-icon"><img src="@/assets/images/public-service.png" alt="sid"
-                style="width: 1rem; height: 1rem; "></i>
-          </span>
-          <b-collapse accordion="sidebar-accordion" id="actes">
-            <ul class="nav flex-column sub-menu">
-              <li class="nav-item">
-                <router-link class="nav-link" to="/actes-medicaux/create">Ajouter</router-link>
-              </li>
-              <li class="nav-item">
-                <router-link class="nav-link" to="/actes-medicaux/list">Liste</router-link>
-              </li>
-            </ul>
-          </b-collapse>
-        </li> -->
-
         <li class="nav-item">
           <span class="nav-link" v-b-toggle="'paiement'">
             <span class="menu-title ">Paiement et <br>Facturation</span>
@@ -151,21 +157,52 @@
 
 
         <li class="nav-item">
-          <span class="nav-link" v-b-toggle="'charts-dropdown'">
+          <span class="nav-link" v-b-toggle="'tresorerie'">
             <span class="menu-title">Trésorerie</span>
             <i class="menu-arrow"></i>
-            <!-- <i class="mdi mdi-chart-bar menu-icon"></i> -->
+
             <img src="@/assets/images/coins.png" alt="sid" style="width: 1rem; height: 1rem;">
           </span>
-          <b-collapse accordion="sidebar-accordion" id="charts-dropdown">
+          <b-collapse accordion="sidebar-accordion" id="tresorerie">
             <ul class="nav flex-column sub-menu">
+           
               <li class="nav-item">
-                <router-link class="nav-link" to="/tresorerie/encaissement">Encaissement</router-link>
+                <span class="nav-link" v-b-toggle="'encaissement'">
+                  <span class="menu-title">Encaissement</span>
+                  <i class="menu-arrow"></i>
+                </span>
+
+                <b-collapse id="encaissement"  accordion="accordion" >
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item" >
+                      <router-link class="nav-sous-link" to="/tresorerie/encaissement">Ajouter</router-link>
+                    </li>
+                    <li class="nav-item">
+                      <router-link class="nav-sous-link" to="/tresorerie/list-encaissement">Liste</router-link>
+                    </li>
+                  </ul>
+                </b-collapse>
               </li>
+              
               <li class="nav-item">
-                <router-link class="nav-link" to="/tresorerie/decaissement">Décaissement</router-link>
+                <span class="nav-link" v-b-toggle="'decaissement'">
+                  <span class="menu-title">Décaissement</span>
+                  <i class="menu-arrow"></i>
+                </span>
+
+                <b-collapse id="decaissement"  accordion="accordion" >
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item" >
+                      <router-link class="nav-sous-link" to="/tresorerie/decaissement">Ajouter</router-link>
+                    </li>
+                    <li class="nav-item">
+                      <router-link class="nav-sous-link" to="/tresorerie/list-decaissement">Liste</router-link>
+                    </li>
+                  </ul>
+                </b-collapse>
               </li>
 
+              
             </ul>
           </b-collapse>
         </li>
@@ -186,7 +223,7 @@
           </b-collapse>
         </li> -->
         <li class="nav-item" v-on:click="collapseAll">
-          <router-link class="nav-link" to="/charts/chartjs/">
+          <router-link class="nav-link" to="/rapport">
             <span class="menu-title">Rapports</span>
             <i class="mdi  menu-icon special-style-icon"><img src="@/assets/images/report.png" alt="Rapports"
                 style="width: 1rem; height: 1rem; ">
@@ -201,7 +238,6 @@
             <i class="menu-arrow"></i>
             <i class="mdi mdi-table-large menu-icon"></i>
          
-
           </span>
           <b-collapse accordion="sidebar-accordion" id="table-dropdown">
             <ul class="nav flex-column sub-menu">
@@ -270,7 +306,7 @@
             <!-- <div class="border-bottom">
               <h6 class="font-weight-normal mb-3">Déconnexion</h6>
             </div> -->
-            <button class="btn btn-block btn-gradient-danger p-2  text-center"><i class="mdi mdi-power text-white "></i>
+            <button class="btn btn-block btn-gradient-danger pt-3   mx-auto text-center"><i class="mdi mdi-power text-white "></i>
               Déconnexion</button>
 
             <!-- <div class="mt-4">

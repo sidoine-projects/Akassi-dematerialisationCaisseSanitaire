@@ -19,7 +19,7 @@
       <div class="col-lg-12 grid-margin">
           <div class="card">
               <div class="card-body">
-                  <h4 class="card-title">Liste des actes médicaux</h4>
+                  <h4 class="card-title">Liste des Cartes Sanitaires</h4>
                   <div class="table-responsive">
                       <table id="order-listing" class="table">
                           <thead>

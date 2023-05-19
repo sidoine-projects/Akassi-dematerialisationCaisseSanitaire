@@ -351,7 +351,7 @@
                       </div>
 
                       <div class="form-group col-md-3">
-                        <label for="exampleInputEmail1">Nom carte </label>
+                        <label for="exampleInputEmail1">Nom Carte </label>
                         <input type="text" class="form-control" id="exampleInputEmail1" placeholder="VISA">
                       </div>
                       <div class="form-group col-md-3">
@@ -553,6 +553,22 @@
                   </div>
 
                   <div class="modal-footer">
+
+                    <router-link class="" to="">
+                        <b-button size="sm" v-b-tooltip.hover title="Whatsapp" variant="success">
+                          <i class="mdi mdi mdi-whatsapp text-white menu-icon"></i>
+                        </b-button>
+                      </router-link>
+                      <router-link class="" to="">
+                        <b-button size="sm" v-b-tooltip.hover title="Email" variant="info">
+                          <i class="mdi  mdi mdi-email text-white menu-icon"></i>
+                        </b-button>
+                      </router-link>
+                      <router-link class="" to="">
+                        <b-button size="sm" v-b-tooltip.hover title="MMS" variant="primary">
+                          <i class="mdi mdi-message-text text-white menu-icon"></i>
+                        </b-button>
+                      </router-link>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
 
 
@@ -604,7 +620,7 @@ export default {
         { id: 1, value: 'option1', label: 'Espèce' },
         { id: 2, value: 'option2', label: 'MTN Mobile Money' },
         { id: 3, value: 'option3', label: 'Moov Money' },
-        { id: 4, value: 'option4', label: 'Carte bancaire' },
+        { id: 4, value: 'option4', label: 'Carte Bancaire' },
         { id: 5, value: 'option5', label: 'Chèque' },
       ],
       selected: '',

@@ -51,10 +51,10 @@
               <table id="order-listing" class="table">
                 <thead>
                   <tr style="background-color: rgb(216, 218, 216);">
-                    <th>Tout</th>
+                    <th>~#</th>
                     <th>Permissions</th>
                     <th class="text-center mx-auto pb-4 pl-4 pr-0">
-                      <input type="checkbox" class="form-check-input checkbox" id="checkAll">
+                      <input type="checkbox" class="form-check-input" id="checkAll">
 
                     </th>
                   </tr>
@@ -65,7 +65,7 @@
                     <td>Créer utilisateur </td>
 
                     <td class="text-center mx-auto pb-4 pl-4 pr-0">
-                      <input type="checkbox" class="form-check-input checkbox">
+                      <input type="checkbox" class="form-check-input item">
                     </td>
                   </tr>
                   <tr>
@@ -73,7 +73,7 @@
                     <td>Modifier utilisateur </td>
 
                     <td class="text-center mx-auto pb-4 pl-4 pr-0">
-                      <input type="checkbox" class="form-check-input checkbox">
+                      <input type="checkbox" class="form-check-input item">
                     </td>
                   </tr>
                   <tr>
@@ -81,7 +81,7 @@
                     <td>Créer un Acte medical </td>
 
                     <td class="text-center mx-auto pb-4 pl-4 pr-0">
-                      <input type="checkbox" class="form-check-input checkbox">
+                      <input type="checkbox" class="form-check-input item">
                     </td>
                   </tr>
                   <tr>
@@ -89,7 +89,7 @@
                     <td>Modifier un acte médical </td>
 
                     <td class="text-center mx-auto pb-4 pl-4 pr-0">
-                      <input type="checkbox" class="form-check-input checkbox">
+                      <input type="checkbox" class="form-check-input item">
                     </td>
                   </tr>
                 </tbody>
@@ -111,14 +111,22 @@
 
 <script>
 
-
 import $ from 'jquery';
+
+import "@/assets/vendors/js/vendor.bundle.base.js";
+import "@/assets/js/off-canvas.js";
+import "@/assets/js/hoverable-collapse.js";
+import "@/assets/js/misc.js";
+import "@/assets/js/settings.js";
+import "@/assets/js/todolist.js";
+import "@/assets/js/jquery.cookie.js";
+
 
 import "../../../../node_modules/bootstrap/dist/js/bootstrap.js"; // tres important pour le modal
 import "../../../../node_modules/bootstrap/dist/js/bootstrap.min.js"; // tres important pour le modal
 
 export default {
-  name: "permissions-role",
+  name: "create-actes-medicaux",
 
 
   data() {
@@ -132,20 +140,6 @@ export default {
     };
   },
 
-  mounted() {
- // Gestionnaire d'événement pour la case à cocher "Check All"
- $('#checkAll').on('change', function() {
-      $('.checkbox').prop('checked', $(this).is(':checked'));
-    });
-
-    // Gestionnaire d'événement pour les cases à cocher des éléments individuels
-    $('.checkbox').on('change', function() {
-      if (!$(this).is(':checked')) {
-        $('#checkAll').prop('checked', false);
-      }
-    });
-  
-  },
 
   methods: {
 
@@ -153,8 +147,25 @@ export default {
       $('#showDetail').modal('show');
     },
 
-  }
+  },
+  
+  mounted() {
 
+    $(document).ready(function () {
+      // Écouteur d'événement pour la case à cocher "Tout cocher"
+      $('#checkAll').change(function () {
+        $('.item').prop('checked', this.checked);
+      });
+
+      // Écouteur d'événement pour les cases à cocher des éléments de la liste
+      $('.item').change(function () {
+        // Vérifier si tous les éléments sont cochés ou non
+        var allChecked = $('.item:checked').length === $('.item').length;
+        $('#checkAll').prop('checked', allChecked);
+      });
+    });
+
+  },
 
 
 };

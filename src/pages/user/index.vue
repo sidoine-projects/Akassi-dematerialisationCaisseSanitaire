@@ -18,7 +18,7 @@
           <div class="card-body">
             <h4 class="card-title">Liste des Utilisateurs</h4>
             <div class="table-responsive ">
-              <table id="order-listing" class="table">
+              <table  id="myTable" class="table table-bordered display">
                 <thead>
                   <tr style="background-color: rgb(216, 218, 216);">
                     <th>#</th>
@@ -245,9 +245,17 @@
 
 
 <script>
-import "@/assets/vendors/mdi/css/materialdesignicons.min.css";
+
+
 
 import $ from 'jquery';
+
+import 'datatables.net/js/jquery.dataTables';
+
+
+import 'bootstrap/dist/js/bootstrap.js'
+import 'jquery/dist/jquery.js'
+import 'popper.js/dist/umd/popper.js'
 
 import "../../../node_modules/bootstrap/dist/js/bootstrap.js"; // tres important pour le modal
 import "../../../node_modules/bootstrap/dist/js/bootstrap.min.js"; // tres important pour le modal
@@ -267,6 +275,13 @@ export default {
   },
 
 
+  mounted() {
+
+  $(this.$refs.myTable).DataTable();
+
+
+},
+
   methods: {
 
     showDetail() {
@@ -281,7 +296,11 @@ export default {
 </script>
 
 <style scoped>
+
+@import '../../../node_modules/datatables.net-dt/css/jquery.dataTables.css';
+
 @import "../../../node_modules/bootstrap-vue/dist/bootstrap-vue.css";
+
 
 table {
   border-collapse: collapse;

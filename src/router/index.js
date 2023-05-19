@@ -267,6 +267,18 @@ export default new Router({
       ]
     },
 
+    {
+      path: '/user',
+      component: layout,
+      children: [
+        {
+          path: 'role/list',
+          name: 'role-list',
+          component: () => import('@/pages/user/role/index')
+        }
+      ]
+    },
+
     
     {
       path: '/user',

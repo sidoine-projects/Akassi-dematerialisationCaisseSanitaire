@@ -15,8 +15,8 @@
       <div class="col-lg-12 grid-margin">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Liste des Utilisateurs</h4>
-            <div class="table-responsive ">
+            <h4 class="card-title">Liste des Rôles Utilisateurs</h4>
+            <div class="table-responsive mt-3">
               <table id="order-listing" class="table">
                 <thead>
                   <tr style="background-color: rgb(216, 218, 216);">
@@ -38,16 +38,16 @@
                         <i class="mdi  mdi-file-document text-white menu-icon"></i>
                       </b-button> -->
 
-                  
-                        <b-button size="sm" v-b-tooltip.hover title="Modifier" variant="warning" @click="showDetail">
-                          <i class="mdi mdi mdi-table-edit text-white menu-icon"></i>
-                        </b-button>
-                   
-            
-                        <b-button size="sm" v-b-tooltip.hover title="Supprimer" variant="danger">
-                          <i class="mdi mdi mdi-delete-forever text-white menu-icon"></i>
-                        </b-button>
-              
+
+                      <b-button size="sm" v-b-tooltip.hover title="Modifier" variant="warning" @click="showDetail">
+                        <i class="mdi mdi mdi-table-edit text-white menu-icon"></i>
+                      </b-button>
+
+
+                      <b-button size="sm" v-b-tooltip.hover title="Supprimer" variant="danger">
+                        <i class="mdi mdi mdi-delete-forever text-white menu-icon"></i>
+                      </b-button>
+
                     </td>
                   </tr>
                   <tr>
@@ -59,11 +59,11 @@
                       <!-- <b-button size="sm" v-b-tooltip.hover title="Détail" variant="success" >
                         <i class="mdi  mdi-file-document text-white menu-icon"></i>
                       </b-button> -->
-                   
-                        <b-button size="sm" v-b-tooltip.hover title="Modifier" variant="warning" @click="showDetail">
-                          <i class="mdi mdi mdi-table-edit text-white menu-icon"></i>
-                        </b-button>
-                
+
+                      <b-button size="sm" v-b-tooltip.hover title="Modifier" variant="warning" @click="showDetail">
+                        <i class="mdi mdi mdi-table-edit text-white menu-icon"></i>
+                      </b-button>
+
                       <router-link class="" to="/">
                         <b-button size="sm" v-b-tooltip.hover title="Supprimer" variant="danger">
                           <i class="mdi mdi mdi-delete-forever text-white menu-icon"></i>
@@ -116,9 +116,9 @@
           <div class="modal-footer">
             <div class="mx-auto">
               <button type="submit" class="btn btn-success mr-2">
-                  Ajouter
-                </button>
-               
+                Ajouter
+              </button>
+
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
 
 
@@ -166,7 +166,9 @@ export default {
       $('#showDetail').modal('show');
     },
 
-  }
+  },
+
+
 
 
 

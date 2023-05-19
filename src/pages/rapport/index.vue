@@ -26,11 +26,11 @@
               <div class="row ">
                 <div class="form-group col-md-5">
                   <label for="exampleInputUsername1">Date Début</label>
-                  <input type="date" class="form-control" id="exampleInputUsername1" placeholder="Code" :max="today" />
+                  <input type="date" class="form-control" id="dateField1" placeholder="Code" :max="today" />
                 </div>
                 <div class="form-group col-md-5">
                   <label for="exampleInputUsername1">Date Fin</label>
-                  <input type="date" class="form-control" id="exampleInputUsername1" placeholder="Consulation"
+                  <input type="date" class="form-control" id="dateField2" placeholder="Consulation"
                     :max="today" />
                 </div>
                 <div class="form-group mx-auto mt-4">
@@ -313,7 +313,6 @@
 </template>
 
 <script>
-import "@/assets/vendors/mdi/css/materialdesignicons.min.css";
 
 import $ from 'jquery';
 
@@ -341,7 +340,13 @@ export default {
       $('#showDetail').modal('show');
     },
 
-  }
+  },
+
+  mounted() {
+    
+    var currentDate = new Date().toISOString().split("T")[0];
+  $("#dateField1, #dateField2").val(currentDate);
+  },
 
 
 

@@ -19,7 +19,7 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Enregistrer un décaissement</h4>
-            <form class="forms-sample row">
+            <form class="forms-sample row" enctype="multipart/form-data">
 
               <fieldset class="scheduler-border container-fluid col-md-12">
                 <legend class="scheduler-border mt-5" style="font-size: medium !important;">
@@ -36,26 +36,31 @@
                       <label for="exampleInputUsername1">Montant</label>
                       <input type="text" class="form-control" id="exampleInputUsername1" placeholder="100 000" />
                     </div>
-              
+
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label>Facture/Référence</label>
-                  <input type="file" name="img[]" class="file-upload-default">
+                  <input type="file" name="" class="file-upload-default">
                   <div class="input-group col-xs-12">
-                    <input type="text" class="form-control file-upload-info" disabled placeholder="Preuve du décaissement">
+                    <input type="text" class="form-control file-upload-info inputFile" placeholder="Preuve du décaissement" id="filename" >
+
                     <span class="input-group-append">
-                      <button class="file-upload-browse btn btn-gradient-info" type="button">Télécharger</button>
+                      <!-- <button class="file-upload-browse btn btn-gradient-info" type="button"  id="btnDownload">Télécharger</button> -->
+                      <button class="btn btn-gradient-info" type="button"  id="fileBtn">Télécharger</button>
                     </span>
                   </div>
                 </div>
+
+            
+
 
                 <div class="form-group p-2">
                   <label for="exampleTextarea1">Description</label>
                   <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
                 </div>
-          
+
 
                 <div class="row ">
                   <div class="form-group p-1 text-center mx-auto">
@@ -132,14 +137,21 @@
   </section>
 </template>
 
+
+
+
+
 <script>
 
-import $ from "jquery";
-import { format } from "date-fns";
 
-import "../../../../node_modules/bootstrap/dist/js/bootstrap.js"; // tres important pour le modal
+
+import "../../../assets/js/file-upload.js";
+
+import "../../../../node_modules/bootstrap/dist/js/bootstrap.js"; // tres important pour le modal    tresorerie/decaissement
 import "../../../../node_modules/bootstrap/dist/js/bootstrap.min.js"; // tres important pour le modal
-import "../../../assets/js/file-upload.js"; // tres important pour le modal
+
+
+
 
 export default {
   name: "create-payement",
@@ -216,6 +228,24 @@ export default {
         total: "5 000",
       },
     };
+  },
+
+  mounted() {
+
+    $(document).ready(function() {
+      $('#fileBtn').click(function() {
+        var fileInput = $('<input type="file">');
+    
+        fileInput.on('change', function(e) {
+          var fileName = e.target.files[0].name;
+      
+          $('#filename').val(fileName);
+        });
+    
+        fileInput.click();
+      });
+    });
+
   },
 
   methods: {
@@ -299,7 +329,6 @@ export default {
 
 <style scoped>
 @import "../../../../node_modules/bootstrap-vue/dist/bootstrap-vue.css";
-
 
 
 .modal--fullscreen {

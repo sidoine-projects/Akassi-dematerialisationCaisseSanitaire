@@ -42,7 +42,7 @@
 
 
             <div class="table-responsive mt-4">
-              <table id="order-listing" class="table">
+              <table ref="myTable" class="table table-bordered ">
                 <thead>
                   <tr>
                     <th>#</th>
@@ -141,16 +141,23 @@
 
                     </td>
                   </tr>
+
+              
+           
+                </tbody>
+
+                <tfoot>
                   <tr class="font-weight-bold" style="background-color: #d4d4d4 ;  font-weight: bold;">
                     <td colspan="6" class="text-right pr-5">
                       Total
                     </td>
                     <td>6 000</td>
+                    <td></td>
                   </tr>
-                </tbody>
+                </tfoot>
               </table>
             </div>
-            <div class="mx-auto">
+            <!-- <div class="mx-auto">
               <b-button size="sm" v-b-tooltip.hover title="Excel" style="background-color: #15976a">Excel
                 <i class="mdi  mdi-file-excel text-white menu-icon" style="font-size :20px"> </i>
               </b-button>
@@ -160,7 +167,7 @@
               </b-button>
 
 
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -315,9 +322,38 @@
 <script>
 
 import $ from 'jquery';
+import * as JSZip from '../../../node_modules/jszip';
+// import '../../../node_modules/jszip';
+window.JSZip = JSZip;
+
+import pdfMake from '../../../node_modules/pdfmake/build/pdfmake';
+import vfsFonts from '../../../node_modules/pdfmake/build/vfs_fonts';
+pdfMake.vfs = vfsFonts.pdfMake.vfs;
+
+import '../../../node_modules/datatables.net-dt';
+
+
+import "../../../node_modules/datatables.net-bs4/js/dataTables.bootstrap4";
+
+
+import "../../../node_modules/datatables.net-buttons/js/dataTables.buttons";
+import "../../../node_modules/datatables.net-buttons-bs4/js/buttons.bootstrap4";
+
+
+
+
+import FrenchTranslation from '@/assets/datatable/French.json';
+import "../../../node_modules/datatables.net-buttons/js/buttons.html5.js";
+
+import "../../../node_modules/datatables.net-buttons/js/buttons.print.js";
+
+import "../../../node_modules/datatables.net-buttons/js/buttons.colVis.js";
 
 import "../../../node_modules/bootstrap/dist/js/bootstrap.js"; // tres important pour le modal
 import "../../../node_modules/bootstrap/dist/js/bootstrap.min.js"; // tres important pour le modal
+
+
+require('datatables.net-dt');
 
 export default {
   name: "create-actes-medicaux",
@@ -346,6 +382,52 @@ export default {
     
     var currentDate = new Date().toISOString().split("T")[0];
   $("#dateField1, #dateField2").val(currentDate);
+
+  const table = $(this.$refs.myTable).DataTable({      // dom: '<"html5buttons"B>lTfgtip',
+      dom: '<"row mb-3"<"col-md-12"B>>' +
+        '<"row mb-0"<"col-md-6"l><"col-md-6"f>>' +
+        '<"row"<"col-md-12"tr>>' +
+        '<"row"<"col-md-6"i><"col-md-6"p>>',
+      //  dom: 'Bfrtip',
+      //  dom: 'lBfrtip',
+
+      pageLength: 10, // Définir le nombre de résultats par page
+      language: FrenchTranslation,
+      buttons: [
+
+        {
+          extend: "csvHtml5",                    // Extend the excel button
+
+        },
+        {
+          extend: "excelHtml5",
+   
+
+        },
+
+        {
+          extend: 'pdfHtml5',
+          // className: 'btn btn-primary',
+      
+
+
+
+
+
+        },
+
+        { extend: 'print' },
+        { extend: 'copy' },
+
+      ],
+
+
+    });
+
+    table.buttons().container().prependTo('#myTable_wrapper .col-md-6:eq(0)');
+
+
+
   },
 
 
@@ -354,7 +436,12 @@ export default {
 </script>
 
 <style scoped>
+
+
 @import "../../../node_modules/bootstrap-vue/dist/bootstrap-vue.css";
+/* @import '../../../node_modules/datatables.net-dt/css/jquery.dataTables.css'; */
+
+@import "../../../node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css";
 
 table {
   border-collapse: collapse;

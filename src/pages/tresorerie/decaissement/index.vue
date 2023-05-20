@@ -10,8 +10,6 @@
       </nav>
     </div>
 
-
-
     <div class="row">
 
       <div class="col-lg-12 grid-margin">
@@ -27,7 +25,7 @@
                     <th>Montant</th>
                     <th>Responsable</th>
                     <th>Facture</th>
-                   
+
                     <th class="text-center">Actions</th>
                   </tr>
                 </thead>
@@ -37,8 +35,16 @@
                     <td>Achat d'immobilier</td>
                     <td>500 000</td>
                     <td>KODJO Theophile</td>
-                    <td>Visualiser Facture</td>
-                  
+                    <td>
+                      <router-link class="" to="/">
+                        <b-button size="sm" v-b-tooltip.hover title="Visualiser Facture" variant="info">
+                          Visualiser Facture
+
+                        </b-button>
+                      </router-link>
+
+                    </td>
+
                     <!-- <td>
                 <label class="badge badge-info">Espèce</label>
               </td> -->
@@ -55,10 +61,10 @@
                           <i class="mdi mdi mdi-table-edit text-white menu-icon"></i>
                         </b-button>
                       </router-link> -->
-                    
+
                     </td>
                   </tr>
- 
+
                 </tbody>
               </table>
             </div>
@@ -68,7 +74,7 @@
 
     </div>
 
-    
+
 
   </section>
 </template>

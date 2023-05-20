@@ -16,9 +16,17 @@
       <div class="col-lg-12 grid-margin">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Liste des Utilisateurs</h4>
-            <div class="table-responsive ">
-              <table  id="myTable" class="table table-bordered display">
+
+            <h4 class="card-title, ">Liste des Utilisateurs</h4>
+            <!-- <div class="mx-auto mt-3 mb-4">
+              <button type="submit" class="btn btn-success mr-2">
+                Ajouter
+              </button>
+            </div> -->
+
+            <div class="table-responsive mt-5">
+
+              <table ref="myTable" class="table table-bordered ">
                 <thead>
                   <tr style="background-color: rgb(216, 218, 216);">
                     <th>#</th>
@@ -42,12 +50,12 @@
 
                     <td>Féminin</td>
                     <td class="text-center">
-                
-                        <b-button size="sm" v-b-tooltip.hover title="Détail" variant="success" @click="showDetail">
-                          <i class="mdi  mdi-file-document text-white menu-icon"></i>
-                        </b-button>
-                  
-                  
+
+                      <b-button size="sm" v-b-tooltip.hover title="Détail" variant="success" @click="showDetail">
+                        <i class="mdi  mdi-file-document text-white menu-icon"></i>
+                      </b-button>
+
+
                       <router-link class="" to="/">
                         <b-button size="sm" v-b-tooltip.hover title="Modifier" variant="warning">
                           <i class="mdi mdi mdi-table-edit text-white menu-icon"></i>
@@ -246,25 +254,66 @@
 
 <script>
 
-
-
 import $ from 'jquery';
+import * as JSZip from '../../../node_modules/jszip';
+// import '../../../node_modules/jszip';
+window.JSZip = JSZip;
 
-import 'datatables.net/js/jquery.dataTables';
+import pdfMake from '../../../node_modules/pdfmake/build/pdfmake';
+import vfsFonts from '../../../node_modules/pdfmake/build/vfs_fonts';
+pdfMake.vfs = vfsFonts.pdfMake.vfs;
 
 
-import 'bootstrap/dist/js/bootstrap.js'
-import 'jquery/dist/jquery.js'
-import 'popper.js/dist/umd/popper.js'
+// import "../../assets/datatable/vendor.bundle.base.js";
+// import "../../assets/datatable/jquery.dataTables.js";
+// import "../../assets/datatable/dataTables.bootstrap4.js";
+// import "../../assets/datatable/data-table.js";
 
-import "../../../node_modules/bootstrap/dist/js/bootstrap.js"; // tres important pour le modal
-import "../../../node_modules/bootstrap/dist/js/bootstrap.min.js"; // tres important pour le modal
+import '../../../node_modules/datatables.net-dt';
+// import '../../../node_modules/datatables.net-bs4';
+// import '../../../node_modules/datatables.net-buttons-bs4';
 
+// import "../../../node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css";
+
+import "../../../node_modules/datatables.net-bs4/js/dataTables.bootstrap4";
+// import '../../../node_modules/datatables.net-buttons-bs4/css/buttons.bootstrap4.css';
+
+import "../../../node_modules/datatables.net-buttons/js/dataTables.buttons";
+import "../../../node_modules/datatables.net-buttons-bs4/js/buttons.bootstrap4";
+
+
+
+
+import FrenchTranslation from '@/assets/datatable/French.json';
+
+
+// import '../../../node_modules/pdfmake/build/pdfmake';
+// import '../../../node_modules/pdfmake/build/vfs_fonts';
+
+
+// import "../../../node_modules/datatables.net-buttons/js/buttons.html5";
+import "../../../node_modules/datatables.net-buttons/js/buttons.html5.js";
+// import "../../../node_modules/datatables.net-buttons/js/buttons.print";
+import "../../../node_modules/datatables.net-buttons/js/buttons.print.js";
+// import "../../../node_modules/datatables.net-buttons/js/buttons.colVis";
+import "../../../node_modules/datatables.net-buttons/js/buttons.colVis.js";
+
+
+// import "bootstrap/dist/js/bootstrap.js";
+// import '../../../node_modules/datatables.net-buttons-bs4/js/buttons.bootstrap4';
+// import '../../../node_modules/datatables.net-buttons-bs4/js/buttons.html5';
+
+// import "../../../node_modules/bootstrap/dist/js/bootstrap.js"; // tres important pour le modal
+// import "../../../node_modules/bootstrap/dist/js/bootstrap.min.js"; // tres important pour le modal
+
+
+require('datatables.net-dt');
 export default {
   name: "create-actes-medicaux",
 
   data() {
     return {
+
       today: new Date().toISOString().split('T')[0],
       selected: "",
       options: [
@@ -277,10 +326,59 @@ export default {
 
   mounted() {
 
-  $(this.$refs.myTable).DataTable();
+    const table = $(this.$refs.myTable).DataTable({      // dom: '<"html5buttons"B>lTfgtip',
+      dom: '<"row mb-3"<"col-md-12"B>>' +
+        '<"row mb-0"<"col-md-6"l><"col-md-6"f>>' +
+        '<"row"<"col-md-12"tr>>' +
+        '<"row"<"col-md-6"i><"col-md-6"p>>',
+      //  dom: 'Bfrtip',
+      //  dom: 'lBfrtip',
+
+      pageLength: 10, // Définir le nombre de résultats par page
+      language: FrenchTranslation,
+      buttons: [
+
+        {
+          extend: "csvHtml5",                    // Extend the excel button
+
+        },
+        {
+          extend: "excelHtml5",
+      
+
+        },
+
+        {
+          extend: 'pdfHtml5',
+          // className: 'btn btn-primary',
+          exportOptions: {
+            columns: [0, 1, 2, 3, 4, 5, 6], // Inclut les colonnes d'index 0, 2 et 3
+
+            styles: {
+              table: {
+                alignment: 'center'
+              }
+            },
+          },
 
 
-},
+
+
+
+        },
+
+        { extend: 'print' },
+        { extend: 'copy' },
+
+      ],
+
+
+    });
+
+    table.buttons().container().prependTo('#myTable_wrapper .col-md-6:eq(0)');
+
+
+  },
 
   methods: {
 
@@ -291,15 +389,22 @@ export default {
   }
 
 
-
 };
 </script>
 
 <style scoped>
-
-@import '../../../node_modules/datatables.net-dt/css/jquery.dataTables.css';
-
 @import "../../../node_modules/bootstrap-vue/dist/bootstrap-vue.css";
+/* @import '../../../node_modules/datatables.net-dt/css/jquery.dataTables.css'; */
+
+@import "../../../node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css";
+/* @import '../../../node_modules/datatables.net-buttons-bs4/css/buttons.bootstrap4.css'; */
+
+
+/* 
+@import '../../assets/datatable/dataTables.bootstrap4.css';
+@import '../../assets/datatable/vendor.bundle.base.css'; */
+/* @import '../../assets/datatable/dataTables.bootstrap4.css'; */
+
 
 
 table {

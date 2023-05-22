@@ -16,13 +16,14 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Droits des Utilisateurs</h4>
-
+            <div class="mx-auto mt-5 mb-5">
+              <router-link to="/user/role/permissions">
+                <button type="submit" class="btn btn-success mr-2">Ajouter</button>
+              </router-link>  
+            </div>
             <form class="forms-sample ">
               <div class="col-md-10 mx-auto row mt-4">
-
-
-
-                <div class="form-group  col-md-10  ">
+                <div class="form-group  col-md-12 ">
                   <label for="exampleFormControlSelect1">Sélectionner un Rôle</label>
                   <select class="form-control   mb-3 " id="exampleFormControlSelect1">
                     <option value="AL">Admin</option>
@@ -31,18 +32,7 @@
                     <option value="AM">Trésorier</option>
                   </select>
                 </div>
-
-
-                <div class="form-group  mx-auto p-1 mt-3">
-                  <b-button class="" v-b-tooltip.hover title="Ajouter un acte" variant="success"> Valider
-
-                  </b-button>
-
-                </div>
-
-
               </div>
-
             </form>
 
 
@@ -94,13 +84,15 @@
                   </tr>
                 </tbody>
               </table>
+              <div class="form-group text-right mx-auto p-1 mt-3">
+                <b-button class="" v-b-tooltip.hover title="Ajouter un acte" variant="success"> Valider
+                </b-button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- modal pour les detailsde chaque ligne -->
   </section>
 </template>
 

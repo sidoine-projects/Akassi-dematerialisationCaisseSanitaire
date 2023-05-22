@@ -16,8 +16,13 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Liste des Rôles Utilisateurs</h4>
+            <div class="mx-auto mt-5 mb-5">
+              <router-link to="/user/role/create">
+                <button type="submit" class="btn btn-success mr-2">Ajouter</button>
+              </router-link>  
+            </div>
             <div class="table-responsive mt-3">
-              <table id="order-listing" class="table">
+              <table id="order-listing" ref="myTable" class="table table-bordered">
                 <thead>
                   <tr style="background-color: rgb(216, 218, 216);">
                     <th>#</th>
@@ -33,21 +38,12 @@
                     <td>Admin a accès à toutes les fonctionnalités de la plateforme</td>
 
                     <td class="text-center">
-
-                      <!-- <b-button size="sm" v-b-tooltip.hover title="Détail" variant="success" @click="showDetail">
-                        <i class="mdi  mdi-file-document text-white menu-icon"></i>
-                      </b-button> -->
-
-
                       <b-button size="sm" v-b-tooltip.hover title="Modifier" variant="warning" @click="showDetail">
                         <i class="mdi mdi mdi-table-edit text-white menu-icon"></i>
                       </b-button>
-
-
                       <b-button size="sm" v-b-tooltip.hover title="Supprimer" variant="danger">
                         <i class="mdi mdi mdi-delete-forever text-white menu-icon"></i>
                       </b-button>
-
                     </td>
                   </tr>
                   <tr>
@@ -56,14 +52,9 @@
                     <td>Le caissier gère les opérations de caisse </td>
 
                     <td class="text-center">
-                      <!-- <b-button size="sm" v-b-tooltip.hover title="Détail" variant="success" >
-                        <i class="mdi  mdi-file-document text-white menu-icon"></i>
-                      </b-button> -->
-
                       <b-button size="sm" v-b-tooltip.hover title="Modifier" variant="warning" @click="showDetail">
                         <i class="mdi mdi mdi-table-edit text-white menu-icon"></i>
                       </b-button>
-
                       <router-link class="" to="/">
                         <b-button size="sm" v-b-tooltip.hover title="Supprimer" variant="danger">
                           <i class="mdi mdi mdi-delete-forever text-white menu-icon"></i>
@@ -91,9 +82,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-
           <div class="modal-body ">
-
             <form class="forms-sample row">
               <div class="col-md-12">
                 <div class="form-group">
@@ -103,14 +92,9 @@
                 <div class="form-group">
                   <label for="exampleInputUsername1">Description</label>
                   <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
-
                 </div>
-
               </div>
-
             </form>
-
-
           </div>
 
           <div class="modal-footer">
@@ -140,10 +124,27 @@
 <script>
 import "@/assets/vendors/mdi/css/materialdesignicons.min.css";
 
+
 import $ from 'jquery';
 
+import * as JSZip from '../../../../node_modules/jszip';
+window.JSZip = JSZip;
+import pdfMake from '../../../../node_modules/pdfmake/build/pdfmake';
+import vfsFonts from '../../../../node_modules/pdfmake/build/vfs_fonts';
+pdfMake.vfs = vfsFonts.pdfMake.vfs;
+import '../../../../node_modules/datatables.net-dt';
+import "../../../../node_modules/datatables.net-bs4/js/dataTables.bootstrap4";
+import "../../../../node_modules/datatables.net-buttons/js/dataTables.buttons";
+import "../../../../node_modules/datatables.net-buttons-bs4/js/buttons.bootstrap4";
+import FrenchTranslation from '@/assets/datatable/French.json';
+import "../../../../node_modules/datatables.net-buttons/js/buttons.html5.js";
+import "../../../../node_modules/datatables.net-buttons/js/buttons.print.js";
+import "../../../../node_modules/datatables.net-buttons/js/buttons.colVis.js";
 import "../../../../node_modules/bootstrap/dist/js/bootstrap.js"; // tres important pour le modal
 import "../../../../node_modules/bootstrap/dist/js/bootstrap.min.js"; // tres important pour le modal
+
+
+require('datatables.net-dt');
 
 export default {
   name: "create-actes-medicaux",
@@ -168,6 +169,53 @@ export default {
 
   },
 
+  mounted () {
+    const table = $(this.$refs.myTable).DataTable({      // dom: '<"html5buttons"B>lTfgtip',
+      dom: '<"row mb-3"<"col-md-12"B>>' +
+        '<"row mb-0"<"col-md-6"l><"col-md-6"f>>' +
+        '<"row"<"col-md-12"tr>>' +
+        '<"row"<"col-md-6"i><"col-md-6"p>>',
+      //  dom: 'Bfrtip',
+      //  dom: 'lBfrtip',
+
+      pageLength: 10, // Définir le nombre de résultats par page
+      language: FrenchTranslation,
+      buttons: [
+
+        {
+          extend: "csvHtml5",                    // Extend the excel button
+
+        },
+        {
+          extend: "excelHtml5",
+   
+
+        },
+
+        {
+          extend: 'pdfHtml5',
+          // className: 'btn btn-primary',
+      
+
+
+
+
+
+        },
+
+        { extend: 'print' },
+        { extend: 'copy' },
+
+      ],
+
+
+    });
+
+    table.buttons().container().prependTo('#myTable_wrapper .col-md-6:eq(0)');
+
+
+  }
+
 
 
 
@@ -177,6 +225,9 @@ export default {
 
 <style scoped>
 @import "../../../../node_modules/bootstrap-vue/dist/bootstrap-vue.css";
+/* @import '../../../node_modules/datatables.net-dt/css/jquery.dataTables.css'; */
+
+@import "../../../../node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css";
 
 table {
   border-collapse: collapse;

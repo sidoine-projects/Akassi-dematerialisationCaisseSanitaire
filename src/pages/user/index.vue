@@ -18,15 +18,15 @@
           <div class="card-body">
 
             <h4 class="card-title, ">Liste des Utilisateurs</h4>
-            <!-- <div class="mx-auto mt-3 mb-4">
-              <button type="submit" class="btn btn-success mr-2">
-                Ajouter
-              </button>
-            </div> -->
+            <div class="mx-auto mt-5 mb-5">
+              <router-link to="/user/create">
+                <button type="submit" class="btn btn-success mr-2">Ajouter</button>
+              </router-link>  
+            </div>
 
             <div class="table-responsive mt-5">
 
-              <table ref="myTable" class="table table-bordered ">
+              <table ref="myTable" class="table table-bordered">
                 <thead>
                   <tr style="background-color: rgb(216, 218, 216);">
                     <th>#</th>
@@ -256,55 +256,20 @@
 
 import $ from 'jquery';
 import * as JSZip from '../../../node_modules/jszip';
-// import '../../../node_modules/jszip';
 window.JSZip = JSZip;
-
 import pdfMake from '../../../node_modules/pdfmake/build/pdfmake';
 import vfsFonts from '../../../node_modules/pdfmake/build/vfs_fonts';
 pdfMake.vfs = vfsFonts.pdfMake.vfs;
-
-
-// import "../../assets/datatable/vendor.bundle.base.js";
-// import "../../assets/datatable/jquery.dataTables.js";
-// import "../../assets/datatable/dataTables.bootstrap4.js";
-// import "../../assets/datatable/data-table.js";
-
 import '../../../node_modules/datatables.net-dt';
-// import '../../../node_modules/datatables.net-bs4';
-// import '../../../node_modules/datatables.net-buttons-bs4';
-
-// import "../../../node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css";
-
 import "../../../node_modules/datatables.net-bs4/js/dataTables.bootstrap4";
-// import '../../../node_modules/datatables.net-buttons-bs4/css/buttons.bootstrap4.css';
-
 import "../../../node_modules/datatables.net-buttons/js/dataTables.buttons";
 import "../../../node_modules/datatables.net-buttons-bs4/js/buttons.bootstrap4";
-
-
-
-
 import FrenchTranslation from '@/assets/datatable/French.json';
-
-
-// import '../../../node_modules/pdfmake/build/pdfmake';
-// import '../../../node_modules/pdfmake/build/vfs_fonts';
-
-
-// import "../../../node_modules/datatables.net-buttons/js/buttons.html5";
 import "../../../node_modules/datatables.net-buttons/js/buttons.html5.js";
-// import "../../../node_modules/datatables.net-buttons/js/buttons.print";
 import "../../../node_modules/datatables.net-buttons/js/buttons.print.js";
-// import "../../../node_modules/datatables.net-buttons/js/buttons.colVis";
 import "../../../node_modules/datatables.net-buttons/js/buttons.colVis.js";
 
 
-// import "bootstrap/dist/js/bootstrap.js";
-// import '../../../node_modules/datatables.net-buttons-bs4/js/buttons.bootstrap4';
-// import '../../../node_modules/datatables.net-buttons-bs4/js/buttons.html5';
-
-// import "../../../node_modules/bootstrap/dist/js/bootstrap.js"; // tres important pour le modal
-// import "../../../node_modules/bootstrap/dist/js/bootstrap.min.js"; // tres important pour le modal
 
 
 require('datatables.net-dt');

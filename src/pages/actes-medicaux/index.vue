@@ -1,9 +1,6 @@
 <template>
   <section class="container-scroller">
     <div class="page-header">
-      <!-- <h3 class="page-title">
-        Bootstrap Table
-      </h3> -->
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item "><a href="javascript:void(0);" class="text-dark font-weight-bold">Paramétrage 
@@ -19,10 +16,15 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Liste des actes médicaux</h4>
+            <div class="mx-auto mt-5 mb-5">
+              <router-link to="/actes-medicaux/create">
+                <button type="submit" class="btn btn-success mr-2">Ajouter</button>
+              </router-link>  
+            </div>
             <div class="table-responsive">
-              <table id="order-listing" class="table">
+              <table id="order-listing" ref="myTable" class="table table-bordered">
                 <thead>
-                  <tr>
+                  <tr  style="background-color: rgb(216, 218, 216);">
                     <th>#</th>
                     <th>Code</th>
                     <th>Libellé</th>
@@ -68,6 +70,27 @@
 <script>
 import "@/assets/vendors/mdi/css/materialdesignicons.min.css";
 
+import $ from 'jquery';
+
+import * as JSZip from '../../../node_modules/jszip';
+window.JSZip = JSZip;
+import pdfMake from '../../../node_modules/pdfmake/build/pdfmake';
+import vfsFonts from '../../../node_modules/pdfmake/build/vfs_fonts';
+pdfMake.vfs = vfsFonts.pdfMake.vfs;
+import '../../../node_modules/datatables.net-dt';
+import "../../../node_modules/datatables.net-bs4/js/dataTables.bootstrap4";
+import "../../../node_modules/datatables.net-buttons/js/dataTables.buttons";
+import "../../../node_modules/datatables.net-buttons-bs4/js/buttons.bootstrap4";
+import FrenchTranslation from '@/assets/datatable/French.json';
+import "../../../node_modules/datatables.net-buttons/js/buttons.html5.js";
+import "../../../node_modules/datatables.net-buttons/js/buttons.print.js";
+import "../../../node_modules/datatables.net-buttons/js/buttons.colVis.js";
+import "../../../node_modules/bootstrap/dist/js/bootstrap.js"; // tres important pour le modal
+import "../../../node_modules/bootstrap/dist/js/bootstrap.min.js"; // tres important pour le modal
+
+
+require('datatables.net-dt');
+
 export default {
   name: "list-actes",
 
@@ -80,10 +103,60 @@ export default {
       ],
     };
   },
+
+  mounted () {
+    const table = $(this.$refs.myTable).DataTable({      // dom: '<"html5buttons"B>lTfgtip',
+      dom: '<"row mb-3"<"col-md-12"B>>' +
+        '<"row mb-0"<"col-md-6"l><"col-md-6"f>>' +
+        '<"row"<"col-md-12"tr>>' +
+        '<"row"<"col-md-6"i><"col-md-6"p>>',
+      //  dom: 'Bfrtip',
+      //  dom: 'lBfrtip',
+
+      pageLength: 10, // Définir le nombre de résultats par page
+      language: FrenchTranslation,
+      buttons: [
+
+        {
+          extend: "csvHtml5",                    // Extend the excel button
+
+        },
+        {
+          extend: "excelHtml5",
+   
+
+        },
+
+        {
+          extend: 'pdfHtml5',
+          // className: 'btn btn-primary',
+      
+
+
+
+
+
+        },
+
+        { extend: 'print' },
+        { extend: 'copy' },
+
+      ],
+
+
+    });
+
+    table.buttons().container().prependTo('#myTable_wrapper .col-md-6:eq(0)');
+  }
 };
 </script>
 
-<style>
+<style scoped>
+
+@import "../../../node_modules/bootstrap-vue/dist/bootstrap-vue.css";
+/* @import '../../../node_modules/datatables.net-dt/css/jquery.dataTables.css'; */
+
+@import "../../../node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css";
 select {
   cursor: pointer;
   height: 43px !important;

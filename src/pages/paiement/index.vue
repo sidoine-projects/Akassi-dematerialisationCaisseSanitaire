@@ -18,10 +18,16 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Liste des dernières Factures</h4>
+            <div class="mx-auto mt-5 mb-5">
+              <router-link to="/payement/create">
+                <button type="submit" class="btn btn-success mr-2">Ajouter</button>
+              </router-link>  
+            </div>
+
             <div class="table-responsive">
-              <table ref="myTable" class="table table-bordered ">
+              <table ref="myTable" class="table table-bordered">
                 <thead>
-                  <tr>
+                  <tr style="background-color: rgb(216, 218, 216);">
                     <th> #</th>
                     <th>Nom</th>
                     <th>Prénom</th>

@@ -65,7 +65,7 @@
                     <td>5 000</td>
                     <td>10 000 </td>
                     <td class="text-center">
-                      <b-button size="sm" v-b-tooltip.hover title="Détail" variant="success" @click="showDetail">
+                      <b-button size="sm" v-b-tooltip.hover title="Détail" variant="info" @click="showDetail">
                         <i class="mdi  mdi-file-document text-white menu-icon"></i>
                       </b-button>
 
@@ -84,7 +84,7 @@
                     <td>6 000</td>
                     <td class="text-center">
 
-                      <b-button size="sm" v-b-tooltip.hover title="Détail" variant="success" @click="showDetail">
+                      <b-button size="sm" v-b-tooltip.hover title="Détail" variant="info" @click="showDetail">
                         <i class="mdi  mdi-file-document text-white menu-icon"></i>
                       </b-button>
 
@@ -101,7 +101,7 @@
                     <td>6 000</td>
                     <td class="text-center">
 
-                      <b-button size="sm" v-b-tooltip.hover title="Détail" variant="success" @click="showDetail">
+                      <b-button size="sm" v-b-tooltip.hover title="Détail" variant="info" @click="showDetail">
                         <i class="mdi  mdi-file-document text-white menu-icon"></i>
                       </b-button>
 
@@ -118,7 +118,7 @@
                     <td>6 000</td>
                     <td class="text-center">
 
-                      <b-button size="sm" v-b-tooltip.hover title="Détail" variant="success" @click="showDetail">
+                      <b-button size="sm" v-b-tooltip.hover title="Détail" variant="info" @click="showDetail">
                         <i class="mdi  mdi-file-document text-white menu-icon"></i>
                       </b-button>
 
@@ -135,7 +135,7 @@
                     <td>6 000</td>
                     <td class="text-center">
 
-                      <b-button size="sm" v-b-tooltip.hover title="Détail" variant="success" @click="showDetail">
+                      <b-button size="sm" v-b-tooltip.hover title="Détail" variant="info" @click="showDetail">
                         <i class="mdi  mdi-file-document text-white menu-icon"></i>
                       </b-button>
 
@@ -322,33 +322,20 @@
 <script>
 
 import $ from 'jquery';
-import * as JSZip from '../../../node_modules/jszip';
-// import '../../../node_modules/jszip';
-window.JSZip = JSZip;
 
+import * as JSZip from '../../../node_modules/jszip';
+window.JSZip = JSZip;
 import pdfMake from '../../../node_modules/pdfmake/build/pdfmake';
 import vfsFonts from '../../../node_modules/pdfmake/build/vfs_fonts';
 pdfMake.vfs = vfsFonts.pdfMake.vfs;
-
 import '../../../node_modules/datatables.net-dt';
-
-
 import "../../../node_modules/datatables.net-bs4/js/dataTables.bootstrap4";
-
-
 import "../../../node_modules/datatables.net-buttons/js/dataTables.buttons";
 import "../../../node_modules/datatables.net-buttons-bs4/js/buttons.bootstrap4";
-
-
-
-
 import FrenchTranslation from '@/assets/datatable/French.json';
 import "../../../node_modules/datatables.net-buttons/js/buttons.html5.js";
-
 import "../../../node_modules/datatables.net-buttons/js/buttons.print.js";
-
 import "../../../node_modules/datatables.net-buttons/js/buttons.colVis.js";
-
 import "../../../node_modules/bootstrap/dist/js/bootstrap.js"; // tres important pour le modal
 import "../../../node_modules/bootstrap/dist/js/bootstrap.min.js"; // tres important pour le modal
 

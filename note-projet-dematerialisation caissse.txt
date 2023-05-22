@@ -2,7 +2,7 @@
 vue create frontend
 cd frontend
 npm run serve
-the applicfation run wzith 8081
+the applicfation run with 8081
 
 np, install vue-router@4
 
@@ -20,8 +20,16 @@ rgba(106,0,138,1)
 
 rgb(12, 105, 43)
 
+Mettre à jour la version de php dans wamp server
+
+-Taper wamp addons file
+-cliquer sur la version  de PHP voulu
+-Aller en haut sur la ligne updates pour mettre à jour aussi wamp server pour pouvoir être compatible avec la dernière versipon de PHP. cliquer sur la dernière version de wamp server
+-Installer egalement la version de phpmyadmin souhaité 
+-Redemarrer les ervices au niveau de wamp
 npm install --save --legacy-peer-deps
 
 nvm install 14.18.0
 nvm use 14.18.0
 https://www.flaticon.com/fr/icones
+

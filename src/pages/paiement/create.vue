@@ -190,6 +190,7 @@
                         </button>
                       </div>
 
+
                     </div>
 
 
@@ -247,13 +248,24 @@
                           placeholder="Montant total">
                       </div>
 
+                
+                    
                       <div class="form-group  p-4  mx-auto ">
                         <button @click="showConfirmationModal" type="button"
                           class="btn btn-success d-flex btn btn-block  btn-block  text-center "><i
                             class="mdi mdi-check-circle-outline menu-icon "></i> <span
                             class="text-center ml-1">Valider</span>
                         </button>
+                             
+                        <!-- <button @click="validationEnCour" type="button"
+                          class="btn btn-success col-md-4 btn btn-block btn-block  text-center"><i
+                            class="mdi mdi-check-circle-outline menu-icon "></i> <span
+                            class="text-center ml-1">cour </span>
+                        </button> -->
                       </div>
+
+                      
+              
                     </div>
 
                   </div>
@@ -319,9 +331,7 @@
                     <img src="@/assets/images/mode-carte.png" alt="patient" class="row col-md-12 mx-auto h-25"
                       style="width:180px;">
 
-
                     <div class="p-2 mt-4 row">
-
                       <div class="form-group col-md-4">
                         <label for="exampleInputEmail1">Nom et Prénom(s)</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nom et Prénom(s)">
@@ -358,7 +368,6 @@
                         <label for="exampleInputEmail1">Date Expiration</label>
                         <input type="month" class="form-control" id="exampleInputEmail1" placeholder="MM/AA">
                       </div>
-
                     </div>
 
                     <div class="row ">
@@ -371,7 +380,6 @@
                         </button>
                       </div>
                     </div>
-
 
                   </div>
 
@@ -407,8 +415,6 @@
             </div>
 
             <div>
-              <!-- <button class="btn btn-primary" @click="showConfirmationModal">Valider les données</button> -->
-
               <div class="modal fade" id="confirmationModalpay" tabindex="-1" role="dialog"
                 aria-labelledby="confirmationModalPayLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -430,6 +436,33 @@
                         <i class="mdi  mdi mdi-cloud-download"></i> Cliquer ici pour
                         imprimer la facture</button>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="modal fade" id="paiementencour" tabindex="-1" role="dialog"
+                aria-labelledby="paiementencourLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="paiementencourLabel">Paiement en cours de validation</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+<!-- 
+                    <div class="modal-body text-center">
+                      <img src="@/assets/images/Capture.PNG" alt="logo" class="w-50">
+                      <p>Paiement en cours de validation ! Veuillez patienter</p>
+                    </div> -->
+
+                    <div class="modal-footer">
+                     
+                    </div>
+
+               
                   </div>
                 </div>
               </div>
@@ -703,6 +736,13 @@ export default {
 
       $('#confirmationModal').modal('hide');
       $('#confirmationModalpay').modal('show');
+
+    },
+
+    validationEnCour() {
+      // Code pour valider les données dans la base de données
+
+      $('#paiementencour').modal('show');
 
     },
 

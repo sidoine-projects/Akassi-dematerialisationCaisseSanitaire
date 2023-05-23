@@ -42,15 +42,6 @@
                                       placeholder="Prénom"
                                   />
                               </div>
-                              <!-- <div class="form-group">
-                                  <label for="exampleInputEmail1">Date de naissance</label>
-                                  <input
-                                      type="date"
-                                      class="form-control"
-                                      id="exampleInputEmail1"
-                                      placeholder="01/07/1990"
-                                  />
-                              </div> -->
                               <div class="form-group">
                                   <label for="exampleInputPassword1">Age</label>
                                   <input
@@ -72,21 +63,6 @@
                           </div>
 
                           <div class="col-md-6">
-                              <!--<div class="form-group">
-                              <label for="exampleFormControlSelect1">Large select</label>
-                                  <select
-                                      class="form-control   mb-3 "
-                                      id="exampleFormControlSelect1"
-                                  >
-                                      <option value="AL">Alabama</option>
-                                      <option value="WY">Wyoming</option>
-                                      <option value="AM">America</option>
-                                      <option value="CA">Canada</option>
-                                      <option value="RU">Russia</option>
-                                      <option value="RU">Russia</option>
-                                  </select>
-                              </div>-->
-
                               <div class="form-group">
                                   <label for="exampleInputConfirmPassword1">Conctact</label>
                                       <input
@@ -123,22 +99,6 @@
                                       placeholder=""
                                   />
                               </div>
-
-                              <!--<div class="form-group form-check">
-                                  <label for="radio" class="">Choisir un élément </label>
-
-                                  <div class="p-3">
-                                      <input type="checkbox" class="demo2" id="demo2" />
-                                      <label for="demo2" class="mx-3" style="font-size: 1rem;"
-                                      >element 1</label
-                                      >
-
-                                      <input type="checkbox" class="demo2 mx-5" id="demo3" />
-                                      <label for="demo3" style="font-size: 1rem;"
-                                      >element 2</label
-                                      >
-                                  </div>
-                              </div>-->
                               <div class="form-group form-check">
                                   <label for="radio" class="">Sexe </label>
                                   <div class="p-2">

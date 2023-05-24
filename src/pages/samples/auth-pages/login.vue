@@ -80,6 +80,12 @@
 <script>
 export default {
   name: "login",
+  mounted() {
+    // Chargez la bibliothèque reCAPTCHA
+    const script = document.createElement("script");
+    script.src = "https://www.google.com/recaptcha/api.js";
+    document.body.appendChild(script);
+  },
 };
 </script>
 

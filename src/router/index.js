@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import layout from '../layout'
 import layout2 from '../layout-2'
+import layout3 from '../Layout-3'
 
 
 Vue.use(Router)
@@ -163,6 +164,17 @@ export default new Router({
       ]
     },
     {
+      path: '/accueil',
+      component: layout3,
+      children: [
+        {
+          path: '',
+          name: 'accueil',
+          component: () => import('@/pages/accueil/accueil')
+        }
+      ]
+    },
+    {
       path: '/payement',
       component: layout,
       children: [
@@ -190,7 +202,7 @@ export default new Router({
       children: [
         {
           path: 'create',
-          name: 'create',
+          name: 'eph-create',
           component: () => import('@/pages/centre-sante/create')
         }
       ]
@@ -201,7 +213,7 @@ export default new Router({
       children: [
         {
           path: 'list',
-          name: 'list',
+          name: 'eph-list',
           component: () => import('@/pages/centre-sante/index')
         }
       ]
@@ -212,7 +224,7 @@ export default new Router({
       children: [
         {
           path: 'create',
-          name: 'create',
+          name: 'actes-create',
           component: () => import('@/pages/actes-medicaux/create')
         }
       ]
@@ -223,7 +235,7 @@ export default new Router({
       children: [
         {
           path: 'list',
-          name: 'list',
+          name: 'actes-list',
           component: () => import('@/pages/actes-medicaux/index')
         }
       ]
@@ -236,7 +248,7 @@ export default new Router({
       children: [
         {
           path: 'create',
-          name: 'create',
+          name: 'users-create',
           component: () => import('@/pages/user/create')
         }
       ]
@@ -249,7 +261,7 @@ export default new Router({
       children: [
         {
           path: 'list',
-          name: 'list',
+          name: 'users-list',
           component: () => import('@/pages/user/index')
         }
       ]
@@ -299,7 +311,7 @@ export default new Router({
       children: [
         {
           path: 'encaissement',
-          name: 'encaissement',
+          name: 'encaissement-create',
           component: () => import('@/pages/tresorerie/encaissement/create')
         }
       ]
@@ -310,7 +322,7 @@ export default new Router({
       children: [
         {
           path: 'decaissement',
-          name: 'decaissement',
+          name: 'decaissement-create',
           component: () => import('@/pages/tresorerie/decaissement/create')
         }
       ]

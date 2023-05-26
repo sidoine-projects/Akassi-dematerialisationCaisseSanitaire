@@ -9,6 +9,10 @@ let getPatient = (id) => {
     return Axios.get('/patients/'+id)
 }
 
+let getPatients = (patient) => {
+    return Axios.get('/patients/'+patient.id,patient)
+}
+
 let addPatients = (credentials) => {
     return Axios.post('/patients', credentials)
 }
@@ -24,6 +28,7 @@ let deletePatient = (id) => {
 export const patientService = {
     getAllpatients,
     getPatient,
+    getPatients,
     addPatients,
     updatePatient,
     deletePatient,

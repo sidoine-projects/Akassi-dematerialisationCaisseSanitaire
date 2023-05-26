@@ -381,40 +381,22 @@ export default {
       pageLength: 10, // Définir le nombre de résultats par page
       language: FrenchTranslation,
       buttons: [
-
         {
           extend: "csvHtml5",                    // Extend the excel button
-
         },
         {
           extend: "excelHtml5",
-   
-
         },
-
         {
           extend: 'pdfHtml5',
           // className: 'btn btn-primary',
-      
-
-
-
-
-
         },
-
         { extend: 'print' },
         { extend: 'copy' },
-
       ],
-
-
     });
 
     table.buttons().container().prependTo('#myTable_wrapper .col-md-6:eq(0)');
-
-
-
   },
 
 
@@ -423,8 +405,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 @import "../../../node_modules/bootstrap-vue/dist/bootstrap-vue.css";
 /* @import '../../../node_modules/datatables.net-dt/css/jquery.dataTables.css'; */
 

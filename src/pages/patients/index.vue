@@ -44,12 +44,11 @@
                     <td>{{ patient.telephone }}</td>
                     <td>{{ patient.adresse }}</td>
                     <td>{{ patient.sexe }}</td>
-                    <td class="text-center" >
-                      <router-link class="" to="/">
-                        <b-button size="sm" v-b-tooltip.hover title="Détail" variant="success">
-                          <i class="mdi  mdi-file-document text-white menu-icon"></i>
-                        </b-button>
-                      </router-link>
+                    <td class="text-center" >    
+                      <b-button  @click="detail(patient)" size="sm" v-b-tooltip.hover title="Détail" variant="info">
+                        <i class="mdi mdi-file-document text-white menu-icon"></i>
+                      </b-button>
+
                       <b-button @click="update(patient.id)" size="sm" v-b-tooltip.hover title="Modifier" variant="warning">
                         <i class="mdi mdi mdi-table-edit text-white menu-icon"></i>
                       </b-button>
@@ -61,6 +60,141 @@
                   </tr>
                 </tbody>
               </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade " id="showDetail" tabindex="-1" role="dialog" aria-labelledby="showDetailLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="alert alert-success" role="alert">
+            <p class="text-center">Informations concernant le patient {{ this.id }}</p>
+          </div>
+          <div class="modal-body">
+            <div class="row text-center mx-auto">
+              <div class="col-sm-12 d-flex">
+                <div class="col-sm-6 text-right">
+                  <h5 class="modal-title ">Nom : </h5>
+                </div>
+                <div class="col-sm-6 col-md-6 text-left">
+                  <p class="modal-title ">{{ this.nom }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="row text-center mx-auto">
+              <div class="col-sm-12 d-flex">
+                <div class="col-sm-6 text-right">
+                  <h5 class="modal-title ">Prénom : </h5>
+                </div>
+                <div class="col-sm-6 col-md-6  text-left">
+                  <p class="modal-title ">{{ this.prenom }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="row text-center mx-auto">
+              <div class="col-sm-12 d-flex">
+                <div class="col-sm-6 text-right">
+                  <h5 class="modal-title ">Age : </h5>
+                </div>
+                <div class="col-sm-6 col-md-6  text-left">
+                  <p class="modal-title ">{{ this.age }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="row text-center mx-auto">
+              <div class="col-sm-12 d-flex">
+                <div class="col-sm-6 text-right">
+                  <h5 class="modal-title ">Adresse : </h5>
+                </div>
+                <div class="col-sm-6 col-md-6  text-left">
+                  <p class="modal-title ">{{ this.adresse }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="row text-center mx-auto">
+              <div class="col-sm-12 d-flex">
+                <div class="col-sm-6 text-right">
+                  <h5 class="modal-title ">Email : </h5>
+                </div>
+                <div class="col-sm-6 col-md-6  text-left">
+                  <p class="modal-title ">{{ this.email }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="row text-center mx-auto">
+              <div class="col-sm-12 d-flex">
+                <div class="col-sm-6 text-right">
+                  <h5 class="modal-title ">Téléphone : </h5>
+                </div>
+                <div class="col-sm-6 col-md-6  text-left">
+                  <p class="modal-title ">{{ this.telephone }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="row text-center mx-auto">
+              <div class="col-sm-12 d-flex">
+                <div class="col-sm-6 text-right">
+                  <h5 class="modal-title ">Numéro Whatsapp : </h5>
+                </div>
+                <div class="col-sm-6 col-md-6  text-left">
+                  <p class="modal-title ">{{ this.whatsapp }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="row text-center mx-auto">
+              <div class="col-sm-12 d-flex">
+                <div class="col-sm-6 text-right">
+                  <h5 class="modal-title ">Numéro d'Urgence : </h5>
+                </div>
+                <div class="col-sm-6 col-md-6  text-left">
+                  <p class="modal-title ">{{ this.urgencecontact }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="row text-center mx-auto">
+              <div class="col-sm-12 d-flex">
+                <div class="col-sm-6 text-right">
+                  <h5 class="modal-title ">Profession : </h5>
+                </div>
+                <div class="col-sm-6 col-md-6  text-left">
+                  <p class="modal-title ">{{ this.profession }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="row text-center mx-auto">
+              <div class="col-sm-12 d-flex">
+                <div class="col-sm-6 text-right">
+                  <h5 class="modal-title ">Sexe : </h5>
+                </div>
+                <div class="col-sm-6 col-md-6  text-left">
+                  <p class="modal-title ">{{ this.sexe }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="row text-center mx-auto">
+              <div class="col-sm-12 d-flex">
+                <div class="col-sm-6 text-right">
+                  <h5 class="modal-title ">Autres Informations : </h5>
+                </div>
+                <div class="col-sm-6 col-md-6 text-left">
+                  <p class="modal-title mx-auto">{{ this.autre }}</p>
+                </div>
+              </div>
+            </div>
+          </div> 
+
+          <div class="modal-footer">
+            <div class="mx-auto">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
             </div>
           </div>
         </div>
@@ -100,29 +234,18 @@ export default {
   data(){
     return {
       patients: [],
-      table: null
+      table: null,
+      nom: '', prenom: '', age: '', adresse: '', telephone: '', email: '', whatsapp: '', profession: '', sexe: '',
+      urgencecontact: '', autre: '', id: '',
+      // nom, prenom, age, adresse, telephone, email, whatsapp, profession, sexe, urgencecontact, autre,
     }
   },
-
-  methods: {
-    update(id) {
-      this.$router.push('/patients/update/'+id)
-    },
-    supprimer(index) {
-      console.log(index)
-      patientService.deletePatient(this.patients[index].id)
-        .then(res => {
-          this.patients.splice(index, 1)
-          console.log(res)
-        })
-        .catch(err => {
-          console.log(err)
-        })
-        
-    }
-  },
-
   mounted() {
+    patientService.getPatient(this.id)
+      .then(res => {
+        this.patient = res.data.data
+        this.patient.id = this.id
+      })
     patientService.getAllpatients()
       .then(res => {
         this.patients = res.data.data;
@@ -155,7 +278,39 @@ export default {
         })
         table.buttons().container().prependTo('#myTable_wrapper .col-md-6:eq(0)');
       })
-    }
+  },
+  methods: {
+    detail(patient) {
+      this.id = patient.id
+      this.nom = patient.nom
+      this.prenom = patient.prenom
+      this.age = patient.age
+      this.adresse = patient.adresse
+      this.telephone = patient.telephone
+      this.email = patient.email
+      this.whatsapp = patient.whatsapp
+      this.profession = patient.profession
+      this.sexe = patient.sexe
+      this.urgencecontact = patient.urgencecontact
+      this.autre = patient.autre
+      $('#showDetail').modal('show');
+    },
+    update(id) {
+      this.$router.push('/patients/update/'+id)
+    },
+    supprimer(index) {
+      console.log(index)
+      patientService.deletePatient(this.patients[index].id)
+        .then(res => {
+          this.patients.splice(index, 1)
+          console.log(res)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+      }
+  },
+
 };
 
 

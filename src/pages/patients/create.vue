@@ -1,13 +1,20 @@
 <template>
     <section class="container-scroller">
-        <!-- <div class="col-md-12 toast-container top-0 start-0 p-4">
-            <div class="toast text-bg-danger border-0" v-if="wrong >0">
-                <b>Merci de corriger vos données</b>
-            </div>
-        </div> -->
-        <div class="col-md-12 toast-container top-0 start-0 p-4">
-            <div class="toast text-bg-danger border-0">
-                <p>Message de succès</p>
+        <div class="row">
+            <div class="col-12 grid-margin">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Jquery-toast styles</h4>
+                        <p class="card-description mb-0"> Click on the below buttons for notifications in different styles. </p>
+                        <p class="card-description"> The <code>icon</code> property can be used to specify the predefined types of toasts - success, info, warning and danger </p>
+                        <div class="template-demo d-lg-flex justify-content-between">
+                            <button type="button" class="btn btn-gradient-success btn-fw" onclick="showSuccessToast()">Success</button>
+                            <button type="button" class="btn btn-gradient-info btn-fw" onclick="showInfoToast()">Info</button>
+                            <button type="button" class="btn btn-gradient-warning btn-fw" onclick="showWarningToast()">Warning</button>
+                            <button type="button" class="btn btn-gradient-danger btn-fw" onclick="showDangerToast()">Danger</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="page-header">
@@ -42,6 +49,9 @@
                                         placeholder="Nom"
                                         v-model="patient.nom"
                                     />
+                                    <ul v-for="nom in errorNom" :key="nom">
+                                        <li class="text-danger">{{ nom }}</li>
+                                    </ul>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">Prénom(s)</label>
@@ -52,6 +62,9 @@
                                         placeholder="Prénom"
                                         v-model="patient.prenom"
                                     />
+                                    <ul v-for="prenom in errorPrenom" :key="prenom">
+                                        <li class="text-danger">{{ prenom }}</li>
+                                    </ul>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Age</label>
@@ -62,6 +75,9 @@
                                         placeholder="67"
                                         v-model="patient.age"
                                     />
+                                    <ul v-for="age in errorAge" :key="age">
+                                        <li class="text-danger">{{ age }}</li>
+                                    </ul>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Adresse</label>
@@ -72,6 +88,9 @@
                                         placeholder="Cotonou Sainte Rita C/574 M/DeGaules"
                                         v-model="patient.adresse"
                                     />
+                                    <ul v-for="adresse in errorAdresse" :key="adresse">
+                                        <li class="text-danger">{{ adresse }}</li>
+                                    </ul>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Email</label>
@@ -82,6 +101,9 @@
                                         placeholder="xyz@example.com"
                                         v-model="patient.email"
                                     />
+                                    <ul v-for="email in errorEmail" :key="email">
+                                        <li class="text-danger">{{ email }}</li>
+                                    </ul>
                                 </div>
                             </div>
 
@@ -95,6 +117,9 @@
                                             placeholder="90098989"
                                             v-model="patient.telephone"
                                         />
+                                        <ul v-for="telephone in errorTelephone" :key="telephone">
+                                            <li class="text-danger">{{ telephone }}</li>
+                                        </ul>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputConfirmPassword1">Numéro Whatsapp</label>
@@ -105,6 +130,9 @@
                                             placeholder="90098989"
                                             v-model="patient.whatsapp"
                                         />
+                                        <ul v-for="whatsapp in errorWhatsapp" :key="whatsapp">
+                                            <li class="text-danger">{{ whatsapp }}</li>
+                                        </ul>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Conctact d'Urgence</label>
@@ -115,6 +143,9 @@
                                         placeholder="90989098"
                                         v-model="patient.urgencecontact"
                                     />
+                                    <ul v-for="urgencecontact in errorUrgenceContact" :key="urgencecontact">
+                                        <li class="text-danger">{{ urgencecontact }}</li>
+                                    </ul>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputConfirmPassword1">Profession</label>
@@ -125,6 +156,9 @@
                                         placeholder="Comptable"
                                         v-model="patient.profession"
                                     />
+                                    <ul v-for="profession in errorProfession" :key="profession">
+                                        <li class="text-danger">{{ profession }}</li>
+                                    </ul>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputConfirmPassword1">Autres informations</label>
@@ -138,6 +172,9 @@
                                 </div>
                                 <div class="form-group form-check">
                                     <label for="radio" class="">Sexe</label>
+                                    <ul v-for="sexe in errorSexe" :key="sexe">
+                                        <li class="text-danger">{{ sexe }}</li>
+                                    </ul>
                                     <div class="p-2">
                                         <input
                                             type="radio"
@@ -159,6 +196,7 @@
                                         />
                                         <label for="demo6-b" class="mx-3" style="font-size: 1rem;">Masculin</label>
                                     </div>
+                                   
                                 </div>
                             </div>
 
@@ -176,7 +214,10 @@
 
 <script>
     import { patientService } from '@/_services'
-    import "@/assets/vendors/mdi/css/materialdesignicons.min.css";
+    import $ from 'jquery';
+
+    // import "@/assets/vendors/mdi/css/materialdesignicons.min.css";
+    import "@/assets/js/toastDemo.js"
 
     export default {
     name: "create-patient",
@@ -221,7 +262,7 @@
         store(){
             patientService.addPatients(this.patient)
                 .then(res => {
-                    console.log(res)
+                    this.$toast.success(`Patient créé avec succès`);
                     this.$router.push('/patients/list')
                 })
                 .catch(err => {
@@ -230,6 +271,8 @@
                     let size = Object.keys($faute).length;
                     console.log(size)
                     this.wrong = size
+                    console.log(this.errorNom)
+                    console.log(this.errorAdresse)
 
                     if(this.wrong > 0) {
                         this.errorNom = $faute.nom
@@ -254,9 +297,10 @@
                                                     if(this.errorProfession){
                                                         if(this.errorSexe){
                                                             if(this.errorUrgenceContact){
-                                                                if(this.errorautre){
-                                                                    this.$router.push('/patients/create')
-                                                                }
+                                                            if(this.errorautre){
+                                                                this.$router.push('/patients/create')
+                                                            }
+                                                               
                                                             }
                                                         }
                                                     }
@@ -275,6 +319,7 @@
     }
 };
 </script>
+<!-- <script src="@/assets/js/toastDemo.js"></script> -->
 
 <style>
 select {

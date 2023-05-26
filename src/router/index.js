@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+
 import layout from '../layout'
 import layout2 from '../layout-2'
 import layout3 from '../Layout-3'

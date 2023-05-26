@@ -201,7 +201,7 @@
                             </div>
 
                             <div class="mx-auto">
-                                <button type="submit" class="btn btn-success mr-2" id="toastTrigger">Ajouter</button>
+                                <button type="submit" class="btn btn-success mr-2">Ajouter</button>
                                 <button class="btn btn-danger">Cancel</button>
                             </div>
                         </form>
@@ -262,7 +262,6 @@
         store(){
             patientService.addPatients(this.patient)
                 .then(res => {
-                    this.$toast.success(`Patient créé avec succès`);
                     this.$router.push('/patients/list')
                 })
                 .catch(err => {
@@ -297,10 +296,9 @@
                                                     if(this.errorProfession){
                                                         if(this.errorSexe){
                                                             if(this.errorUrgenceContact){
-                                                            if(this.errorautre){
-                                                                this.$router.push('/patients/create')
-                                                            }
-                                                               
+                                                                if(this.errorautre){
+                                                                    this.$router.push('/patients/create')
+                                                                }     
                                                             }
                                                         }
                                                     }

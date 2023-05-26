@@ -1,15 +1,5 @@
 <template>
     <section class="container-scroller">
-        <!-- <div class="col-md-12 toast-container top-0 start-0 p-4">
-            <div class="toast text-bg-danger border-0" v-if="wrong >0">
-                <b>Merci de corriger vos données</b>
-            </div>
-        </div> -->
-        <div class="col-md-12 toast-container top-0 start-0 p-4">
-            <div class="toast text-bg-danger border-0">
-                <p>Message de succès</p>
-            </div>
-        </div>
         <div class="page-header">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -31,7 +21,12 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Ajouter un patient</h4>
-                        <form class="forms-sample row" @submit.prevent="store">
+                        <form class="forms-sample row" @submit.prevent="update">
+                            <div class="col-md-12">
+                                <p v-if="wrong >0">
+                                    <b>Merci de corriger vos données</b>
+                                </p>
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">Nom</label>
@@ -163,7 +158,7 @@
                             </div>
 
                             <div class="mx-auto">
-                                <button type="submit" class="btn btn-success mr-2" id="toastTrigger">Ajouter</button>
+                                <button type="submit" class="btn btn-success mr-2">Modifier</button>
                                 <button class="btn btn-danger">Cancel</button>
                             </div>
                         </form>
@@ -175,33 +170,17 @@
 </template>
 
 <script>
-    import { patientService } from '@/_services'
-    import "@/assets/vendors/mdi/css/materialdesignicons.min.css";
+import { patientService } from '@/_services'
+import "@/assets/vendors/mdi/css/materialdesignicons.min.css";
 
-    export default {
+export default {
     name: "create-patient",
-
+    props: ['id'],
     data() {
         return {
             selected: "",
     
-            patient: {
-                id: '',
-                nom: '',
-                prenom: '',
-                age: '',
-                adresse: '',
-                telephone: '',
-                email: '',
-                whatsapp: '',
-                profression: '',
-                sexe: [
-                    { item: "F", name: " Feminin" },
-                    { item: "M", name: " Masculin" },
-                ],
-                urgencecontact: '',
-                autre: ''
-            },
+            patient: {},
             wrong: '',
             errorNom: [],
             errorPrenom: [],
@@ -217,18 +196,22 @@
 
         };
     },
+    mounted() {
+        patientService.getPatient(this.id)
+            .then(res => {
+                this.patient = res.data.data
+                this.patient.id = this.id
+            })
+    },
     methods: {
-        store(){
-            patientService.addPatients(this.patient)
+        update() {
+            patientService.updatePatient(this.patient)
                 .then(res => {
-                    console.log(res)
                     this.$router.push('/patients/list')
                 })
                 .catch(err => {
                     let $faute = err.response.data.errors
-                    console.log($faute)
                     let size = Object.keys($faute).length;
-                    console.log(size)
                     this.wrong = size
 
                     if(this.wrong > 0) {
@@ -243,20 +226,20 @@
                         this.errorSexe = $faute.sexe
                         this.errorUrgenceContact = $faute.urgencecontact
                         this.errorautre = $faute.autre
+                    }
 
-                        if (this.errorNom) {
-                            if(this.errorPrenom){
-                                if(this.errorAge){
-                                    if(this.errorAdresse){
-                                        if(this.errorTelephone){
-                                            if(this.errorEmail){
-                                                if(this.errorWhatsapp){
-                                                    if(this.errorProfession){
-                                                        if(this.errorSexe){
-                                                            if(this.errorUrgenceContact){
-                                                                if(this.errorautre){
-                                                                    this.$router.push('/patients/create')
-                                                                }
+                    if (this.errorNom) {
+                        if(this.errorPrenom){
+                            if(this.errorAge){
+                                if(this.errorAdresse){
+                                    if(this.errorTelephone){
+                                        if(this.errorEmail){
+                                            if(this.errorWhatsapp){
+                                                if(this.errorProfession){
+                                                    if(this.errorSexe){
+                                                        if(this.errorUrgenceContact){
+                                                            if(this.errorautre){
+                                                                this.$router.push('/patients/create')
                                                             }
                                                         }
                                                     }
@@ -267,12 +250,10 @@
                                 }
                             }
                         }
-
                     }
                 })
-                    
-        } 
-    }
+        }
+    }              
 };
 </script>
 

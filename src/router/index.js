@@ -153,6 +153,18 @@ export default new Router({
       ]
     },
     {
+      path: '/patients',
+      component: layout,
+      children: [
+        {
+          path: 'update/:id(\\d+)',
+          name: 'update',
+          component: () => import('@/pages/patients/update'),
+          props: true
+        }
+      ]
+    },
+    {
       path: '/',
       component: layout2,
       children: [
@@ -168,7 +180,7 @@ export default new Router({
       component: layout3,
       children: [
         {
-          path: '',
+          path: '/accueil',
           name: 'accueil',
           component: () => import('@/pages/accueil/accueil')
         }

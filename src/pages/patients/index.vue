@@ -36,42 +36,27 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="patient in patients" :key="patient.id">
-                    <td>1</td>
-                    <!-- <td>{{ patient.id }}</td> -->
-                    <!-- <td>{{ patient.nom }}</td> -->
-                    <td>Dyndu</td>
-                    <td>Black</td>
-                    <!-- <td>{{ patient.prenom }}</td> -->
-                    <td>23</td>
-                    <!-- <td>{{ patient.age }}</td> -->
+                  <tr v-for="(patient, index) in patients" :key="patient.id">
+                    <td>{{ patient.id }}</td>
+                    <td>{{ patient.nom }}</td>
+                    <td>{{ patient.prenom }}</td>
+                    <td>{{ patient.age }}</td>
                     <td>{{ patient.telephone }}</td>
                     <td>{{ patient.adresse }}</td>
-                    <td>Masculin</td>
-                    <!-- <td>{{ patient.sexe }}</td> -->
-                    <!-- <td>1</td>
-                    <td>Sidoine</td>
-                    <td>Sidoine</td>
-                    <td>23</td>
-                    <td>dfdf</td>
-                    <td>ff</td>
-                    <td>fff</td> -->
+                    <td>{{ patient.sexe }}</td>
                     <td class="text-center" >
                       <router-link class="" to="/">
                         <b-button size="sm" v-b-tooltip.hover title="Détail" variant="success">
                           <i class="mdi  mdi-file-document text-white menu-icon"></i>
                         </b-button>
                       </router-link>
-                      <router-link class="" to="/">
-                        <b-button size="sm" v-b-tooltip.hover title="Modifier" variant="warning">
-                          <i class="mdi mdi mdi-table-edit text-white menu-icon"></i>
-                        </b-button>
-                      </router-link>
-                      <router-link class="" to="/">
-                        <b-button size="sm" v-b-tooltip.hover title="Supprimer" variant="danger">
-                          <i class="mdi mdi mdi-delete-forever text-white menu-icon"></i>
-                        </b-button>
-                      </router-link>
+                      <b-button @click="update(patient.id)" size="sm" v-b-tooltip.hover title="Modifier" variant="warning">
+                        <i class="mdi mdi mdi-table-edit text-white menu-icon"></i>
+                      </b-button>
+                      
+                      <b-button @click="supprimer(index)" size="sm" v-b-tooltip.hover title="Supprimer" variant="danger">
+                        <i class="mdi mdi mdi-delete-forever text-white menu-icon"></i>
+                      </b-button>
                     </td>
                   </tr>
                 </tbody>
@@ -118,43 +103,59 @@ export default {
       table: null
     }
   },
-  mounted() {
-    const table = $(this.$refs.myTable).DataTable({      // dom: '<"html5buttons"B>lTfgtip',
-      // dom: '<"row mb-3"<"col-md-12"B>>' +
-      //   '<"row mb-0"<"col-md-6"l><"col-md-6"f>>' +
-      //   '<"row"<"col-md-12"tr>>' +
-      //   '<"row"<"col-md-6"i><"col-md-6"p>>',
-      dom: 'Bfrtip',
-      pageLength: 10, // Définir le nombre de résultats par page
-      language: FrenchTranslation,
-      buttons: [
-        {
-          extend: "csvHtml5",                    // Extend the excel button
-        },
-        {
-          extend: "excelHtml5",
-        },
-        {
-          extend: 'pdfHtml5',
-          // className: 'btn btn-primary',
-        },
-        { extend: 'print' },
-        { extend: 'copy' },
-      ],
-    });
-    table.buttons().container().prependTo('#myTable_wrapper .col-md-6:eq(0)');
 
-    patientService.getAllpatients()
-      .then(res => {
-        console.log(res.data.data)
-        this.patients = res.data.data
-      })
-      .catch(err => console.log(err))
-
+  methods: {
+    update(id) {
+      this.$router.push('/patients/update/'+id)
+    },
+    supprimer(index) {
+      console.log(index)
+      patientService.deletePatient(this.patients[index].id)
+        .then(res => {
+          this.patients.splice(index, 1)
+          console.log(res)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+        
+    }
   },
 
+  mounted() {
+    patientService.getAllpatients()
+      .then(res => {
+        this.patients = res.data.data;
+        this.$nextTick(() => {
+          const table = $(this.$refs.myTable).DataTable({      // dom: '<"html5buttons"B>lTfgtip',
+            dom: '<"row mb-3"<"col-md-12"B>>' +
+              '<"row mb-0"<"col-md-6"l><"col-md-6"f>>' +
+              '<"row"<"col-md-12"tr>>' +
+              '<"row"<"col-md-6"i><"col-md-6"p>>',
 
+            // dom: 'Bfrtip',
+            pageLength: 10, // Définir le nombre de résultats par page
+            language: FrenchTranslation,
 
+            buttons: [
+              {
+                extend: "csvHtml5",                    // Extend the excel button
+              },
+              {
+                extend: "excelHtml5",
+              },
+              {
+                extend: 'pdfHtml5',
+                // className: 'btn btn-primary',
+              },
+              { extend: 'print' },
+              { extend: 'copy' },
+            ],
+          });
+        })
+        table.buttons().container().prependTo('#myTable_wrapper .col-md-6:eq(0)');
+      })
+    }
 };
 
 

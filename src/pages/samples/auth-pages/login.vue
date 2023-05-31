@@ -329,7 +329,7 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100px;
-  margin-right: 78px;
+  margin-right: 74px;
 }
 }
 </style>

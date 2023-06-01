@@ -65,16 +65,15 @@
                         aria-describedby="basic-addon1"
                       />
                     </div>
-                    
-                    
-                  <div class="recaptcha-container">
-                    <VueRecaptcha
-                      :sitekey="siteKey"
-                      :load-recaptcha-script="true"
-                      @verify="handleSuccess"
-                      @error="handleError"
-                    ></VueRecaptcha>
-                  </div>
+
+                    <div class="recaptcha-container">
+                      <VueRecaptcha
+                        :sitekey="siteKey"
+                        :load-recaptcha-script="true"
+                        @verify="handleSuccess"
+                        @error="handleError"
+                      ></VueRecaptcha>
+                    </div>
 
                     <div class="mt-n2 p-2">
                       <button
@@ -325,11 +324,11 @@ export default {
     -webkit-transform-origin: 0 0;
   } */
   .recaptcha-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-  margin-right: 74px;
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    margin-right: 74px;
+  }
 }
 </style>

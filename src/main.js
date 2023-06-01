@@ -7,8 +7,8 @@ import VueSweetalert2 from "vue-sweetalert2";
 import Toast, { POSITION } from "vue-toastification";
 import "vue-toastification/dist/index.css";
 
-// import "bootstrap/dist/css/bootstrap.css";
-// import "bootstrap/dist/js/bootstrap.js";
+// import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap/dist/js/bootstrap.js'
 
 Vue.use(BootstrapVue);
 Vue.use(VueSweetalert2);

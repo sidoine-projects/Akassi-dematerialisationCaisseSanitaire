@@ -29,7 +29,7 @@
 
             <img src="@/assets/images/setting.png" alt="patient" style="width: 1rem; height: 1rem; ">
           </span>
-          <b-collapse accordion="sidebar-accordion"  id="ui-basic">
+          <b-collapse accordion="sidebar-accordion" id="ui-basic">
             <ul class="nav flex-column sub-menu">
               <li class="nav-item">
                 <router-link class="nav-link" to="/user/list">Utilisateurs</router-link>
@@ -46,6 +46,10 @@
               <li class="nav-item">
                 <router-link class="nav-link" to="/actes-medicaux/list">Actes médicaux</router-link>
               </li>
+              <li class="nav-item">
+                <router-link class="nav-link" to="/indigence/list">Indigences</router-link>
+              </li>
+
             </ul>
           </b-collapse>
         </li>
@@ -55,10 +59,23 @@
             <span class="nav-link" v-b-toggle="'patients'">
               <span class="menu-title">Gestion des patients</span>
               <i class="menu-arrow"></i>
+              <img src="@/assets/images/patients.png" alt="patient" style="width: 1rem; height: 1rem; ">
+            </span>
+          </router-link>
+        </li>
+
+
+        <li class="nav-item">
+          <router-link to="/indigence-patient/list-indigence-patient" style="text-decoration: none;">
+            <span class="nav-link" v-b-toggle="'indigence-patients'">
+              <span class="menu-title">Indigences Patient</span>
+              <i class="menu-arrow"></i>
               <img src="@/assets/images/patient.png" alt="patient" style="width: 1rem; height: 1rem; ">
             </span>
           </router-link>
         </li>
+
+
 
         <li class="nav-item">
           <router-link to="/payement/list" style="text-decoration: none;">
@@ -97,9 +114,12 @@
           </router-link>
         </li>
 
+
+
         <li class="nav-item sidebar-actions">
           <span class="nav-link">
-            <button class="btn btn-block btn-gradient-danger pt-3   mx-auto text-center"><i class="mdi mdi-power text-white "></i>
+            <button class="btn btn-block btn-gradient-danger pt-3   mx-auto text-center"><i
+                class="mdi mdi-power text-white "></i>
               Déconnexion</button>
           </span>
         </li>

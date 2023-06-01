@@ -16,6 +16,7 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Ajouter un paiement</h4>
+
             <form class="forms-sample p-2">
 
               <fieldset class="scheduler-border row col-md-12">
@@ -42,12 +43,13 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Sexe</label>
-                    <input readonly type="password" class="form-control" id="exampleInputPassword1" placeholder="Sexe">
+                    <label for="exampleInputPassword1">Assurance</label>
+                    <input readonly type="text" class="form-control" id="exampleInputPassword1" placeholder="Assurance">
                   </div>
-
-
-
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">indigence</label>
+                    <input readonly type="text" class="form-control" id="exampleInputPassword1" placeholder="indigence">
+                  </div>
 
                 </div>
                 <div class="control-group p-2 col-md-6">
@@ -56,13 +58,18 @@
                     <input readonly type="email" class="form-control" id="exampleInputEmail1" placeholder="Age">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Adresse</label>
+                    <label for="exampleInputEmail1">Sexe</label>
                     <input readonly type="email" class="form-control" id="exampleInputEmail1" placeholder="Adresse">
                   </div>
 
                   <div class="form-group">
-                    <label for="exampleInputUsername1">Profession</label>
-                    <input readonly type="text" class="form-control" id="exampleInputUsername1" placeholder="Profession">
+                    <label for="exampleInputUsername1">Montant Assurance</label>
+                    <input readonly type="text" class="form-control" id="exampleInputUsername1" placeholder="Montant Assurance">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="exampleInputUsername1">Montant Indigence</label>
+                    <input readonly type="text" class="form-control" id="exampleInputUsername1" placeholder="Montant Indigence<">
                   </div>
 
 
@@ -72,7 +79,7 @@
               <fieldset class="scheduler-border container-fluid col-md-12">
                 <legend class="scheduler-border" style="font-size: medium !important;">Informations Paiement</legend>
 
-
+                <!-- ----------------------------------pour ajouter dynamiquement une acte médical---------------------------------------------------- -->
                 <div class="control-group mt-2 p-2" id="app">
                   <div class="row" v-for="(form, index) in forms" :key="index">
 
@@ -90,33 +97,40 @@
                       </select>
                     </div>
 
-                    <div class="form-group col-md-2">
-                      <label for="exampleInputEmail1">Code</label>
-                      <input type="email" value="FD01003" class="form-control" id="exampleInputEmail1"
-                        :readonly="form.readonly" placeholder="Code" v-model="form.code">
-                    </div>
-                    <div class="form-group col-md-2">
-                      <label for="exampleInputUsername1">Prix</label>
-                      <input :readonly="form.readonly" type="text" value="2000" class="form-control"
-                        id="exampleInputUsername1" placeholder="prix" v-model="form.prix">
-                    </div>
-                    <div class="form-group col-md-2">
-                      <label for="exampleInputUsername1">Quantité</label>
-                      <input type="number" value="1" class="form-control" id="exampleInputUsername1"
-                        placeholder="Quantité" v-model="form.quantite">
-                    </div>
-                    <div class="form-group col-md-2">
-                      <label for="exampleInputUsername1">Montant</label>
-                      <input readonly type="text" value="2000" class="form-control" id="exampleInputUsername1"
-                        placeholder="Montant" v-model="form.montant">
-                    </div>
-
-                    <div v-if="form.acte === 'autre'" class="col-md-12 mb-2 ">
+                    <div v-if="form.acte === 'autre'" class="col-md-8 mb-2">
                       <label for="exampleInputUsername1">Autre</label>
 
                       <input type="text" value="" class="form-control" id="" placeholder="Autre" v-model="form.autre">
 
                     </div>
+
+
+
+                    <div class="form-group" :class="form.acte === 'autre' ? 'col-md-3 mb-2' : 'col-md-2 mb-2'">
+                      <label for="exampleInputEmail1">Code</label>
+                      <input type="email" value="FD01003" class="form-control" id="exampleInputEmail1"
+                        :readonly="form.readonly" placeholder="Code" v-model="form.code">
+                    </div>
+
+                    <div class="form-group "  :class="form.acte === 'autre' ? 'col-md-3 mb-2' : 'col-md-2 mb-2'">
+                      <label for="exampleInputUsername1">Prix</label>
+                      <input :readonly="form.readonly" type="text" value="2000" class="form-control"
+                        id="exampleInputUsername1" placeholder="prix" v-model="form.prix">
+                    </div>
+                    <div class="form-group "  :class="form.acte === 'autre' ? 'col-md-3 mb-2' : 'col-md-2 mb-2'">
+                      <label for="exampleInputUsername1">Quantité</label>
+                      <input type="number" value="1" class="form-control" id="exampleInputUsername1"
+                        placeholder="Quantité" v-model="form.quantite">
+                    </div>
+                    <div class="form-group" :class="form.acte === 'autre' ? 'col-md-3 mb-2' : 'col-md-2 mb-2'">
+                      <label for="exampleInputUsername1">Montant</label>
+                      <input readonly type="text" value="2000" class="form-control" id="exampleInputUsername1"
+                        placeholder="Montant" v-model="form.montant">
+                    </div>
+
+
+
+
                     <!-- <div class="form-group col-md-1" style="margin-top: 1.7rem;"> -->
                     <div class="form-group col-md-1">
                       <b-button size="sm" v-b-tooltip.hover title="Supprimer" variant="danger"
@@ -129,6 +143,8 @@
 
 
                 </div>
+
+                <!-- ----------------------------------pour ajouter dynamiquement une acte médical---------------------------------------------------- -->
 
 
 
@@ -223,11 +239,11 @@
                           placeholder="Montant total">
                       </div>
 
-                      <div class="form-group mx-auto p-2 " >
+                      <div class="form-group mx-auto p-2 ">
                         <button @click="validateData" type="button"
-                          class="btn btn-success d-flex mx-auto btn btn-block text-center btn-block  text-center"
-                        ><i class="mdi mdi-check-circle-outline menu-icon "></i>
-                          <span class="text-center ml-1" >Valider</span>
+                          class="btn btn-success d-flex mx-auto btn btn-block text-center btn-block  text-center"><i
+                            class="mdi mdi-check-circle-outline menu-icon "></i>
+                          <span class="text-center ml-1">Valider</span>
                         </button>
                       </div>
 
@@ -248,15 +264,15 @@
                           placeholder="Montant total">
                       </div>
 
-                
-                    
+
+
                       <div class="form-group  p-4  mx-auto ">
                         <button @click="showConfirmationModal" type="button"
                           class="btn btn-success d-flex btn btn-block  btn-block  text-center "><i
                             class="mdi mdi-check-circle-outline menu-icon "></i> <span
                             class="text-center ml-1">Valider</span>
                         </button>
-                             
+
                         <!-- <button @click="validationEnCour" type="button"
                           class="btn btn-success col-md-4 btn btn-block btn-block  text-center"><i
                             class="mdi mdi-check-circle-outline menu-icon "></i> <span
@@ -264,67 +280,11 @@
                         </button> -->
                       </div>
 
-                      
-              
+
                     </div>
 
                   </div>
 
-                  <div v-if="selectedOption === 'option5'" class="control-group">
-
-                    <img src="@/assets/images/mode-cheque.png" alt="patient" class="row col-md-12 mx-auto h-25"
-                      style="width:180px;">
-
-
-                    <div class="p-2 row">
-
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputEmail1">Numéro Chèque</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Numéro Chèque">
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputEmail1">Numéro Compte </label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Numéro Compte ">
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputEmail1">Bénéficiaire </label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Bénéficiaire">
-                      </div>
-
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputEmail1">Date Emission</label>
-                        <input type="month" class="form-control" id="exampleInputEmail1" pattern="\d{4}-\d{2}" placeholder="MM/AAAA">
-                      </div>
-
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputEmail1">Date Paiement</label>
-                        <input type="date" class="form-control" id="exampleInputEmail1" >
-                      </div>
-
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputEmail1">Banque Emettrice</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="UBA">
-                      </div>
-
-
-
-                    </div>
-
-                    <div class="row ">
-
-                      <div class="form-group p-1 text-center mx-auto">
-                        <button @click="showConfirmationModal" type="button"
-                          class="btn btn-success d-flex  btn btn-block btn-block  text-center"><i
-                            class="mdi mdi-check-circle-outline menu-icon "></i> <span class="text-center ">
-                            Valider</span>
-                        </button>
-                      </div>
-                    </div>
-
-
-
-
-                  </div>
 
                   <div v-if="selectedOption === 'option4'" class="control-group">
 
@@ -336,35 +296,35 @@
                         <label for="exampleInputEmail1">Nom et Prénom(s)</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nom et Prénom(s)">
                       </div>
-                      <div class="form-group col-md-2">
+                      <div class="form-group col-md-4">
                         <label for="exampleInputEmail1">Téléphone </label>
                         <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Téléphone">
                       </div>
-                      <div class="form-group col-md-3">
+                      <div class="form-group col-md-4">
                         <label for="exampleInputEmail1">Email</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
                       </div>
 
-                      <div class="form-group col-md-3">
+                      <!-- <div class="form-group col-md-3">
                         <label for="exampleInputEmail1">Type Carte</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" placeholder="UBA">
-                      </div>
+                      </div> -->
 
                       <div class="form-group col-md-4">
                         <label for="exampleInputEmail1">Numéro Carte</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Numéro Carte">
                       </div>
 
-                      <div class="form-group col-md-2">
+                      <!-- <div class="form-group col-md-2">
                         <label for="exampleInputEmail1">Code CVC</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Code CVC">
-                      </div>
+                      </div> -->
 
-                      <div class="form-group col-md-3">
+                      <div class="form-group col-md-4">
                         <label for="exampleInputEmail1">Nom Carte </label>
                         <input type="text" class="form-control" id="exampleInputEmail1" placeholder="VISA">
                       </div>
-                      <div class="form-group col-md-3">
+                      <div class="form-group col-md-4">
                         <label for="exampleInputEmail1">Date Expiration</label>
                         <input type="month" class="form-control" id="exampleInputEmail1" placeholder="MM/AA">
                       </div>
@@ -452,23 +412,21 @@
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-<!-- 
+                    <!-- 
                     <div class="modal-body text-center">
                       <img src="@/assets/images/Capture.PNG" alt="logo" class="w-50">
                       <p>Paiement en cours de validation ! Veuillez patienter</p>
                     </div> -->
 
                     <div class="modal-footer">
-                     
+
                     </div>
 
-               
+
                   </div>
                 </div>
               </div>
             </div>
-
-
 
 
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -588,20 +546,20 @@
                   <div class="modal-footer">
 
                     <router-link class="" to="">
-                        <b-button size="sm" v-b-tooltip.hover title="Whatsapp" variant="success">
-                          <i class="mdi mdi mdi-whatsapp text-white menu-icon"></i>
-                        </b-button>
-                      </router-link>
-                      <router-link class="" to="">
-                        <b-button size="sm" v-b-tooltip.hover title="Email" variant="info">
-                          <i class="mdi  mdi mdi-email text-white menu-icon"></i>
-                        </b-button>
-                      </router-link>
-                      <router-link class="" to="">
-                        <b-button size="sm" v-b-tooltip.hover title="MMS" variant="primary">
-                          <i class="mdi mdi-message-text text-white menu-icon"></i>
-                        </b-button>
-                      </router-link>
+                      <b-button size="sm" v-b-tooltip.hover title="Whatsapp" variant="success">
+                        <i class="mdi mdi mdi-whatsapp text-white menu-icon"></i>
+                      </b-button>
+                    </router-link>
+                    <router-link class="" to="">
+                      <b-button size="sm" v-b-tooltip.hover title="Email" variant="info">
+                        <i class="mdi  mdi mdi-email text-white menu-icon"></i>
+                      </b-button>
+                    </router-link>
+                    <router-link class="" to="">
+                      <b-button size="sm" v-b-tooltip.hover title="MMS" variant="primary">
+                        <i class="mdi mdi-message-text text-white menu-icon"></i>
+                      </b-button>
+                    </router-link>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
 
 
@@ -642,6 +600,7 @@ export default {
       form: {
         acte: ''
       },
+
       //  readonlyoption: 'autre',
       //  isreadonly: true,
 
@@ -654,14 +613,14 @@ export default {
         { id: 2, value: 'option2', label: 'MTN Mobile Money' },
         { id: 3, value: 'option3', label: 'Moov Money' },
         { id: 4, value: 'option4', label: 'Carte Bancaire' },
-        { id: 5, value: 'option5', label: 'Chèque' },
+   
       ],
       selected: '',
       options: [
         { item: 'F', name: ' Feminin' },
         { item: 'M', name: ' Masculin' },
         //{ item: 'D', name: 'Option C', notEnabled: true },
-        // { item: { d: 1 }, name: 'Option D' }       this.forms.push({ mode: '', code: '', prix: '', quantite: '', montant: '' });
+        // { item: { d: 1 }, name: 'Option D' } this.forms.push({ mode: '', code: '', prix: '', quantite: '', montant: '' });
 
       ],
 

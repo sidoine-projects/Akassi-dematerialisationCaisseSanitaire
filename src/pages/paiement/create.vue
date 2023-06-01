@@ -44,11 +44,11 @@
 
                   <div class="form-group">
                     <label for="exampleInputPassword1">Assurance</label>
-                    <input readonly type="text" class="form-control" id="exampleInputPassword1" placeholder="Sexe">
+                    <input readonly type="text" class="form-control" id="exampleInputPassword1" placeholder="Assurance">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">indigence</label>
-                    <input readonly type="text" class="form-control" id="exampleInputPassword1" placeholder="Sexe">
+                    <input readonly type="text" class="form-control" id="exampleInputPassword1" placeholder="indigence">
                   </div>
 
                 </div>
@@ -64,12 +64,12 @@
 
                   <div class="form-group">
                     <label for="exampleInputUsername1">Montant Assurance</label>
-                    <input readonly type="text" class="form-control" id="exampleInputUsername1" placeholder="Profession">
+                    <input readonly type="text" class="form-control" id="exampleInputUsername1" placeholder="Montant Assurance">
                   </div>
                   
                   <div class="form-group">
                     <label for="exampleInputUsername1">Montant Indigence</label>
-                    <input readonly type="text" class="form-control" id="exampleInputUsername1" placeholder="Profession">
+                    <input readonly type="text" class="form-control" id="exampleInputUsername1" placeholder="Montant Indigence<">
                   </div>
 
 
@@ -281,7 +281,6 @@
                       </div>
 
 
-
                     </div>
 
                   </div>
@@ -428,8 +427,6 @@
                 </div>
               </div>
             </div>
-
-
 
 
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

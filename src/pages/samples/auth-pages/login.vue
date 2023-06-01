@@ -185,101 +185,101 @@ export default defineComponent({
       siteKey,
     };
   },
-  // methods: {
-  //   login() {
-  //     if (this.user.email === "") {
-  //       document.getElementById("error").hidden = false;
-  //       document.getElementById("info").innerHTML =
-  //         "Veuillez entrer votre e-mail";
-  //     } else if (this.user.password === "") {
-  //       document.getElementById("error").hidden = false;
-  //       document.getElementById("info").innerHTML =
-  //         "Veuillez entrer un mot de passe";
-  //     } else if (this.user.recaptchaResponse === null) {
-  //       document.getElementById("error").hidden = false;
-  //       document.getElementById("info").innerHTML =
-  //         "Veuillez certifier que vous êtes humain";
-  //     } else if (this.user.password.length < 6) {
-  //       document.getElementById("error").hidden = false;
-  //       document.getElementById("info").innerHTML =
-  //         "Le mot de passe doit contenir au moins 6 caractères";
-  //     } else {
-  //       document.getElementById("process").hidden = false;
-  //       LoginService.login(this.user)
-  //         .then((response) => {
-  //           document.getElementById("process").hidden = true;
-
-  //           const user = response.data.data.user;
-  //           localStorage.setItem("user.id", user.id);
-  //           localStorage.setItem("user.nom_utilisater", user.nom_utilisater);
-  //           localStorage.setItem("user.nom", user.nom);
-  //           localStorage.setItem("user.prenom", user.prenom);
-  //           localStorage.setItem("user.role", user.role);
-  //           localStorage.setItem("user.telephone", user.telephone);
-  //           localStorage.setItem("user.email", user.email);
-  //           localStorage.setItem("token", response.data.data.token);
-
-  //           axios.defaults.headers.common[
-  //             "Authorization"
-  //           ] = `Bearer ${localStorage.getItem("token")}`;
-
-  //           this.$router.push("/");
-  //         })
-  //         .catch((err) => {
-  //           document.getElementById("error").hidden = false;
-  //           document.getElementById("info").innerHTML =
-  //             "Identifiant ou mot de passe invalide";
-
-  //           document.getElementById("process").hidden = true;
-
-  //           console.log(err);
-  //         });
-  //     }
-  //   },
-
-  //   dis() {
-  //     document.getElementById("error").hidden = true;
-  //   },
-  //   onEvent() {
-  //     this.$refs.VueRecaptcha.execute();
-  //   },
-  // },
   methods: {
     login() {
       if (this.user.email === "") {
-        this.showError("Veuillez entrer votre e-mail");
+        document.getElementById("error").hidden = false;
+        document.getElementById("info").innerHTML =
+          "Veuillez entrer votre e-mail";
       } else if (this.user.password === "") {
-        this.showError("Veuillez entrer un mot de passe");
+        document.getElementById("error").hidden = false;
+        document.getElementById("info").innerHTML =
+          "Veuillez entrer un mot de passe";
       } else if (this.user.recaptchaResponse === null) {
-        this.showError("Veuillez certifier que vous êtes humain");
+        document.getElementById("error").hidden = false;
+        document.getElementById("info").innerHTML =
+          "Veuillez certifier que vous êtes humain";
       } else if (this.user.password.length < 6) {
-        this.showError("Le mot de passe doit contenir au moins 6 caractères");
+        document.getElementById("error").hidden = false;
+        document.getElementById("info").innerHTML =
+          "Le mot de passe doit contenir au moins 6 caractères";
       } else {
-        this.hideError();
         document.getElementById("process").hidden = false;
         LoginService.login(this.user)
           .then((response) => {
             document.getElementById("process").hidden = true;
 
-            // Le reste du code...
+            const user = response.data.data.user;
+            localStorage.setItem("user.id", user.id);
+            localStorage.setItem("user.nom_utilisater", user.nom_utilisater);
+            localStorage.setItem("user.nom", user.nom);
+            localStorage.setItem("user.prenom", user.prenom);
+            localStorage.setItem("user.role", user.role);
+            localStorage.setItem("user.telephone", user.telephone);
+            localStorage.setItem("user.email", user.email);
+            localStorage.setItem("token", response.data.data.token);
+
+            axios.defaults.headers.common[
+              "Authorization"
+            ] = `Bearer ${localStorage.getItem("token")}`;
+
+            this.$router.push("/");
           })
           .catch((err) => {
-            this.showError("Identifiant ou mot de passe invalide");
+            document.getElementById("error").hidden = false;
+            document.getElementById("info").innerHTML =
+              "Identifiant ou mot de passe invalide";
+
             document.getElementById("process").hidden = true;
 
             console.log(err);
           });
       }
     },
-    showError(message) {
-      this.errorVisible = true;
-      this.errorInfo = message;
+
+    dis() {
+      document.getElementById("error").hidden = true;
     },
-    hideError() {
-      this.errorVisible = false;
-      this.errorInfo = "";
+    onEvent() {
+      this.$refs.VueRecaptcha.execute();
     },
   },
+  // methods: {
+  //   login() {
+  //     if (this.user.email === "") {
+  //       this.showError("Veuillez entrer votre e-mail");
+  //     } else if (this.user.password === "") {
+  //       this.showError("Veuillez entrer un mot de passe");
+  //     } else if (this.user.recaptchaResponse === null) {
+  //       this.showError("Veuillez certifier que vous êtes humain");
+  //     } else if (this.user.password.length < 6) {
+  //       this.showError("Le mot de passe doit contenir au moins 6 caractères");
+  //     } else {
+  //       this.hideError();
+  //       document.getElementById("process").hidden = false;
+  //       LoginService.login(this.user)
+  //         .then((response) => {
+  //           document.getElementById("process").hidden = true;
+
+  //           // Le reste du code...
+  //         })
+  //         .catch((err) => {
+  //           this.showError("Identifiant ou mot de passe invalide");
+  //           document.getElementById("process").hidden = true;
+
+  //           console.log(err);
+  //         });
+  //     }
+  //   },
+  //   showError(message) {
+  //     this.errorVisible = true;
+  //     this.errorInfo = message;
+  //   },
+  //   hideError() {
+  //     this.errorVisible = false;
+  //     this.errorInfo = "";
+  //   },
+  // },
 });
 </script>
 <!-- <script>

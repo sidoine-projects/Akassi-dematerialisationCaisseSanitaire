@@ -46,14 +46,30 @@
               <li class="nav-item">
                 <router-link class="nav-link" to="/actes-medicaux/list">Actes médicaux</router-link>
               </li>
+              <li class="nav-item">
+                <router-link class="nav-link" to="/assurance/list">Assurance</router-link>
+              </li>
+              <li class="nav-item">
+                <router-link class="nav-link" to="/compagnie/list">Compagnie</router-link>
+              </li>
             </ul>
           </b-collapse>
         </li>
-
+       
         <li class="nav-item">
           <router-link to="/patients/list" style="text-decoration: none;">
             <span class="nav-link" v-b-toggle="'patients'">
               <span class="menu-title">Gestion des patients</span>
+              <i class="menu-arrow"></i>
+              <img src="@/assets/images/patient.png" alt="patient" style="width: 1rem; height: 1rem; ">
+            </span>
+          </router-link>
+        </li>
+
+        <li class="nav-item">
+          <router-link to="/priseencharge/list" style="text-decoration: none;">
+            <span class="nav-link" v-b-toggle="'patients'">
+              <span class="menu-title">Prise en charge patient</span>
               <i class="menu-arrow"></i>
               <img src="@/assets/images/patient.png" alt="patient" style="width: 1rem; height: 1rem; ">
             </span>

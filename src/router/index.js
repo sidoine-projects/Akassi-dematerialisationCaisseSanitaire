@@ -165,6 +165,29 @@ export default new Router({
         }
       ]
     },
+
+    {
+      path: '/priseencharge',
+      component: layout,
+      children: [
+        {
+          path: 'create',
+          name: 'create',
+          component: () => import('@/pages/priseencharge/create')
+        }
+      ]
+    },
+    {
+      path: '/priseencharge',
+      component: layout,
+      children: [
+        {
+          path: 'list',
+          name: 'list',
+          component: () => import('@/pages/priseencharge/index')
+        }
+      ]
+    },
     {
       path: '/',
       component: layout2,
@@ -250,6 +273,50 @@ export default new Router({
           path: 'list',
           name: 'actes-list',
           component: () => import('@/pages/actes-medicaux/index')
+        }
+      ]
+    },
+    {
+      path: '/assurance',
+      component: layout,
+      children: [
+        {
+          path: 'create',
+          name: 'assurance-create',
+          component: () => import('@/pages/assurance/create')
+        }
+      ]
+    },
+    {
+      path: '/assurance',
+      component: layout,
+      children: [
+        {
+          path: 'list',
+          name: 'assurance-list',
+          component: () => import('@/pages/assurance/index')
+        }
+      ]
+    },
+    {
+      path: '/compagnie',
+      component: layout,
+      children: [
+        {
+          path: 'create',
+          name: 'compagnie-create',
+          component: () => import('@/pages/compagnie/create')
+        }
+      ]
+    },
+    {
+      path: '/compagnie',
+      component: layout,
+      children: [
+        {
+          path: 'list',
+          name: 'compagnie-list',
+          component: () => import('@/pages/compagnie/index')
         }
       ]
     },

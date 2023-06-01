@@ -34,6 +34,7 @@
                     <th>Prénom(s)</th>
                     <th>Rôle ou poste</th>
                     <th>Email</th>
+                    <th>Centre</th>
                     <th>Téléphone</th>
                     <th>Sexe</th>
                     <th class="text-center">Actions</th>
@@ -46,8 +47,8 @@
                     <td>Fatimatou </td>
                     <td>Caissière</td>
                     <td>xyz@example.com</td>
+                    <td>Dassa</td>
                     <td>67 89 09 78</td>
-
                     <td>Féminin</td>
                     <td class="text-center">
 
@@ -68,7 +69,7 @@
                       </router-link>
                     </td>
                   </tr>
-                  <tr>
+                  <!-- <tr>
                     <td>2</td>
                     <td>ABALLO </td>
                     <td>Fati </td>
@@ -92,7 +93,7 @@
                         </b-button>
                       </router-link>
                     </td>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </table>
             </div>

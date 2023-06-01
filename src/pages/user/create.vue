@@ -26,6 +26,7 @@
                                     <label for="exampleInputUsername1">Nom</label>
                                     <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Nom" />
                                 </div>
+                                
                                 <div class="form-group">
                                     <label for="exampleInputUsername1">Prénom(s)</label>
                                     <input type="text" class="form-control" id="exampleInputUsername1"
@@ -42,34 +43,28 @@
                                     <input type="text" class="form-control" id="exampleInputPassword1"
                                         placeholder="@caissier" />
                                 </div>
+                                <div class="form-group ">
+                                        <label for="exampleInputPassword1">Téléphone</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1"
+                                            placeholder="98909776" />
+                                    </div>
                             </div>
 
                             <div class="col-md-6">
-                                <!--<div class="form-group">
-                                        <label for="exampleFormControlSelect1">Large select</label>
-                                        <select
-                                            class="form-control   mb-3 "
-                                            id="exampleFormControlSelect1"
-                                        >
-                                            <option value="AL">Alabama</option>
-                                            <option value="WY">Wyoming</option>
-                                            <option value="AM">America</option>
-                                            <option value="CA">Canada</option>
-                                            <option value="RU">Russia</option>
-                                            <option value="RU">Russia</option>
-                                        </select>
-                                    </div>-->
+                              
 
                                 <div class="form-group">
                                     <label for="exampleInputConfirmPassword1">Adresse</label>
                                     <input type="text" class="form-control" id="exampleInputConfirmPassword1"
                                         placeholder="Cotonou Sainte Rita C/574 M/DeGaules" />
                                 </div>
-                                <!-- <div class="form-group">
-                                    <label for="exampleInputEmail1">Rôle ou Poste</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Caissier" />
-                                </div> -->
+                                <div class="form-group">
+                                <label for="patientId">Centre Sanitaire:</label>
+                                <select id="patientId" v-model="patientId"  class="form-control">
+                                  <option value="">Sélectionnez un centre sanitaire</option>
+                                  <option v-for="patient in patients" :value="patient.id">{{ patient.name }}</option>
+                                </select>
+                              </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1">Rôle ou Poste</label>
                                     <select class="form-control   mb-3 " id="exampleFormControlSelect1">
@@ -83,29 +78,8 @@
                                     <input type="password" class="form-control" id="exampleInputConfirmPassword1"
                                         placeholder="........." />
                                 </div>
-                                <!--<div class="form-group form-check">
-                                        <label for="radio" class="">Choisir un élément </label>
-  
-                                            <div class="p-3">
-                                            <input type="checkbox" class="demo2" id="demo2" />
-                                            <label for="demo2" class="mx-3" style="font-size: 1rem;"
-                                            >element 1</label
-                                            >
-                                                
-                                            <input type="checkbox" class="demo2 mx-5" id="demo3" />
-                                            <label for="demo3" style="font-size: 1rem;"
-                                            >element 2</label
-                                            >
-                                        </div>
-                                    </div>-->
-                                <div class="form-group col-md-12 px-0 row">
-                                    <div class="form-group col-md-6">
-                                        <label for="exampleInputPassword1">Téléphone</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1"
-                                            placeholder="98909776" />
-                                    </div>
-                                    <div class="form-group form-check col-md-6 px-4 mx-auto">
-                                        <label for="radio" class="">Sexe</label>
+                                <div class="form-group">
+                                    <label for="radio" class="">Sexe</label>
                                         <div class="p-2">
                                             <input type="radio" name="demo6" class="demo6 mx-auto form-check-input "
                                                 id="demo6-a" checked />
@@ -114,10 +88,9 @@
                                                 id="demo6-b" />
                                             <label for="demo6-b" class="mx-3" style="font-size: 1rem;">Masculin</label>
                                         </div>
-                                    </div>
                                 </div>
                             </div>
-
+                            
                             <div class="mx-auto">
                                 <button type="submit" class="btn btn-success mr-2">
                                     Ajouter

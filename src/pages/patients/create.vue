@@ -183,6 +183,7 @@ export default {
                 urgencecontact: '',
                 autre: ''
             },
+
             wrong: '',
             errorNom: [],
             errorPrenom: [],
@@ -198,7 +199,6 @@ export default {
 
         };
     },
-
 
 
     methods: {
@@ -252,12 +252,6 @@ export default {
                 });
         },
     },
-
-
-
-
-
-
 
 
 };

@@ -53,11 +53,11 @@
 
                   <div class="form-group">
                     <label for="exampleInputPassword1">Assurance</label>
-                    <input readonly type="text" class="form-control" id="exampleInputPassword1" placeholder="Assurance">
+                    <input readonly type="text" class="form-control" id="exampleInputPassword1" placeholder=" Assurance">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">indigence</label>
-                    <input readonly type="text" class="form-control" id="exampleInputPassword1" placeholder="indigence">
+                    <input readonly type="text" class="form-control" id="exampleInputPassword1" placeholder=" Indigence">
                   </div>
 
                 </div>
@@ -72,13 +72,15 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="exampleInputUsername1">Montant Assurance</label>
-                    <input readonly type="text" class="form-control" id="exampleInputUsername1" placeholder="Montant Assurance">
+                    <label for="exampleInputUsername1">Pourcentage Assurance</label>
+                    <input readonly type="text" class="form-control" id="exampleInputUsername1"
+                      placeholder="Pourcentage Assurance">
                   </div>
-                  
+
                   <div class="form-group">
-                    <label for="exampleInputUsername1">Montant Indigence</label>
-                    <input readonly type="text" class="form-control" id="exampleInputUsername1" placeholder="Montant Indigence<">
+                    <label for="exampleInputUsername1">Pourcentage Indigence</label>
+                    <input readonly type="text" class="form-control" id="exampleInputUsername1"
+                      placeholder="Pourcentage Indigence<">
                   </div>
 
 
@@ -261,14 +263,7 @@
                       />
                     </div>
 
-                    <div
-                      class="form-group"
-                      :class="
-                        form.acte === 'autre'
-                          ? 'col-md-3 mb-2'
-                          : 'col-md-2 mb-2'
-                      "
-                    >
+                    <div class="form-group " :class="form.acte === 'autre' ? 'col-md-3 mb-2' : 'col-md-2 mb-2'">
                       <label for="exampleInputUsername1">Prix</label>
                       <input
                         :readonly="form.readonly"
@@ -280,14 +275,7 @@
                         v-model="form.prix"
                       />
                     </div>
-                    <div
-                      class="form-group"
-                      :class="
-                        form.acte === 'autre'
-                          ? 'col-md-3 mb-2'
-                          : 'col-md-2 mb-2'
-                      "
-                    >
+                    <div class="form-group " :class="form.acte === 'autre' ? 'col-md-3 mb-2' : 'col-md-2 mb-2'">
                       <label for="exampleInputUsername1">Quantité</label>
                       <input
                         type="number"
@@ -375,66 +363,89 @@
                 </div>
 
                 <div class="p-2 container-fluid">
-                  <div
-                    v-if="selectedOption === 'option2'"
-                    class="control-group"
-                  >
-                    <img
-                      src="@/assets/images/mtn.jpg"
-                      alt="patient"
-                      class="row col-md-12 mx-auto h-25"
-                      style="width: 170px"
-                    />
+
+                  <div v-if="selectedOption === '2'" class="control-group">
+
+                    <img src="@/assets/images/mtn.jpg" alt="patient" class="row col-md-12 mx-auto h-25"
+                      style="width:170px;">
 
                     <div class="p-2 mt-4 row">
                       <div class="form-group col-md-4">
+                        <!-- <label for="exampleInputEmail1">Nom {{ momoData.statut }}</label> -->
                         <label for="exampleInputEmail1">Nom </label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="exampleInputEmail1"
-                          placeholder="Nom"
-                        />
+                        <input v-model="momoData.nom" type="text" class="form-control" id="exampleInputEmail1"
+                          placeholder="Nom">
                       </div>
                       <div class="form-group col-md-4">
                         <label for="exampleInputEmail1">Prénom(s) </label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="exampleInputEmail1"
-                          placeholder="Prénom(s)"
-                        />
+                        <input v-model="momoData.prenom" type="text" class="form-control" id="exampleInputEmail1"
+                          placeholder="Prénom(s)">
                       </div>
                       <div class="form-group col-md-2">
                         <label for="exampleInputEmail1">Téléphone</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="exampleInputEmail1"
-                          placeholder="Téléphone"
-                        />
+                        <input v-model="momoData.telephone" type="text" class="form-control" id="exampleInputEmail1"
+                          placeholder="Téléphone">
                       </div>
 
                       <div class="form-group col-md-2">
-                        <label for="exampleInputUsername1">
-                          Montant Total</label
-                        >
-                        <input
-                          readonly
-                          type="text"
-                          class="form-control"
-                          id="exampleInputUsername1"
-                          placeholder="Montant total"
-                        />
+                        <label for="exampleInputUsername1"> Montant Total</label>
+                        <input v-model="momoData.montant" readonly type="text" value="1000" class="form-control"
+                          id="exampleInputUsername1" placeholder="Montant total">
                       </div>
 
                       <div class="form-group p-2 mx-auto">
-                        <button
-                          @click="validateData"
-                          type="button"
-                          class="btn btn-success d-flex mx-auto btn btn-block btn-block text-center"
-                        >
-                          <i class="mdi mdi-check-circle-outline menu-icon"></i>
+
+                        <!-- <button @click="validateData" type="button"
+                          class="btn btn-success d-flex mx-auto btn btn-block btn-block  text-center"><i
+                            class="mdi mdi-check-circle-outline menu-icon "></i> <span
+                            class="text-center ml-1">Valider</span>
+                        </button> -->
+
+                        <button @click="validerMomo" type="button"
+                          class="btn btn-success d-flex mx-auto btn btn-block btn-block  text-center"><i
+                            class="mdi mdi-check-circle-outline menu-icon "></i> <span
+                            class="text-center ml-1">Valider</span>
+                        </button>
+
+                      </div>
+
+
+                    </div>
+
+
+                  </div>
+
+
+                  <div v-if="selectedOption === '3'" class="control-group">
+
+                    <img src="@/assets/images/moov.png" alt="patient" class="row col-md-12 mx-auto h-25"
+                      style="width:180px;">
+
+                    <div class="p-2 mt-4 row">
+
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Nom </label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nom">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="exampleInputEmail1">Prénom(s) </label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Prénom(s)">
+                      </div>
+                      <div class="form-group col-md-2">
+                        <label for="exampleInputEmail1">Téléphone</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Téléphone">
+                      </div>
+
+                      <div class="form-group col-md-2">
+                        <label for="exampleInputUsername1"> Montant Total</label>
+                        <input readonly type="text" class="form-control" id="exampleInputUsername1"
+                          placeholder="Montant total">
+                      </div>
+
+                      <div class="form-group mx-auto p-2 ">
+                        <button @click="validateData" type="button"
+                          class="btn btn-success d-flex mx-auto btn btn-block text-center btn-block  text-center"><i
+                            class="mdi mdi-check-circle-outline menu-icon "></i>
                           <span class="text-center ml-1">Valider</span>
                         </button>
                       </div>
@@ -452,33 +463,17 @@
                       style="width: 180px"
                     />
 
-                    <div class="p-2 mt-4 row">
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputEmail1">Nom </label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="exampleInputEmail1"
-                          placeholder="Nom"
-                        />
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="exampleInputEmail1">Prénom(s) </label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="exampleInputEmail1"
-                          placeholder="Prénom(s)"
-                        />
-                      </div>
-                      <div class="form-group col-md-2">
-                        <label for="exampleInputEmail1">Téléphone</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="exampleInputEmail1"
-                          placeholder="Téléphone"
-                        />
+
+                  <div v-if="selectedOption === '1'" class="control-group">
+
+                    <img src="@/assets/images/mode-espece.png" alt="patient" class="row col-md-12 mx-auto h-25"
+                      style="width:180px;">
+
+                    <div class="p-1 mt-1 row">
+                      <div class="form-group col-md-12 ">
+                        <label for="exampleInputUsername1"> Montant Total</label>
+                        <input readonly type="text" class="form-control" id="exampleInputUsername1"
+                          placeholder="Montant total">
                       </div>
 
                       <div class="form-group col-md-2">
@@ -551,16 +546,11 @@
                     </div>
                   </div>
 
-                  <div
-                    v-if="selectedOption === 'option4'"
-                    class="control-group"
-                  >
-                    <img
-                      src="@/assets/images/mode-carte.png"
-                      alt="patient"
-                      class="row col-md-12 mx-auto h-25"
-                      style="width: 180px"
-                    />
+
+                  <div v-if="selectedOption === '4'" class="control-group">
+
+                    <img src="@/assets/images/mode-carte.png" alt="patient" class="row col-md-12 mx-auto h-25"
+                      style="width:180px;">
 
                     <div class="p-2 mt-4 row">
                       <div class="form-group col-md-4">
@@ -647,6 +637,80 @@
                 </div>
               </fieldset>
             </form>
+
+
+            <div class="modal fade" id="confirmationMOMO" tabindex="-1" role="dialog"
+              aria-labelledby="confirmationMOMOLabel1" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+
+                    <!-- <h5 class="modal-title" id="confirmationMOMOLabel">Validation paiement</h5> -->
+                    <!-- <h5 class="modal-title" id="confirmationMOMOLabel">
+                      {{ momoData.statut === 'PENDING' ? 'Validation en cours' : momoData.statut === 'FAILED' ? 'Échec
+                                            depaiement' : ' Paiement réussi avec succès' }}</h5> -->
+
+                    <h5 class="modal-title" id="confirmationMOMOLabel">
+                      {{
+                        momoData.statut === 'PENDING'
+                        ? 'Validation en cours'
+                        : momoData.statut === 'FAILED'
+                          ? 'Échec de paiement'
+                          : 'Paiement réussi avec succès'
+                      }}
+                    </h5>
+
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+                  <div class="modal-body" style="text-align:center">
+                    <div id="pending-content" v-if="momoData.statut === 'PENDING'">
+                      <!-- <img src="https://onecall.ci/fr/smspro/assets/img/loader.gif" alt="Trulli" width="300" height="233"> -->
+                      <img src="../../assets/images/loading.gif" alt="Trulli" width="200" height="200">
+                      <h3 class="mt-3"><label style="color: #1d7db4;">Veuillez patienter s'il vous plaît...</label></h3>
+
+                    </div>
+
+                    <div id="success-content" v-if="momoData.statut === 'SUCCESSFUL'">
+                      <!-- <img src="https://onecall.ci/fr/smspro/assets/img/loader.gif" alt="Trulli" width="300" height="233"> -->
+                      <img src="../../assets/images/img-valider.png" alt="logo" class="w-50">
+                      <!-- <h4><a href="#"> Cliquez ici pour continuer le processus.</a></h4> -->
+
+                    </div>
+
+                    <div id="failed-content" v-if="momoData.statut === 'FAILED'">
+                      <!-- <img src="https://onecall.ci/fr/smspro/assets/img/loader.gif" alt="Trulli" width="300" height="233"> -->
+                      <img src="../../assets/images/delete.png" alt="Trulli" width="200" height="200">
+                      <h4>Le paiement a échoué. Veuillez réessayer.</h4>
+
+                    </div>
+
+
+                  </div>
+                  <div class="modal-footer">
+                    <button v-if="momoData.statut === 'PENDING'" type="button" class="btn btn-outline-danger text-dark"
+                      @click="annulerMomo">Annuler</button>
+
+                    <button class="btn btn-outline-danger text-dark" v-if="momoData.statut === 'FAILED'"
+                      data-dismiss="modal" type="button">Fermer</button>
+
+                    <button v-if="momoData.statut === 'SUCCESSFUL'" type="button"
+                      class="btn btn-outline-success text-dark mx-auto mt-n2" @click="ShowFacture">
+                      <i class="mdi  mdi mdi-cloud-download"></i> Cliquer ici pour
+                      imprimer la facture</button>
+                    <!-- <button type="button" class="btn btn-outline-success text-dark" @click="validateData">Oui</button> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
 
             <div>
               <!-- <button class="btn btn-primary" @click="showConfirmationModal">Valider les données</button> -->
@@ -1033,6 +1097,15 @@ import "../../../node_modules/bootstrap/dist/js/bootstrap.js"; // tres important
 import "../../../node_modules/bootstrap/dist/js/bootstrap.min.js"; // tres important pour le modal
 import { patientService } from "@/_services";
 
+
+// import "../../../node_modules/bootstrap/dist/js/bootstrap.min.js"; // tres important pour le modal
+
+
+import { momoService } from "@/_services/momos_services.js";
+
+import "../../assets/js/alertify.js";
+
+
 export default {
   name: "create-payement",
   // props: ["id"],
@@ -1061,18 +1134,28 @@ export default {
         acte: "",
       },
 
+      momoData: {
+        selectedOption: '',
+        nom: '',
+        statut: 'PENDING',
+        prenom: '',
+        telephone: '',
+        montant: '1000',
+        transaction: null
+      },
       //  readonlyoption: 'autre',
       //  isreadonly: true,
 
       afficherModal: false,
       //selected: 'A',
 
-      selectedOption: "option1",
+      selectedOption: '1',
       optionsMode: [
-        { id: 1, value: "option1", label: "Espèce" },
-        { id: 2, value: "option2", label: "MTN Mobile Money" },
-        { id: 3, value: "option3", label: "Moov Money" },
-        { id: 4, value: "option4", label: "Carte Bancaire" },
+        { id: 1, value: '1', label: 'Espèce' },
+        { id: 2, value: '2', label: 'MTN Mobile Money' },
+        { id: 3, value: '3', label: 'Moov Money' },
+        { id: 4, value: '4', label: 'Carte Bancaire' },
+
       ],
       selected: "",
       options: [
@@ -1178,6 +1261,69 @@ export default {
     //   }
     // },
 
+    annulerMomo(event) {
+      event.stopPropagation();
+      this.momoData.statut = "FAILED";
+    },
+    validerMomo() {
+      const credentials = {
+        mode_payements_id: this.selectedOption,
+        nom: this.momoData.nom,
+        prenom: this.momoData.prenom,
+        telephone: this.momoData.telephone,
+        montant: this.momoData.montant,
+        transaction_id: '',
+        statut: this.momoData.statut,
+      };
+
+      $('#confirmationMOMO').modal('show');
+
+      // momoService.requestMomo(credentials)
+      //   .then(response => {
+      //     const transaction = response.data.transaction;
+      //     this.momoData.statut = transaction.statut;
+      //     console.log('statut:', transaction.statut);
+      //     $('#confirmationMOMO').modal('show');
+
+      //     setTimeout(() => {
+      //       // Mettre à jour la valeur de statut à "SUCCESSFUL"
+      //       this.momoData.statut = "SUCCESSFUL";
+      //     }, 10000);
+      //   })
+      //   .catch(error => {
+      //     console.error(error);
+      //   });
+
+      setTimeout(() => {
+
+        // Mettre à jour la valeur de statut à "SUCCESSFUL"
+        if (this.momoData.statut === 'PENDING') {
+          this.momoData.statut = "SUCCESSFUL";
+        }
+
+
+        if (this.momoData.statut === 'SUCCESSFUL') {
+          // Enregistrer les données dans la base de données
+          momoService.requestMomo(credentials)
+            .then(response => {
+              const transaction = response.data.transaction;
+              this.momoData.statut = transaction.statut;
+              console.log('statut:', transaction.statut);
+              $('#confirmationMOMO').modal('show');
+
+            })
+            .catch(error => {
+              console.error(error);
+            });
+        }
+      }, 6000);
+
+
+
+
+
+    },
+
     checkreadonly(form) {
       // console.log(form.acte);
       if (form.acte === "autre") {
@@ -1259,7 +1405,20 @@ export default {
       return format(value, "dd/MM/yyyy");
     },
   },
-};
+
+  mounted() {
+    $('#confirmationMOMO').on('hidden.bs.modal', () => {
+      this.momoData.statut = 'PENDING';
+    });
+  }
+
+
+
+}
+
+
+
+
 </script>
 
 <!-- pour moi 
@@ -1380,6 +1539,13 @@ export default {
 
 <style scoped>
 @import "../../../node_modules/bootstrap-vue/dist/bootstrap-vue.css";
+
+@import '../../assets/css/alertify.css';
+@import "../../assets/css/alertify-bootstrap-3.css";
+@import '../../assets/css/bootstrap-select.min.css';
+
+
+
 
 .modal--fullscreen {
   max-width: 90vw;

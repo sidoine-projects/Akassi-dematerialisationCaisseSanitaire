@@ -278,7 +278,9 @@ import "../../../node_modules/bootstrap/dist/js/bootstrap.min.js"; // tres impor
 
 require("datatables.net-dt");
 
+
 import { patientService } from "@/_services";
+
 
 export default {
   name: "patients",
@@ -308,6 +310,7 @@ export default {
     });
     patientService.getAllpatients().then((res) => {
       this.patients = res.data.data;
+      
       this.$nextTick(() => {
         const table = $(this.$refs.myTable).DataTable({
           // dom: '<"html5buttons"B>lTfgtip',

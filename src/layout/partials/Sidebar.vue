@@ -70,7 +70,7 @@
                   >Indigences</router-link
                 >
               </li>
-              <li>
+              <li class="nav-item">
                 <router-link class="nav-link" to="/assurance/list"
                   >Assurance</router-link
                 >

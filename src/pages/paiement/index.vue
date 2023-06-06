@@ -238,6 +238,7 @@ import "../../../node_modules/bootstrap/dist/js/bootstrap.min.js"; // tres impor
 
 require('datatables.net-dt');
 
+
 // import 'jquery/dist/jquery.min.js';
 
 // import "datatables.net-dt/js/dataTables.dataTables"

@@ -20,6 +20,7 @@ let isLogged = () => {
 let logout = () => {
   localStorage.removeItem("token");
 };
+
 export const LoginService = {
   login,
   getToken,
